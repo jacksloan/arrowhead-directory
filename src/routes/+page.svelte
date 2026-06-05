@@ -2,6 +2,7 @@
 	import { toast } from 'svelte-sonner';
 	import { toggleMode } from 'mode-watcher';
 	import ThemePicker from '$lib/components/ThemePicker.svelte';
+	import ThemeSettings from '$lib/components/ThemeSettings.svelte';
 
 	// Layout
 	import * as Sidebar from '$lib/components/ui/sidebar';
@@ -218,6 +219,7 @@
 			<div class="ml-auto flex items-center gap-2">
 				<Badge variant="outline">v1.3.0</Badge>
 				<ThemePicker />
+				<ThemeSettings />
 				<Button variant="ghost" size="icon" onclick={toggleMode}>
 					<SunIcon class="dark:hidden size-4" />
 					<MoonIcon class="hidden dark:block size-4" />
