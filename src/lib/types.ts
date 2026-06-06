@@ -1,4 +1,4 @@
-export type BusinessStatus = 'approved' | 'pending' | 'rejected';
+export type BusinessStatus = 'approved' | 'pending' | 'rejected' | 'deleted';
 
 export interface Business {
   id?: string;
