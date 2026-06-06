@@ -1037,7 +1037,10 @@
       "Landscaping",
       "Lawn & Snow (plowing, mowing/shoveling/roof snow removal etc.)",
       "Property Services",
-      "Tree Trimming and Removal"
+      "Tree Trimming and Removal",
+      "Drywall Installation and Taping",
+      "General Construction and Remodeling",
+      "Roofing Installation & Repairs"
     ],
     "image": null
   },
@@ -1312,7 +1315,8 @@
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
     "subcategories": [
-      "Landscaping"
+      "Landscaping",
+      "Concrete and Masonry"
     ],
     "image": null
   },
@@ -1360,7 +1364,8 @@
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
     "subcategories": [
-      "Landscaping"
+      "Landscaping",
+      "General Construction and Remodeling"
     ],
     "image": null
   },
@@ -2216,22 +2221,6 @@
     "image": null
   },
   {
-    "name": "Erlandson Stone & Pavers",
-    "email": null,
-    "phones": [
-      "248-770-9066"
-    ],
-    "address": null,
-    "website": null,
-    "description": "Grand Marais Paul Erlandson",
-    "services": [],
-    "category": "BUILDING AND CONSTRUCTION",
-    "subcategories": [
-      "Concrete and Masonry"
-    ],
-    "image": null
-  },
-  {
     "name": "Nace Hagemann",
     "email": null,
     "phones": [
@@ -2247,24 +2236,6 @@
     "subcategories": [
       "Drywall Installation and Taping",
       "General Construction and Remodeling"
-    ],
-    "image": null
-  },
-  {
-    "name": "Bystrom Construction LLC",
-    "email": "JustonBystrom111@gmail.com",
-    "phones": [
-      "218-576-9983"
-    ],
-    "address": null,
-    "website": null,
-    "description": "Juston Bystrom",
-    "services": [],
-    "category": "BUILDING AND CONSTRUCTION",
-    "subcategories": [
-      "Drywall Installation and Taping",
-      "General Construction and Remodeling",
-      "Roofing Installation & Repairs"
     ],
     "image": null
   },
@@ -2439,22 +2410,6 @@
     "address": null,
     "website": null,
     "description": null,
-    "services": [],
-    "category": "BUILDING AND CONSTRUCTION",
-    "subcategories": [
-      "General Construction and Remodeling"
-    ],
-    "image": null
-  },
-  {
-    "name": "A & M Construction",
-    "email": null,
-    "phones": [
-      "218-370-9980"
-    ],
-    "address": null,
-    "website": null,
-    "description": "Grand Marais Jason Zimmer Site clearing/roads & driveways/dozer/excavator work/retaining walls/demolition/etc.",
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
     "subcategories": [
