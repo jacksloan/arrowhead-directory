@@ -4,6 +4,11 @@
   import { Checkbox } from '$lib/components/ui/checkbox/index.js';
   import { Label } from '$lib/components/ui/label/index.js';
   import SlidersHorizontal from '@lucide/svelte/icons/sliders-horizontal';
+  import {
+    Tooltip,
+    TooltipContent,
+    TooltipTrigger,
+  } from '$lib/components/ui/tooltip/index.js';
 
   let {
     categories,
@@ -23,13 +28,20 @@
 </script>
 
 <Popover>
-  <PopoverTrigger>
-    {#snippet child({ props })}
-      <Button {...props} variant="outline" size="icon" aria-label="Filter">
-        <SlidersHorizontal class="h-4 w-4" />
-      </Button>
-    {/snippet}
-  </PopoverTrigger>
+  <Tooltip>
+    <PopoverTrigger>
+      {#snippet child({ props })}
+        <TooltipTrigger>
+          {#snippet child({ props: tipProps })}
+            <Button {...props} {...tipProps} variant="outline" size="icon" aria-label="Filter by category">
+              <SlidersHorizontal class="h-4 w-4" />
+            </Button>
+          {/snippet}
+        </TooltipTrigger>
+      {/snippet}
+    </PopoverTrigger>
+    <TooltipContent>Filter by category</TooltipContent>
+  </Tooltip>
   <PopoverContent class="w-64" align="end">
     <p class="mb-3 text-sm font-medium">Filter by category</p>
     <div class="flex max-h-64 flex-col gap-2 overflow-y-auto">
