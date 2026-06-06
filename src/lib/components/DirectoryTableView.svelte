@@ -24,6 +24,7 @@
 	import ChevronDown from '@lucide/svelte/icons/chevron-down';
 	import ChevronsUpDown from '@lucide/svelte/icons/chevrons-up-down';
 	import BusinessProfileDialog from './BusinessProfileDialog.svelte';
+	import SuggestEditDialog from './SuggestEditDialog.svelte';
 	import type { Business } from '$lib/types';
 
 	let {
@@ -46,6 +47,14 @@
 	function openProfile(b: Business) {
 		selectedBusiness = b;
 		profileOpen = true;
+	}
+
+	let suggestingBusiness = $state<Business | null>(null);
+	let suggestOpen = $state(false);
+
+	function openSuggest(b: Business) {
+		suggestingBusiness = b;
+		suggestOpen = true;
 	}
 
 	$effect(() => {
@@ -98,11 +107,17 @@
 </script>
 
 {#if selectedBusiness}
+	{@const isOwnerOfSelected = user?.email && selectedBusiness.email && user.email === selectedBusiness.email}
 	<BusinessProfileDialog
 		business={selectedBusiness}
 		bind:open={profileOpen}
-		onedit={(isAdmin || (user?.email && selectedBusiness.email && user.email === selectedBusiness.email)) ? onedit : undefined}
+		onedit={(isAdmin || isOwnerOfSelected) ? onedit : undefined}
+		onsuggestedit={(user && !isAdmin && !isOwnerOfSelected) ? openSuggest : undefined}
 	/>
+{/if}
+
+{#if suggestingBusiness}
+	<SuggestEditDialog business={suggestingBusiness} bind:open={suggestOpen} />
 {/if}
 
 <div class="overflow-x-auto rounded-md border">
