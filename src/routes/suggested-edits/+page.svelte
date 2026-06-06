@@ -24,8 +24,8 @@
     return String(val);
   }
 
-  function hasChanged(suggestion: any, business: any, key: string): boolean {
-    return display(suggestion[key], true) !== display(business[key], true);
+  function hasChanged(suggestion: any, business: any, key: string, isArray: boolean = false): boolean {
+    return display(suggestion[key], isArray) !== display(business[key], isArray);
   }
 
   let submitting = $state<string | null>(null);
@@ -121,7 +121,7 @@
               </thead>
               <tbody>
                 {#each DIFF_FIELDS as field (field.key)}
-                  {@const changed = business && hasChanged(suggestion, business, field.key)}
+                  {@const changed = business && hasChanged(suggestion, business, field.key, field.array)}
                   <tr class="border-b last:border-0 {changed ? 'bg-yellow-50 dark:bg-yellow-900/10' : ''}">
                     <td class="px-4 py-2 font-medium text-muted-foreground">{field.label}</td>
                     <td class="px-4 py-2 text-muted-foreground">
