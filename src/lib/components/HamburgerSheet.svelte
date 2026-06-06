@@ -38,6 +38,13 @@
 			>
 				FAQ
 			</a>
+			<a
+				href="/features"
+				onclick={() => (open = false)}
+				class="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent"
+			>
+				Feature Requests
+			</a>
 			{#if isAdmin}
 				<hr class="my-1 border-border" />
 				<a
