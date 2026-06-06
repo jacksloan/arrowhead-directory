@@ -34,18 +34,18 @@
     </div>
   </div>
 
-  <div class="rounded-lg border p-6">
-    <h2 class="mb-2 text-lg font-semibold">Jack Sloan — Developer</h2>
-    <p class="mb-4 text-sm text-muted-foreground">
-      Built the site. Drinks 3 cracked pepper cortados a day. It's expensive.
-    </p>
-    <a
-      href="https://buymeacoffee.com/jacksloan"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="inline-flex items-center gap-2 rounded-md bg-yellow-400 px-4 py-2 text-sm font-medium text-yellow-900 hover:bg-yellow-300"
-    >
-      ☕ Buy Jack a coffee
-    </a>
-  </div>
+<!--  <div class="rounded-lg border p-6">-->
+<!--    <h2 class="mb-2 text-lg font-semibold">Jack Sloan — Developer</h2>-->
+<!--    <p class="mb-4 text-sm text-muted-foreground">-->
+<!--      Built the site. Drinks 3 cracked pepper cortados a day. It's expensive.-->
+<!--    </p>-->
+<!--    <a-->
+<!--      href="https://buymeacoffee.com/jacksloan"-->
+<!--      target="_blank"-->
+<!--      rel="noopener noreferrer"-->
+<!--      class="inline-flex items-center gap-2 rounded-md bg-yellow-400 px-4 py-2 text-sm font-medium text-yellow-900 hover:bg-yellow-300"-->
+<!--    >-->
+<!--      ☕ Buy Jack a coffee-->
+<!--    </a>-->
+<!--  </div>-->
 </div>
