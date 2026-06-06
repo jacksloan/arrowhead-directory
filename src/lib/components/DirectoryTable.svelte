@@ -3,6 +3,7 @@
 	import { Input } from '$lib/components/ui/input/index.js';
 	import FilterPopover from './FilterPopover.svelte';
 	import DirectoryCardView from './DirectoryCardView.svelte';
+	import DirectoryTableView from './DirectoryTableView.svelte';
 	import EditBusinessDialog from './EditBusinessDialog.svelte';
 	import LayoutGrid from '@lucide/svelte/icons/layout-grid';
 	import LayoutList from '@lucide/svelte/icons/layout-list';
@@ -103,7 +104,11 @@
 		</div>
 	</div>
 
-	<DirectoryCardView {filtered} {user} {searching} compact={view === 'compact'} onedit={openEdit} />
+	{#if view === 'compact'}
+		<DirectoryCardView {filtered} {user} {searching} compact={true} onedit={openEdit} />
+	{:else}
+		<DirectoryTableView {filtered} {user} onedit={openEdit} />
+	{/if}
 </div>
 
 {#if editingBusiness}
