@@ -54,6 +54,13 @@
 				>
 					Admin Management
 				</a>
+				<a
+					href="/suggested-edits"
+					onclick={() => (open = false)}
+					class="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-accent hover:text-foreground"
+				>
+					Suggested Edits
+				</a>
 			{/if}
 		</nav>
 	</SheetContent>
