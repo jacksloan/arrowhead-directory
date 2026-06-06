@@ -1,3 +1,5 @@
+# Setup: python3 -m venv venv && source venv/bin/activate && pip install -r requirements.txt
+# Run:   python parse.py
 """
 parse.py — Parse laundromat-bulletin-board.docx into a list of business dicts.
 
@@ -53,8 +55,9 @@ def normalize_url(raw: str | None) -> str | None:
 PHONE_RE = re.compile(r"(\(?\d{3}\)?[ .\-]\d{3}[ .\-]\d{4})")
 EMAIL_RE = re.compile(r"[\w.\-+]+@[\w.\-]+\.\w+")
 URL_RE = re.compile(
-    r"(?:https?://)?(?:www\.)?[\w\-]+\.(?:com|net|org|us|info|biz|co|io|gov|edu|mn)"
-    r"(?:/[^\s]*)?"
+    r"\bhttps?://\S+|"  # explicit http/https URLs first (greedy)
+    r"\bwww\.[\w\-]+\.[\w.]+(?:/\S*)?|"  # www. prefix
+    r"\b(?:[\w\-]+\.)+(?:com|net|org|us|info|biz|co|io|site|me|app|gov|edu|mn)(?:/\S*)?\b"  # bare domains (multi-part ok)
 )
 
 
@@ -371,7 +374,16 @@ def parse_docx(docx_path: str) -> list[dict]:
             prev_kind = kind
 
     flush_pending()
-    return businesses
+
+    # Deduplicate: same name+category+subcategory = same business listed twice by mistake
+    seen = set()
+    deduped = []
+    for b in businesses:
+        key = (b["name"], b["category"], b["subcategory"])
+        if key not in seen:
+            seen.add(key)
+            deduped.append(b)
+    return deduped
 
 
 # ── CLI entry point ───────────────────────────────────────────────────────────
