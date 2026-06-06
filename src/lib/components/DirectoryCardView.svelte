@@ -117,7 +117,7 @@
 										{/if}
 									</div>
 
-									{#if !compact && business.description}
+									{#if business.description}
 										<p class="text-xs text-muted-foreground">{business.description}</p>
 									{/if}
 
