@@ -3,6 +3,9 @@
 - **Language**: TypeScript
 - **Package Manager**: pnpm
 - **Add-ons**: prettier, eslint, tailwindcss, sveltekit-adapter, mdsvex, mcp
+- **UI Library**: shadcn-svelte
+- **Database**: Supabase
+- **ORM**: Prisma
 
 ---
 
