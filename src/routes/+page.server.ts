@@ -90,4 +90,37 @@ export const actions: Actions = {
     if (error) return fail(500, { message: error.message });
     return { success: true, deleted: true, id };
   },
+
+  suggestEdit: async ({ request, locals }) => {
+    const { user } = await locals.safeGetSession();
+    if (!user) return fail(401, { message: 'Not authenticated' });
+
+    const formData = await request.formData();
+    const business_id = formData.get('business_id') as string;
+    if (!business_id) return fail(400, { message: 'Missing business_id' });
+
+    const phones = (formData.get('phones') as string ?? '')
+      .split(',').map((p) => p.trim()).filter(Boolean);
+    const subcategories = (formData.get('subcategories') as string ?? '')
+      .split(',').map((s) => s.trim()).filter(Boolean);
+    const services = (formData.get('services') as string ?? '')
+      .split(',').map((s) => s.trim()).filter(Boolean);
+
+    const { error: dbError } = await locals.supabase.from('suggested_edits').insert({
+      business_id,
+      suggested_by: user.email!,
+      name: formData.get('name') as string,
+      email: (formData.get('email') as string) || null,
+      phones,
+      address: (formData.get('address') as string) || null,
+      website: (formData.get('website') as string) || null,
+      description: (formData.get('description') as string) || null,
+      category: formData.get('category') as string,
+      subcategories,
+      services,
+    });
+
+    if (dbError) return fail(500, { message: dbError.message });
+    return { success: true };
+  },
 };
