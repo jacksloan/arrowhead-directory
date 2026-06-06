@@ -25,7 +25,9 @@
   const categories = $derived([...new Set(businesses.map((b) => b.category))].sort());
 
   const filtered = $derived(
-    businesses.filter((b) => {
+    businesses
+      .map((b, i) => ({ ...b, id: b.id ?? `${b.name}-${i}` }))
+      .filter((b) => {
       const q = search.toLowerCase();
       const matchesSearch =
         !q ||
