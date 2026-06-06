@@ -6,6 +6,7 @@
 	import Phone from '@lucide/svelte/icons/phone';
 	import Mail from '@lucide/svelte/icons/mail';
 	import Link from '@lucide/svelte/icons/link';
+	import Pencil from '@lucide/svelte/icons/pencil';
 	import { browser } from '$app/environment';
 	import {
 		Dialog,
@@ -18,11 +19,13 @@
 	let {
 		business,
 		open = $bindable(false),
-		onedit
+		onedit,
+		onsuggestedit
 	}: {
 		business: Business;
 		open: boolean;
 		onedit?: (b: Business) => void;
+		onsuggestedit?: (b: Business) => void;
 	} = $props();
 
 	let copied = $state(false);
@@ -48,7 +51,18 @@
 <Dialog bind:open>
 	<DialogContent class="max-h-[90vh] w-[95vw] max-w-2xl overflow-y-auto">
 		<DialogHeader>
-			<DialogTitle class="pr-6 text-base leading-snug">{business.name}</DialogTitle>
+			<div class="flex items-start gap-2 pr-6">
+				<DialogTitle class="flex-1 text-base leading-snug">{business.name}</DialogTitle>
+				{#if onedit}
+					<button
+						class="shrink-0 rounded-md p-1.5 text-muted-foreground hover:bg-muted hover:text-foreground"
+						aria-label="Edit listing"
+						onclick={() => { open = false; onedit!(business); }}
+					>
+						<Pencil class="h-4 w-4" />
+					</button>
+				{/if}
+			</div>
 		</DialogHeader>
 
 		<div class="flex flex-col gap-4">
@@ -155,12 +169,12 @@
 				</div>
 			{/if}
 
-			<!-- Edit link (owner only) -->
-			{#if onedit}
+			<!-- Suggest edit (non-owner, non-admin, logged in) -->
+			{#if onsuggestedit}
 				<button
 					class="mt-1 self-start rounded-md border border-border px-3 py-1.5 text-xs text-muted-foreground hover:bg-muted"
-					onclick={() => { open = false; onedit!(business); }}
-				>Edit listing</button>
+					onclick={() => { open = false; onsuggestedit!(business); }}
+				>Suggest an edit</button>
 			{/if}
 		</div>
 	</DialogContent>
