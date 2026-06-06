@@ -15,7 +15,7 @@
 <ModeWatcher />
 <TooltipProvider delayDuration={400}>
 	<div class="flex min-h-screen flex-col">
-		<Nav user={data.user} />
+		<Nav user={data.user} isAdmin={data.isAdmin} />
 		<main class="flex-1 px-4 py-6">
 			{@render children()}
 		</main>

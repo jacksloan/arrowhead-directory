@@ -9,6 +9,7 @@ export const load: PageServerLoad = async ({ locals }) => {
   const { data: businesses, error } = await locals.supabase
     .from('businesses')
     .select('*')
+    .eq('status', 'approved')
     .order('category')
     .order('name');
 

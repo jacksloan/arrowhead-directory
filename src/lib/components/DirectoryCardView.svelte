@@ -3,6 +3,7 @@
 	import Phone from '@lucide/svelte/icons/phone';
 	import Mail from '@lucide/svelte/icons/mail';
 	import Link from '@lucide/svelte/icons/link';
+	import { browser } from '$app/environment';
 	import { SvelteMap, SvelteSet } from 'svelte/reactivity';
 	import BusinessProfileDialog from './BusinessProfileDialog.svelte';
 	import type { Business } from '$lib/types';
@@ -51,11 +52,6 @@
 	function openProfile(b: Business) {
 		selectedBusiness = b;
 		profileOpen = true;
-	}
-
-	function emailParts(email: string): [string, string] {
-		const at = email.indexOf('@');
-		return [email.slice(0, at), email.slice(at + 1)];
 	}
 
 	function hostname(url: string): string {
@@ -138,11 +134,10 @@
 												<span class="truncate">{business.phones[0]}</span>
 											</div>
 										{/if}
-										{#if business.email}
-											{@const [u, d] = emailParts(business.email)}
+										{#if browser && business.email}
 											<div class="flex items-center gap-1.5 text-xs text-muted-foreground">
 												<Mail class="h-3 w-3 shrink-0" />
-												<span class="truncate">{u} [at] {d}</span>
+												<span class="truncate">{business.email}</span>
 											</div>
 										{/if}
 										{#if business.website}

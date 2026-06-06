@@ -1,3 +1,5 @@
+export type BusinessStatus = 'approved' | 'pending' | 'rejected';
+
 export interface Business {
   id?: string;
   name: string;
@@ -10,6 +12,7 @@ export interface Business {
   subcategories: string[];
   services: string[];
   image: string | null;
+  status: BusinessStatus;
   created_at?: string;
   updated_at?: string;
 }

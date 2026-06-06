@@ -1,79 +1,72 @@
+<script lang="ts">
+	import {
+		Accordion,
+		AccordionItem,
+		AccordionTrigger,
+		AccordionContent
+	} from '$lib/components/ui/accordion/index.js';
+</script>
+
 <svelte:head>
-	<title>How-To — Arrowhead Directory</title>
+	<title>FAQ — Arrowhead Directory</title>
 </svelte:head>
 
 <div class="mx-auto max-w-prose">
-	<h1 class="mb-6 text-2xl font-bold">How-To</h1>
+	<h1 class="mb-2 text-2xl font-bold">Frequently Asked Questions</h1>
+	<p class="mb-8 text-sm text-muted-foreground">
+		Everything you need to know about finding and managing business listings.
+	</p>
 
-	<div class="flex flex-col gap-8">
-		<!-- Logging in -->
-		<section class="rounded-lg border p-6">
-			<h2 class="mb-3 text-lg font-semibold">Logging In</h2>
-			<p class="mb-4 text-sm text-muted-foreground">
-				Arrowhead Directory uses passwordless sign-in. There's nothing to create or remember — just
-				your email address.
-			</p>
-			<ol class="flex flex-col gap-3 text-sm text-muted-foreground">
-				<li class="flex gap-3">
-					<span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[11px] font-semibold text-primary">1</span>
-					<span>Click the person icon in the top-right corner of any page.</span>
-				</li>
-				<li class="flex gap-3">
-					<span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[11px] font-semibold text-primary">2</span>
-					<span>Enter your email address and click <strong class="text-foreground">Send link</strong>.</span>
-				</li>
-				<li class="flex gap-3">
-					<span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[11px] font-semibold text-primary">3</span>
-					<span>Open your email and click the magic link. It's valid for 24 hours.</span>
-				</li>
-				<li class="flex gap-3">
-					<span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[11px] font-semibold text-primary">4</span>
-					<span>You'll be signed in automatically and returned to the directory.</span>
-				</li>
-			</ol>
-			<p class="mt-4 text-xs text-muted-foreground">
-				Check your spam folder if the email doesn't arrive within a few minutes.
-			</p>
-		</section>
+	<Accordion type="multiple" class="rounded-lg border">
+		<AccordionItem value="sign-in">
+			<AccordionTrigger class="px-5">How do I sign in?</AccordionTrigger>
+			<AccordionContent class="px-5">
+				<p>Click the person icon in the top-right corner, enter your email address, then click <strong>Send link</strong>. You'll receive a magic link in your inbox — click it and you're signed in automatically.</p>
+				<p>No password required, ever. The link is valid for 24 hours. Check your spam folder if it doesn't arrive within a few minutes.</p>
+			</AccordionContent>
+		</AccordionItem>
 
-		<!-- Claiming / editing a listing -->
-		<section class="rounded-lg border p-6">
-			<h2 class="mb-3 text-lg font-semibold">Managing Your Business Listing</h2>
-			<p class="mb-4 text-sm text-muted-foreground">
-				If your business is already in the directory, you can claim it and keep your information
-				up to date. Your listing is matched to your email address.
-			</p>
-			<ol class="flex flex-col gap-3 text-sm text-muted-foreground">
-				<li class="flex gap-3">
-					<span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[11px] font-semibold text-primary">1</span>
-					<span>Sign in using the email address that appears on your business listing.</span>
-				</li>
-				<li class="flex gap-3">
-					<span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[11px] font-semibold text-primary">2</span>
-					<span>Find your business in the directory. An <strong class="text-foreground">Edit</strong> button will appear next to your listing.</span>
-				</li>
-				<li class="flex gap-3">
-					<span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[11px] font-semibold text-primary">3</span>
-					<span>Click <strong class="text-foreground">Edit</strong> to update your name, phone number, website, services, and more.</span>
-				</li>
-				<li class="flex gap-3">
-					<span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[11px] font-semibold text-primary">4</span>
-					<span>Save your changes — they appear in the directory immediately.</span>
-				</li>
-			</ol>
-		</section>
+		<AccordionItem value="no-password">
+			<AccordionTrigger class="px-5">Do I need to create an account or password?</AccordionTrigger>
+			<AccordionContent class="px-5">
+				<p>No. Arrowhead Directory uses passwordless sign-in — just your email address. There's nothing to sign up for and nothing to remember.</p>
+			</AccordionContent>
+		</AccordionItem>
 
-		<!-- Not in the directory -->
-		<section class="rounded-lg border p-6">
-			<h2 class="mb-3 text-lg font-semibold">Not Listed Yet?</h2>
-			<p class="mb-4 text-sm text-muted-foreground">
-				If your business isn't in the directory, reach out to the admin to get added. Once your
-				listing is created with your email address, you can sign in and edit it yourself.
-			</p>
-			<a
-				href="/about"
-				class="text-sm text-primary underline-offset-4 hover:underline"
-			>Contact the admin on the About page</a>
-		</section>
-	</div>
+		<AccordionItem value="edit-listing">
+			<AccordionTrigger class="px-5">How do I edit my business listing?</AccordionTrigger>
+			<AccordionContent class="px-5">
+				<p>Sign in using the email address that appears on your listing. Once signed in, find your business in the directory — an <strong>Edit listing</strong> button will appear inside your business card. Click it to update your name, phone number, website, address, description, and services. Changes appear immediately.</p>
+			</AccordionContent>
+		</AccordionItem>
+
+		<AccordionItem value="claim-listing">
+			<AccordionTrigger class="px-5">How does the directory know which listing is mine?</AccordionTrigger>
+			<AccordionContent class="px-5">
+				<p>Your listing is matched to your email address. When you sign in, the directory compares your email to the one on file for each business. If they match, the edit controls appear for that listing.</p>
+				<p>If your listing has a different email address on it, <a href="/about">contact the admin</a> to get it corrected.</p>
+			</AccordionContent>
+		</AccordionItem>
+
+		<AccordionItem value="not-listed">
+			<AccordionTrigger class="px-5">My business isn't in the directory — how do I get added?</AccordionTrigger>
+			<AccordionContent class="px-5">
+				<p>Reach out to the admin on the <a href="/about">About page</a>. Once your listing is created with your email address, you can sign in and manage it yourself.</p>
+			</AccordionContent>
+		</AccordionItem>
+
+		<AccordionItem value="what-can-edit">
+			<AccordionTrigger class="px-5">What information can I update on my listing?</AccordionTrigger>
+			<AccordionContent class="px-5">
+				<p>You can update your business name, phone numbers, website, address, and description. If your category or services list needs to change, contact the admin.</p>
+			</AccordionContent>
+		</AccordionItem>
+
+		<AccordionItem value="magic-link-expired">
+			<AccordionTrigger class="px-5">My magic link expired or didn't work — what do I do?</AccordionTrigger>
+			<AccordionContent class="px-5">
+				<p>Magic links are valid for 24 hours and can only be used once. If yours expired or didn't work, just request a new one from the sign-in screen. Make sure to open the most recent email if you requested the link more than once.</p>
+			</AccordionContent>
+		</AccordionItem>
+	</Accordion>
 </div>

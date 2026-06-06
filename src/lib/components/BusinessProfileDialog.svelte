@@ -6,6 +6,7 @@
 	import Phone from '@lucide/svelte/icons/phone';
 	import Mail from '@lucide/svelte/icons/mail';
 	import Link from '@lucide/svelte/icons/link';
+	import { browser } from '$app/environment';
 	import {
 		Dialog,
 		DialogContent,
@@ -42,10 +43,6 @@
 		}
 	}
 
-	function emailParts(email: string): [string, string] {
-		const at = email.indexOf('@');
-		return [email.slice(0, at), email.slice(at + 1)];
-	}
 </script>
 
 <Dialog bind:open>
@@ -92,15 +89,14 @@
 				{/if}
 
 				<!-- Email -->
-				{#if business.email}
-					{@const [u, d] = emailParts(business.email)}
+				{#if browser && business.email}
 					<div class="flex items-center gap-2 text-sm">
 						<span class="w-4 text-center text-muted-foreground"><Mail class="inline h-3.5 w-3.5" /></span>
 						<button
 							class="flex-1 text-left text-foreground underline-offset-2 hover:underline"
 							title="Open email client"
 							onclick={() => { window.location.href = `mailto:${business.email}`; }}
-						>{u} [at] {d}</button>
+						>{business.email}</button>
 						<button
 							class="shrink-0 rounded border border-border px-1.5 py-0.5 text-[10px] text-muted-foreground hover:bg-muted"
 							aria-label="Copy email"

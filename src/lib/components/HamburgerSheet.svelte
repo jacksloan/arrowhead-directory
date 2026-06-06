@@ -3,6 +3,7 @@
 	import { Button } from '$lib/components/ui/button/index.js';
 	import MenuIcon from '@lucide/svelte/icons/menu';
 
+	let { isAdmin = false }: { isAdmin?: boolean } = $props();
 	let open = $state(false);
 </script>
 
@@ -35,8 +36,18 @@
 				onclick={() => (open = false)}
 				class="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent"
 			>
-				How-To
+				FAQ
 			</a>
+			{#if isAdmin}
+				<hr class="my-1 border-border" />
+				<a
+					href="/pending"
+					onclick={() => (open = false)}
+					class="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-accent hover:text-foreground"
+				>
+					Pending Approvals
+				</a>
+			{/if}
 		</nav>
 	</SheetContent>
 </Sheet>
