@@ -92,13 +92,13 @@
 							}}
 						>
 							<input type="hidden" name="email" value={email} />
-							<button
-								type="submit"
-								class="rounded p-1 text-muted-foreground hover:bg-destructive/10 hover:text-destructive"
-								aria-label="Remove {email}"
-							>
-								<Trash2 class="h-3.5 w-3.5" />
-							</button>
+<!--							<button-->
+<!--								type="submit"-->
+<!--								class="rounded p-1 text-muted-foreground hover:bg-destructive/10 hover:text-destructive"-->
+<!--								aria-label="Remove {email}"-->
+<!--							>-->
+<!--								<Trash2 class="h-3.5 w-3.5" />-->
+<!--							</button>-->
 						</form>
 					</li>
 				{/each}
