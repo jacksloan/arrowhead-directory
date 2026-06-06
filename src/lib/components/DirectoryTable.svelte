@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import { Input } from '$lib/components/ui/input/index.js';
+	import { Button } from '$lib/components/ui/button/index.js';
 	import FilterPopover from './FilterPopover.svelte';
 	import DirectoryCardView from './DirectoryCardView.svelte';
 	import DirectoryTableView from './DirectoryTableView.svelte';
@@ -12,6 +13,15 @@
 		TooltipContent,
 		TooltipTrigger
 	} from '$lib/components/ui/tooltip/index.js';
+	import {
+		DropdownMenu,
+		DropdownMenuContent,
+		DropdownMenuItem,
+		DropdownMenuTrigger,
+	} from '$lib/components/ui/dropdown-menu/index.js';
+	import MoreHorizontal from '@lucide/svelte/icons/more-horizontal';
+	import FileDown from '@lucide/svelte/icons/file-down';
+	import { downloadDirectoryPdf } from '$lib/utils/pdf';
 	import type { Business } from '$lib/types';
 
 	let {
@@ -87,8 +97,24 @@
 	<div class="flex items-center gap-2">
 		<Input type="search" placeholder="Search businesses..." bind:value={search} class="max-w-sm" />
 		<FilterPopover {categories} bind:selectedCategories />
+		<!-- Three-dot menu -->
+		<DropdownMenu>
+			<DropdownMenuTrigger>
+				{#snippet child({ props })}
+					<Button {...props} variant="outline" size="icon" class="ml-auto" aria-label="More options">
+						<MoreHorizontal class="h-4 w-4" />
+					</Button>
+				{/snippet}
+			</DropdownMenuTrigger>
+			<DropdownMenuContent align="end">
+				<DropdownMenuItem onclick={() => downloadDirectoryPdf(filtered)}>
+					<FileDown class="mr-2 h-4 w-4" />
+					Download as PDF
+				</DropdownMenuItem>
+			</DropdownMenuContent>
+		</DropdownMenu>
 		<!-- View switcher -->
-		<div class="ml-auto flex items-center rounded-md border bg-muted p-0.5">
+		<div class="flex items-center rounded-md border bg-muted p-0.5">
 			{#each VIEWS as { id, label, Icon } (id)}
 				<Tooltip>
 					<TooltipTrigger>
