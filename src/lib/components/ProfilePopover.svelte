@@ -8,7 +8,7 @@
 	import MoonIcon from '@lucide/svelte/icons/moon';
 	import { toggleMode } from 'mode-watcher';
 
-	let { user }: { user: { email: string } | null } = $props();
+	let { user }: { user: { email: string | null } | null } = $props();
 	let email = $state('');
 	let sent = $state(false);
 </script>
