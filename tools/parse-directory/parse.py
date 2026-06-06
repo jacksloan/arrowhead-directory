@@ -378,8 +378,6 @@ def parse_docx(docx_path: str) -> list[dict]:
     flush_pending()
 
     # Merge same-business rows: group by (name, category), union subcategories and phones
-    from collections import defaultdict
-
     merged: dict[tuple, dict] = {}
     for b in businesses:
         key = (b["name"], b["category"])
