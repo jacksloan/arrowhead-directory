@@ -3,6 +3,7 @@ import { fail, redirect } from '@sveltejs/kit';
 import { superValidate } from 'sveltekit-superforms';
 import { zod4 } from 'sveltekit-superforms/adapters';
 import { businessSchema } from '$lib/schemas';
+import { getIsAdmin } from '$lib/server/admin';
 
 export const load: PageServerLoad = async ({ locals }) => {
   const { user } = await locals.safeGetSession();
@@ -43,9 +44,10 @@ export const actions: Actions = {
     const form = await superValidate(request, zod4(businessSchema));
     if (!form.valid) return fail(400, { form });
 
+    const isAdminUser = await getIsAdmin(locals.supabase, user.email);
     const { id, phones, subcategories, services, ...fields } = form.data;
 
-    const { error } = await locals.supabase
+    let query = locals.supabase
       .from('businesses')
       .update({
         ...fields,
@@ -54,10 +56,38 @@ export const actions: Actions = {
         services: services.split(',').map((s: string) => s.trim()).filter(Boolean),
         updated_at: new Date().toISOString(),
       })
-      .eq('id', id)
-      .eq('email', user.email);
+      .eq('id', id);
 
+    if (!isAdminUser) {
+      query = query.eq('email', user.email!);
+    }
+
+    const { error } = await query;
     if (error) return fail(500, { form, message: error.message });
     return { form };
+  },
+
+  deleteBusiness: async ({ request, locals }) => {
+    const { user } = await locals.safeGetSession();
+    if (!user) return fail(401, { message: 'Not authenticated' });
+
+    const formData = await request.formData();
+    const id = formData.get('id') as string;
+    if (!id) return fail(400, { message: 'Missing business id' });
+
+    const isAdminUser = await getIsAdmin(locals.supabase, user.email);
+
+    let query = locals.supabase
+      .from('businesses')
+      .update({ status: 'deleted', updated_at: new Date().toISOString() })
+      .eq('id', id);
+
+    if (!isAdminUser) {
+      query = query.eq('email', user.email!);
+    }
+
+    const { error } = await query;
+    if (error) return fail(500, { message: error.message });
+    return { success: true, deleted: true, id };
   },
 };
