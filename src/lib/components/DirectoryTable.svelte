@@ -12,6 +12,7 @@
 	import FilterPopover from './FilterPopover.svelte';
 	import DirectoryCardView from './DirectoryCardView.svelte';
 	import DirectoryTreeView from './DirectoryTreeView.svelte';
+	import EditBusinessDialog from './EditBusinessDialog.svelte';
 	import Table2 from '@lucide/svelte/icons/table-2';
 	import LayoutGrid from '@lucide/svelte/icons/layout-grid';
 	import List from '@lucide/svelte/icons/list';
@@ -19,11 +20,21 @@
 
 	let {
 		businesses,
-		user
+		user,
+		formData
 	}: {
 		businesses: Business[];
 		user: { email: string | null } | null;
+		formData: any;
 	} = $props();
+
+	let editingBusiness = $state<Business | null>(null);
+	let dialogOpen = $state(false);
+
+	function openEdit(b: Business) {
+		editingBusiness = b;
+		dialogOpen = true;
+	}
 
 	type View = 'table' | 'card' | 'tree';
 	const VIEWS: { id: View; label: string; Icon: typeof Table2 }[] = [
@@ -84,7 +95,7 @@
 		</span>
 		<!-- View switcher -->
 		<div class="flex items-center rounded-md border bg-muted p-0.5">
-			{#each VIEWS as { id, label, Icon }}
+			{#each VIEWS as { id, label, Icon } (id)}
 				<button
 					class="flex h-7 w-7 items-center justify-center rounded-sm transition-colors
 						{view === id ? 'bg-background text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'}"
@@ -140,7 +151,10 @@
 							</TableCell>
 							<TableCell>
 								{#if user?.email && business.email && user.email === business.email}
-									<span class="text-xs text-muted-foreground">Edit</span>
+									<button
+										class="rounded-sm bg-muted px-1.5 py-0.5 text-xs text-muted-foreground hover:bg-muted/80"
+										onclick={() => openEdit(business)}
+									>Edit</button>
 								{/if}
 							</TableCell>
 						</TableRow>
@@ -156,8 +170,12 @@
 			</Table>
 		</div>
 	{:else if view === 'card'}
-		<DirectoryCardView {filtered} {user} />
+		<DirectoryCardView {filtered} {user} onedit={openEdit} />
 	{:else}
-		<DirectoryTreeView {filtered} {user} {searching} />
+		<DirectoryTreeView {filtered} {user} {searching} onedit={openEdit} />
 	{/if}
 </div>
+
+{#if editingBusiness}
+	<EditBusinessDialog business={editingBusiness} {formData} bind:open={dialogOpen} />
+{/if}

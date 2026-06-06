@@ -6,10 +6,12 @@
 
 	let {
 		filtered,
-		user
+		user,
+		onedit
 	}: {
 		filtered: Business[];
 		user: { email: string | null } | null;
+		onedit: (b: Business) => void;
 	} = $props();
 
 	// Per-card copy state: stores which email was just copied (by business name)
@@ -57,7 +59,10 @@
 						{/if}
 					</div>
 					{#if isOwner}
-						<span class="shrink-0 rounded-sm bg-muted px-1.5 py-0.5 text-[10px] text-muted-foreground">Edit</span>
+						<button
+							class="shrink-0 rounded-sm bg-muted px-1.5 py-0.5 text-[10px] text-muted-foreground hover:bg-muted/80"
+							onclick={() => onedit(business)}
+						>Edit</button>
 					{/if}
 				</div>
 
@@ -76,7 +81,7 @@
 					<!-- Phones -->
 					{#if business.phones.length > 0}
 						<div class="flex flex-col gap-1">
-							{#each business.phones as phone, i}
+							{#each business.phones as phone, i (phone)}
 								<div class="flex items-center gap-1.5 text-xs">
 									{#if i === 0}
 										<span class="w-4 text-center text-muted-foreground">📞</span>

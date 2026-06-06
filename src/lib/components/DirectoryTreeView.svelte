@@ -3,23 +3,26 @@
 	import ExternalLink from '@lucide/svelte/icons/external-link';
 	import Copy from '@lucide/svelte/icons/copy';
 	import Check from '@lucide/svelte/icons/check';
+	import { SvelteMap, SvelteSet } from 'svelte/reactivity';
 	import type { Business } from '$lib/types';
 
 	let {
 		filtered,
 		user,
-		searching
+		searching,
+		onedit
 	}: {
 		filtered: Business[];
 		user: { email: string | null } | null;
 		searching: boolean;
+		onedit: (b: Business) => void;
 	} = $props();
 
 	// Group: category → subcategory (first subcategory or '' for none) → businesses
 	const grouped = $derived.by(() => {
-		const map = new Map<string, Map<string, Business[]>>();
+		const map = new SvelteMap<string, SvelteMap<string, Business[]>>();
 		for (const b of filtered) {
-			if (!map.has(b.category)) map.set(b.category, new Map());
+			if (!map.has(b.category)) map.set(b.category, new SvelteMap());
 			const sub = b.subcategories[0] ?? '';
 			const catMap = map.get(b.category)!;
 			if (!catMap.has(sub)) catMap.set(sub, []);
@@ -29,22 +32,20 @@
 	});
 
 	// Categories present in filtered results
-	const activeCategories = $derived(new Set(filtered.map((b) => b.category)));
+	const activeCategories = $derived(new SvelteSet(filtered.map((b) => b.category)));
 
 	// Expand all when searching; otherwise start collapsed
-	let expanded = $state(new Set<string>());
+	let expanded = new SvelteSet<string>();
 
 	$effect(() => {
 		if (searching) {
-			expanded = new Set(activeCategories);
+			for (const cat of activeCategories) expanded.add(cat);
 		}
 	});
 
 	function toggle(cat: string) {
-		const next = new Set(expanded);
-		if (next.has(cat)) next.delete(cat);
-		else next.add(cat);
-		expanded = next;
+		if (expanded.has(cat)) expanded.delete(cat);
+		else expanded.add(cat);
 	}
 
 	let copied = $state<string | null>(null);
@@ -74,7 +75,7 @@
 	<p class="py-12 text-center text-sm text-muted-foreground">No businesses match your search.</p>
 {:else}
 	<div class="overflow-hidden rounded-md border">
-		{#each [...grouped] as [category, subcatMap], ci}
+		{#each [...grouped] as [category, subcatMap], ci (category)}
 			{@const isOpen = expanded.has(category)}
 			{@const total = [...subcatMap.values()].reduce((s, arr) => s + arr.length, 0)}
 
@@ -93,7 +94,7 @@
 
 			<!-- Expanded content -->
 			{#if isOpen}
-				{#each [...subcatMap] as [subcat, businesses]}
+				{#each [...subcatMap] as [subcat, businesses] (subcat)}
 					<!-- Subcategory label (only if named) -->
 					{#if subcat}
 						<div class="border-b bg-background px-4 py-1.5 pl-9">
@@ -161,7 +162,10 @@
 
 							<!-- Edit -->
 							{#if isOwner}
-								<span class="rounded-sm bg-muted px-1.5 py-0.5 text-[10px] text-muted-foreground">Edit</span>
+								<button
+									class="rounded-sm bg-muted px-1.5 py-0.5 text-[10px] text-muted-foreground hover:bg-muted/80"
+									onclick={() => onedit(business)}
+								>Edit</button>
 							{:else}
 								<span></span>
 							{/if}
