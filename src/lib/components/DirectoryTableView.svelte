@@ -17,9 +17,13 @@
 	import ExternalLink from '@lucide/svelte/icons/external-link';
 	import Copy from '@lucide/svelte/icons/copy';
 	import Check from '@lucide/svelte/icons/check';
+	import Phone from '@lucide/svelte/icons/phone';
+	import Mail from '@lucide/svelte/icons/mail';
+	import Link from '@lucide/svelte/icons/link';
 	import ChevronUp from '@lucide/svelte/icons/chevron-up';
 	import ChevronDown from '@lucide/svelte/icons/chevron-down';
 	import ChevronsUpDown from '@lucide/svelte/icons/chevrons-up-down';
+	import BusinessProfileDialog from './BusinessProfileDialog.svelte';
 	import type { Business } from '$lib/types';
 
 	let {
@@ -34,14 +38,17 @@
 
 	let sorting = $state<SortingState>([{ id: 'name', desc: false }]);
 	let copied = $state<string | null>(null);
+	let selectedBusiness = $state<Business | null>(null);
+	let profileOpen = $state(false);
+
+	function openProfile(b: Business) {
+		selectedBusiness = b;
+		profileOpen = true;
+	}
 
 	const columns: ColumnDef<Business>[] = [
 		{ id: 'name', accessorKey: 'name', header: 'Business', enableSorting: true },
-		{ id: 'category', accessorKey: 'category', header: 'Category', enableSorting: true },
-		{ id: 'phones', header: 'Phone', enableSorting: false, accessorFn: (b) => b.phones[0] ?? '' },
-		{ id: 'email', header: 'Email', enableSorting: false, accessorFn: (b) => b.email ?? '' },
-		{ id: 'website', header: 'Website', enableSorting: false, accessorFn: (b) => b.website ?? '' },
-		{ id: 'edit', header: '', enableSorting: false, accessorFn: () => '' }
+		{ id: 'details', header: 'Details', enableSorting: false, accessorFn: () => '' }
 	];
 
 	const table = createSvelteTable({
@@ -81,13 +88,21 @@
 	}
 </script>
 
-<div class="rounded-md border">
-	<Table>
+{#if selectedBusiness}
+	<BusinessProfileDialog
+		business={selectedBusiness}
+		bind:open={profileOpen}
+		onedit={user?.email && selectedBusiness.email && user.email === selectedBusiness.email ? onedit : undefined}
+	/>
+{/if}
+
+<div class="overflow-x-auto rounded-md border">
+	<Table class="table-fixed">
 		<TableHeader>
 			{#each table.getHeaderGroups() as headerGroup (headerGroup.id)}
 				<TableRow>
 					{#each headerGroup.headers as header (header.id)}
-						<TableHead class={header.id === 'edit' ? 'w-10' : ''}>
+						<TableHead class="w-1/2">
 							{#if header.column.getCanSort()}
 								<button
 									class="flex items-center gap-1 hover:text-foreground"
@@ -119,7 +134,7 @@
 		<TableBody>
 			{#if table.getRowModel().rows.length === 0}
 				<TableRow>
-					<TableCell colspan={6} class="py-12 text-center text-sm text-muted-foreground">
+					<TableCell colspan={2} class="py-12 text-center text-sm text-muted-foreground">
 						No businesses match your search.
 					</TableCell>
 				</TableRow>
@@ -128,95 +143,84 @@
 					{@const business = row.original}
 					{@const isOwner = user?.email && business.email && user.email === business.email}
 					{@const emailKey = business.id ?? business.name}
-					<TableRow>
+					<TableRow
+						class="group cursor-pointer"
+						onclick={() => openProfile(business)}
+					>
 						<!-- Name + subcategory pills -->
-						<TableCell>
-							<p class="text-sm font-medium leading-snug">{business.name}</p>
+						<TableCell class="overflow-hidden">
+							<div class="flex items-center gap-2">
+								<p class="truncate text-sm font-medium leading-snug underline-offset-2 group-hover:underline">{business.name}</p>
+								{#if isOwner}
+									<button
+										class="shrink-0 rounded-sm bg-muted px-1.5 py-0.5 text-[10px] text-muted-foreground hover:bg-muted/80"
+										onclick={(e) => { e.stopPropagation(); onedit(business); }}
+									>Edit</button>
+								{/if}
+							</div>
 							{#if business.subcategories.length > 0}
-								<div class="mt-1 flex flex-wrap gap-1">
-									{#each business.subcategories as sub (sub)}
-										<span
-											class="rounded-sm bg-muted px-1.5 py-0.5 text-[10px] leading-tight text-muted-foreground"
-											>{sub}</span
-										>
+								<div class="mt-0.5 flex flex-nowrap gap-1 overflow-hidden">
+									{#each business.subcategories.slice(0, 2) as sub (sub)}
+										<span class="shrink-0 rounded-sm bg-muted px-1.5 py-0.5 text-[10px] leading-tight text-muted-foreground">{sub}</span>
 									{/each}
+									{#if business.subcategories.length > 2}
+										<span class="shrink-0 rounded-sm bg-muted px-1.5 py-0.5 text-[10px] leading-tight text-muted-foreground">+{business.subcategories.length - 2} more</span>
+									{/if}
 								</div>
 							{/if}
 						</TableCell>
 
-						<!-- Category -->
-						<TableCell class="whitespace-nowrap text-sm text-muted-foreground">
-							{business.category}
-						</TableCell>
-
-						<!-- Phone -->
-						<TableCell>
-							{#if business.phones[0]}
-								<a
-									href="tel:{business.phones[0].replace(/\D/g, '')}"
-									class="whitespace-nowrap text-sm underline-offset-2 hover:underline"
-								>
-									{business.phones[0]}
-								</a>
-							{:else}
-								<span class="text-muted-foreground/40">—</span>
-							{/if}
-						</TableCell>
-
-						<!-- Email (obfuscated) -->
-						<TableCell>
-							{#if business.email}
-								{@const [u, d] = emailParts(business.email)}
-								<div class="flex items-center gap-1.5">
-									<button
-										class="whitespace-nowrap text-sm underline-offset-2 hover:underline"
-										title="Open email client"
-										onclick={() => {
-											window.location.href = `mailto:${business.email}`;
-										}}
-									>{u} [at] {d}</button>
-									<button
-										class="shrink-0 rounded border border-border px-1.5 py-0.5 text-[10px] text-muted-foreground hover:bg-muted"
-										aria-label="Copy email"
-										onclick={() => copyEmail(business)}
+						<!-- Details: phone, email, website -->
+						<TableCell class="w-1/2">
+							<div class="flex flex-col gap-1">
+								{#if business.phones[0]}
+									<a
+										href="tel:{business.phones[0].replace(/\D/g, '')}"
+										class="flex items-center gap-1.5 text-xs text-muted-foreground underline-offset-2 hover:text-foreground hover:underline"
+										onclick={(e) => e.stopPropagation()}
 									>
-										{#if copied === emailKey}
-											<Check class="inline h-3 w-3 text-green-500" />
-										{:else}
-											<Copy class="inline h-3 w-3" />
-										{/if}
-									</button>
-								</div>
-							{:else}
-								<span class="text-muted-foreground/40">—</span>
-							{/if}
-						</TableCell>
-
-						<!-- Website -->
-						<TableCell>
-							{#if business.website}
-								<a
-									href={business.website}
-									target="_blank"
-									rel="noopener noreferrer"
-									class="flex items-center gap-0.5 whitespace-nowrap text-sm text-primary underline-offset-2 hover:underline"
-								>
-									{hostname(business.website)}
-									<ExternalLink class="h-3 w-3 shrink-0 opacity-60" />
-								</a>
-							{:else}
-								<span class="text-muted-foreground/40">—</span>
-							{/if}
-						</TableCell>
-
-						<!-- Edit -->
-						<TableCell class="text-right">
-							{#if isOwner}
-								<button
-									class="rounded-sm bg-muted px-1.5 py-0.5 text-[10px] text-muted-foreground hover:bg-muted/80"
-									onclick={() => onedit(business)}
-								>Edit</button>
-							{/if}
+										<Phone class="h-3 w-3 shrink-0" />
+										<span class="truncate">{business.phones[0]}</span>
+									</a>
+								{/if}
+								{#if business.email}
+									{@const [u, d] = emailParts(business.email)}
+									<div class="flex items-center gap-1">
+										<button
+											class="flex min-w-0 items-center gap-1.5 text-xs text-muted-foreground underline-offset-2 hover:text-foreground hover:underline"
+											title="Open email client"
+											onclick={(e) => { e.stopPropagation(); window.location.href = `mailto:${business.email}`; }}
+										>
+											<Mail class="h-3 w-3 shrink-0" />
+											<span class="truncate">{u} [at] {d}</span>
+										</button>
+										<button
+											class="shrink-0 rounded border border-border px-1 py-0.5 text-[10px] text-muted-foreground hover:bg-muted"
+											aria-label="Copy email"
+											onclick={(e) => { e.stopPropagation(); copyEmail(business); }}
+										>
+											{#if copied === emailKey}
+												<Check class="inline h-3 w-3 text-green-500" />
+											{:else}
+												<Copy class="inline h-3 w-3" />
+											{/if}
+										</button>
+									</div>
+								{/if}
+								{#if business.website}
+									<a
+										href={business.website}
+										target="_blank"
+										rel="noopener noreferrer"
+										class="flex items-center gap-1.5 text-xs text-primary underline-offset-2 hover:underline"
+										onclick={(e) => e.stopPropagation()}
+									>
+										<Link class="h-3 w-3 shrink-0" />
+										<span class="truncate">{hostname(business.website)}</span>
+										<ExternalLink class="h-3 w-3 shrink-0 opacity-60" />
+									</a>
+								{/if}
+							</div>
 						</TableCell>
 					</TableRow>
 				{/each}

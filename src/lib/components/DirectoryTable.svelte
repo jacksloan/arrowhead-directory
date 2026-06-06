@@ -77,11 +77,8 @@
 	<div class="flex items-center gap-2">
 		<Input type="search" placeholder="Search businesses..." bind:value={search} class="max-w-sm" />
 		<FilterPopover {categories} bind:selectedCategories />
-		<span class="ml-auto text-sm text-muted-foreground">
-			{filtered.length} of {businesses.length}
-		</span>
 		<!-- View switcher -->
-		<div class="flex items-center rounded-md border bg-muted p-0.5">
+		<div class="ml-auto flex items-center rounded-md border bg-muted p-0.5">
 			{#each VIEWS as { id, label, Icon } (id)}
 				<Tooltip>
 					<TooltipTrigger>

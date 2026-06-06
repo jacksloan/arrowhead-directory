@@ -3,6 +3,8 @@
 	import ExternalLink from '@lucide/svelte/icons/external-link';
 	import Copy from '@lucide/svelte/icons/copy';
 	import Check from '@lucide/svelte/icons/check';
+	import Phone from '@lucide/svelte/icons/phone';
+	import Mail from '@lucide/svelte/icons/mail';
 	import { SvelteMap, SvelteSet } from 'svelte/reactivity';
 	import type { Business } from '$lib/types';
 
@@ -112,11 +114,11 @@
 							{#if business.phones[0]}
 								<a
 									href="tel:{business.phones[0].replace(/\D/g, '')}"
-									class="text-muted-foreground underline-offset-2 hover:text-foreground hover:underline"
+									class="text-muted-foreground hover:text-foreground"
 									title={business.phones[0]}
-								>📞</a>
+								><Phone class="h-3.5 w-3.5" /></a>
 							{:else}
-								<span class="opacity-25">📞</span>
+								<span class="opacity-25"><Phone class="h-3.5 w-3.5" /></span>
 							{/if}
 
 							<!-- Email — mailto assembled in JS, [at] in DOM -->
@@ -128,7 +130,7 @@
 										title="{u} [at] {d}"
 										onclick={() => { window.location.href = `mailto:${business.email}`; }}
 										class="text-muted-foreground hover:text-foreground"
-									>✉</button>
+									><Mail class="h-3.5 w-3.5" /></button>
 									<button
 										aria-label="Copy email"
 										onclick={() => copyEmail(business.email!, key)}
@@ -142,7 +144,7 @@
 									</button>
 								</span>
 							{:else}
-								<span class="opacity-25">✉</span>
+								<span class="opacity-25"><Mail class="h-3.5 w-3.5" /></span>
 							{/if}
 
 							<!-- Website -->

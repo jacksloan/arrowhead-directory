@@ -7,10 +7,13 @@
 	import SunIcon from '@lucide/svelte/icons/sun';
 	import MoonIcon from '@lucide/svelte/icons/moon';
 	import { toggleMode } from 'mode-watcher';
+	import { enhance } from '$app/forms';
 
 	let { user }: { user: { email: string | null } | null } = $props();
 	let email = $state('');
 	let sent = $state(false);
+	let errorMsg = $state<string | null>(null);
+	let submitting = $state(false);
 </script>
 
 <Popover>
@@ -43,7 +46,20 @@
 					<form
 						method="POST"
 						action="/?/sendMagicLink"
-						onsubmit={() => (sent = true)}
+						use:enhance={() => {
+							submitting = true;
+							errorMsg = null;
+							return async ({ result, update }) => {
+								submitting = false;
+								if (result.type === 'success') {
+									sent = true;
+								} else if (result.type === 'failure') {
+									errorMsg = (result.data as any)?.message ?? 'Something went wrong.';
+								} else {
+									await update();
+								}
+							};
+						}}
 						class="flex flex-col gap-2"
 					>
 						<Label for="email" class="text-sm">Sign in with email</Label>
@@ -56,7 +72,12 @@
 							required
 							class="text-sm"
 						/>
-						<Button type="submit" class="w-full text-sm">Send link</Button>
+						{#if errorMsg}
+							<p class="text-xs text-destructive">{errorMsg}</p>
+						{/if}
+						<Button type="submit" disabled={submitting} class="w-full text-sm">
+							{submitting ? 'Sending…' : 'Send link'}
+						</Button>
 					</form>
 				{/if}
 			</div>

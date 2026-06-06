@@ -1,9 +1,10 @@
 <script lang="ts">
 	import ChevronRight from '@lucide/svelte/icons/chevron-right';
-	import ExternalLink from '@lucide/svelte/icons/external-link';
-	import Copy from '@lucide/svelte/icons/copy';
-	import Check from '@lucide/svelte/icons/check';
+	import Phone from '@lucide/svelte/icons/phone';
+	import Mail from '@lucide/svelte/icons/mail';
+	import Link from '@lucide/svelte/icons/link';
 	import { SvelteMap, SvelteSet } from 'svelte/reactivity';
+	import BusinessProfileDialog from './BusinessProfileDialog.svelte';
 	import type { Business } from '$lib/types';
 
 	let {
@@ -44,19 +45,17 @@
 		else expanded.add(cat);
 	}
 
-	let copied = $state<string | null>(null);
+	let selectedBusiness = $state<Business | null>(null);
+	let profileOpen = $state(false);
+
+	function openProfile(b: Business) {
+		selectedBusiness = b;
+		profileOpen = true;
+	}
 
 	function emailParts(email: string): [string, string] {
 		const at = email.indexOf('@');
 		return [email.slice(0, at), email.slice(at + 1)];
-	}
-
-	function copyEmail(business: Business) {
-		if (!business.email) return;
-		navigator.clipboard.writeText(business.email).then(() => {
-			copied = business.name;
-			setTimeout(() => (copied = null), 1800);
-		});
 	}
 
 	function hostname(url: string): string {
@@ -67,6 +66,14 @@
 		}
 	}
 </script>
+
+{#if selectedBusiness}
+	<BusinessProfileDialog
+		business={selectedBusiness}
+		bind:open={profileOpen}
+		onedit={user?.email && selectedBusiness.email && user.email === selectedBusiness.email ? onedit : undefined}
+	/>
+{/if}
 
 {#if filtered.length === 0}
 	<p class="py-12 text-center text-sm text-muted-foreground">No businesses match your search.</p>
@@ -96,10 +103,13 @@
 						<div class="grid gap-3 {compact ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'}">
 							{#each businesses as business (business.id ?? business.name)}
 								{@const isOwner = user?.email && business.email && user.email === business.email}
-								<div class="flex flex-col gap-2 rounded-xl border bg-card p-4 shadow-sm">
-									<!-- Name + edit -->
-									<div class="flex items-start justify-between gap-2">
-										<div>
+								<button
+									class="flex w-full flex-col gap-2 rounded-xl border bg-card p-4 text-left shadow-sm transition-colors hover:bg-muted/30 focus-visible:outline-2 focus-visible:outline-primary"
+									onclick={() => openProfile(business)}
+								>
+									<!-- Name + subcategories -->
+									<div class="flex w-full items-start justify-between gap-2">
+										<div class="min-w-0">
 											<p class="text-sm font-semibold leading-snug">{business.name}</p>
 											{#if business.subcategories.length > 0}
 												<div class="mt-1 flex flex-wrap gap-1">
@@ -110,88 +120,39 @@
 											{/if}
 										</div>
 										{#if isOwner}
-											<button
-												class="shrink-0 rounded-sm bg-muted px-1.5 py-0.5 text-[10px] text-muted-foreground hover:bg-muted/80"
-												onclick={() => onedit(business)}
-											>Edit</button>
+											<span class="shrink-0 rounded-sm bg-muted px-1.5 py-0.5 text-[10px] text-muted-foreground">Owner</span>
 										{/if}
 									</div>
 
-	
+									{#if !compact && business.description}
+										<p class="text-xs leading-relaxed text-muted-foreground line-clamp-3">{business.description}</p>
+									{/if}
 
-									<hr class="border-border" />
+									<hr class="w-full border-border" />
 
-									<!-- Contact -->
-									<div class="flex flex-col gap-1.5">
+									<!-- Contact preview -->
+									<div class="flex w-full flex-col gap-1">
 										{#if business.phones.length > 0}
-											<div class="flex flex-col gap-1">
-												{#each business.phones as phone, i (phone)}
-													<div class="flex items-center gap-1.5 text-xs">
-														{#if i === 0}
-															<span class="w-4 text-center text-muted-foreground">📞</span>
-														{:else}
-															<span class="w-4 text-center text-[9px] text-muted-foreground">alt</span>
-														{/if}
-														<a
-															href="tel:{phone.replace(/\D/g, '')}"
-															class="text-foreground underline-offset-2 hover:underline"
-														>{phone}</a>
-													</div>
-												{/each}
-											</div>
-										{:else}
-											<div class="flex items-center gap-1.5 text-xs text-muted-foreground/40">
-												<span class="w-4 text-center">📞</span><span>—</span>
+											<div class="flex items-center gap-1.5 text-xs text-muted-foreground">
+												<Phone class="h-3 w-3 shrink-0" />
+												<span class="truncate">{business.phones[0]}</span>
 											</div>
 										{/if}
-
 										{#if business.email}
 											{@const [u, d] = emailParts(business.email)}
-											<div class="flex items-center gap-1.5 text-xs">
-												<span class="w-4 text-center text-muted-foreground">✉</span>
-												<button
-													class="truncate text-foreground underline-offset-2 hover:underline"
-													title="Open email client"
-													onclick={() => { window.location.href = `mailto:${business.email}`; }}
-												>{u} [at] {d}</button>
-												<button
-													class="ml-auto shrink-0 rounded border border-border px-1.5 py-0.5 text-[10px] text-muted-foreground hover:bg-muted"
-													aria-label="Copy email"
-													onclick={() => copyEmail(business)}
-												>
-													{#if copied === business.name}
-														<Check class="inline h-3 w-3 text-green-500" />
-													{:else}
-														<Copy class="inline h-3 w-3" />
-													{/if}
-												</button>
-											</div>
-										{:else}
-											<div class="flex items-center gap-1.5 text-xs text-muted-foreground/40">
-												<span class="w-4 text-center">✉</span><span>—</span>
+											<div class="flex items-center gap-1.5 text-xs text-muted-foreground">
+												<Mail class="h-3 w-3 shrink-0" />
+												<span class="truncate">{u} [at] {d}</span>
 											</div>
 										{/if}
-
 										{#if business.website}
-											<div class="flex items-center gap-1.5 text-xs">
-												<span class="w-4 text-center text-muted-foreground">🔗</span>
-												<a
-													href={business.website}
-													target="_blank"
-													rel="noopener noreferrer"
-													class="flex items-center gap-0.5 text-primary underline-offset-2 hover:underline"
-												>
-													{hostname(business.website)}
-													<ExternalLink class="h-2.5 w-2.5 shrink-0 opacity-60" />
-												</a>
-											</div>
-										{:else}
-											<div class="flex items-center gap-1.5 text-xs text-muted-foreground/40">
-												<span class="w-4 text-center">🔗</span><span>—</span>
+											<div class="flex items-center gap-1.5 text-xs text-muted-foreground">
+												<Link class="h-3 w-3 shrink-0" />
+												<span class="truncate">{hostname(business.website)}</span>
 											</div>
 										{/if}
 									</div>
-								</div>
+								</button>
 							{/each}
 						</div>
 					</div>
