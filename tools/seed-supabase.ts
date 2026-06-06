@@ -1,12 +1,16 @@
 import { createClient } from '@supabase/supabase-js';
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
+import { config } from 'dotenv';
 
-const SUPABASE_URL = process.env.SUPABASE_URL;
+config();
+
+const SUPABASE_URL = process.env.PUBLIC_SUPABASE_URL;
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
+console.log('seeding', SUPABASE_URL);
 
 if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY) {
-  console.error('Set SUPABASE_URL and SUPABASE_SERVICE_KEY env vars');
+  console.error('Set PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_KEY in .env or .env.local');
   process.exit(1);
 }
 
@@ -17,7 +21,7 @@ const businesses = JSON.parse(raw);
 
 const { data, error } = await supabase
   .from('businesses')
-  .upsert(businesses, { onConflict: 'name' })
+  .upsert(businesses)
   .select('id');
 
 if (error) {
