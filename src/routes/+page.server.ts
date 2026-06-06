@@ -6,5 +6,5 @@ import type { Business } from '$lib/types';
 export const load: PageServerLoad = async () => {
   const raw = readFileSync(resolve('src/data/directory.json'), 'utf-8');
   const businesses: Business[] = JSON.parse(raw);
-  return { businesses, user: null as { email: string } | null };
+  return { businesses };
 };
