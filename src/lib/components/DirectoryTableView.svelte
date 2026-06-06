@@ -48,6 +48,13 @@
 		profileOpen = true;
 	}
 
+	$effect(() => {
+		if (selectedBusiness && !filtered.some((b) => b.id === selectedBusiness!.id)) {
+			profileOpen = false;
+			selectedBusiness = null;
+		}
+	});
+
 	const columns: ColumnDef<Business>[] = [
 		{ id: 'name', accessorKey: 'name', header: 'Business', enableSorting: true },
 		{ id: 'details', header: 'Details', enableSorting: false, accessorFn: () => '' }

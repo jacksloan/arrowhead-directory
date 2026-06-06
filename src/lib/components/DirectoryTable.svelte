@@ -28,11 +28,19 @@
 
 	let editingBusiness = $state<Business | null>(null);
 	let dialogOpen = $state(false);
+	let deletedIds = $state(new Set<string>());
 
 	function openEdit(b: Business) {
 		editingBusiness = b;
 		dialogOpen = true;
 	}
+
+	function handleDelete(id: string) {
+		deletedIds.add(id);
+		dialogOpen = false;
+	}
+
+	const activeBusinesses = $derived(businesses.filter((b) => !deletedIds.has(b.id ?? '')));
 
 	type View = 'compact' | 'full';
 	const VIEWS: { id: View; label: string; Icon: typeof LayoutGrid }[] = [
@@ -50,10 +58,10 @@
 	let search = $state('');
 	let selectedCategories = $state<string[]>([]);
 
-	const categories = $derived([...new Set(businesses.map((b) => b.category))].sort());
+	const categories = $derived([...new Set(activeBusinesses.map((b) => b.category))].sort());
 
 	const filtered = $derived(
-		businesses
+		activeBusinesses
 			.map((b, i) => ({ ...b, id: b.id ?? `${b.name}-${i}` }))
 			.filter((b) => {
 				const q = search.toLowerCase();
@@ -111,5 +119,5 @@
 </div>
 
 {#if editingBusiness}
-	<EditBusinessDialog business={editingBusiness} {formData} bind:open={dialogOpen} />
+	<EditBusinessDialog business={editingBusiness} {formData} bind:open={dialogOpen} ondelete={handleDelete} />
 {/if}

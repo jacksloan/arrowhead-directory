@@ -56,6 +56,13 @@
 		profileOpen = true;
 	}
 
+	$effect(() => {
+		if (selectedBusiness && !filtered.some((b) => b.id === selectedBusiness!.id)) {
+			profileOpen = false;
+			selectedBusiness = null;
+		}
+	});
+
 	function hostname(url: string): string {
 		try {
 			return new URL(url).hostname.replace(/^www\./, '');
