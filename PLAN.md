@@ -11,6 +11,15 @@ The initial directory is sourced from the Laundromat Bulletin Board facebook gro
 
 A simple, response interface for browsing and searching the arrowhead businesses directory. The kitchen sink page is a good spot to look for how to use and implement shadcn-svelte components: /Users/jack/dev/git/arrowhead-directory/src/routes/sink/+page.svelte
 
+## Initial Script
+
+Create local python script in tools/parse-directory to parse the businesses in laundromat bulletin files (whichever is easier to parse) into a JSON file in src/data/directory.json
+
+The file is already organized by category and subcategory. Categories are things like "PERSON to PERSON" and subcategories are things like "Childcare", "Hair Salons and Barbers"
+
+/Users/jack/dev/git/arrowhead-directory/laundromat-bulletin-board.docx
+/Users/jack/dev/git/arrowhead-directory/laundromat-bulletin-board.pdf
+
 ### Layout
 
 - Nav
@@ -40,8 +49,8 @@ Uses Supabase for magic email authentication and supabase for an ORM.
 
 ### Tables
 
-- users
-- businesses
+- business
+  - id
   - business name
   - email
   - phone
@@ -54,6 +63,8 @@ Uses Supabase for magic email authentication and supabase for an ORM.
   - image
   - created_at
   - updated_at
+- business_services (tag like list of services that the business provides)
+  - e.g. Dirt Work, Septic Design Septic Installs, Landscaping
 - business_metadata (json)
   - category
   - subcategory
