@@ -28,19 +28,19 @@ A simple, responsive directory of businesses and tradespeople in the Arrowhead r
 ### `businesses` table (Supabase / Postgres)
 
 ```sql
-id          uuid        primary key  default gen_random_uuid()
-name        text        not null
-email       text
-phone       text
-address     text
-website     text
-description text
-category    text        not null
-subcategory text
-services    text[]      default '{}'
-image       text
-created_at  timestamptz default now()
-updated_at  timestamptz default now()
+id            uuid        primary key  default gen_random_uuid()
+name          text        not null
+email         text
+phones        text[]      default '{}'
+address       text
+website       text
+description   text
+category      text        not null
+subcategories text[]      default '{}'
+services      text[]      default '{}'
+image         text
+created_at    timestamptz default now()
+updated_at    timestamptz default now()
 ```
 
 **RLS policies:**
@@ -48,6 +48,10 @@ updated_at  timestamptz default now()
 - `UPDATE` — `auth.jwt()->>'email' = email` (owner only)
 
 No `business_services` or `business_metadata` tables — dropped for MVP. Dynamic per-category metadata fields are a future enhancement.
+
+**Schema decisions:**
+- `phones text[]` — captures all phone numbers per listing (primary at index 0, secondary at index 1+)
+- `subcategories text[]` — a business may appear under multiple subcategories (e.g. a contractor listed under Excavating, Septic, and Landscaping); one row per business, not one row per subcategory
 
 ### JSON contract (`src/data/directory.json`)
 
@@ -58,13 +62,14 @@ Produced by the Phase 1 parser; consumed by Phase 2 agents and the seed script.
   {
     "name": "Ace Plumbing",
     "email": "ace@example.com",
-    "phone": "218-555-0101",
+    "phones": ["218-555-0101", "218-555-0202"],
     "address": "123 Main St, Ely MN",
     "website": "https://aceplumbing.com",
     "description": "Full service plumbing...",
     "category": "HOME SERVICES",
-    "subcategory": "Plumbing",
-    "services": ["Drain Cleaning", "Water Heaters"]
+    "subcategories": ["Plumbing", "Water Heaters"],
+    "services": [],
+    "image": null
   }
 ]
 ```
@@ -102,9 +107,9 @@ No standalone `/login` page — auth lives entirely in the profile popover.
 ## Directory Page
 
 - **Load:** `+page.server.ts` reads `src/data/directory.json` (Phase 1) or queries Supabase (Phase 2)
-- **Search:** single search bar, client-side reactive filter across name, category, subcategory, description — no server round-trips (dataset small enough)
-- **Filter:** filter icon beside search opens a shadcn Popover with category + subcategory checkboxes
-- **Display:** shadcn Table with columns: Business, Category, Phone, Website, Edit
+- **Search:** single search bar, client-side reactive filter across name, category, subcategories, description — no server round-trips (dataset small enough)
+- **Filter:** filter icon beside search opens a shadcn Popover with category checkboxes (subcategories are too numerous for a checkbox list)
+- **Display:** shadcn Table with columns: Business (name + subcategories as tags), Category, Phone (first phone), Website, Edit
 - **Edit button:** visible only on rows where `row.email && row.email === session?.user?.email`; clicking opens a centered shadcn Dialog modal with all editable fields, submitted via a superforms form action
 
 ---

@@ -578,12 +578,12 @@ export interface Business {
   id?: string;
   name: string;
   email: string | null;
-  phone: string | null;
+  phones: string[];
   address: string | null;
   website: string | null;
   description: string | null;
   category: string;
-  subcategory: string | null;
+  subcategories: string[];
   services: string[];
   image: string | null;
   created_at?: string;
@@ -707,7 +707,7 @@ Create `src/lib/components/DirectoryTable.svelte`:
       const matchesSearch =
         !q ||
         b.name.toLowerCase().includes(q) ||
-        (b.subcategory ?? '').toLowerCase().includes(q) ||
+        b.subcategories.some((s) => s.toLowerCase().includes(q)) ||
         (b.description ?? '').toLowerCase().includes(q) ||
         b.services.some((s) => s.toLowerCase().includes(q));
 
@@ -749,12 +749,12 @@ Create `src/lib/components/DirectoryTable.svelte`:
           <TableRow>
             <TableCell class="font-medium">
               <div>{business.name}</div>
-              {#if business.subcategory}
-                <div class="text-xs text-muted-foreground">{business.subcategory}</div>
+              {#if business.subcategories.length > 0}
+                <div class="text-xs text-muted-foreground">{business.subcategories.join(', ')}</div>
               {/if}
             </TableCell>
             <TableCell class="text-sm">{business.category}</TableCell>
-            <TableCell class="text-sm">{business.phone ?? '—'}</TableCell>
+            <TableCell class="text-sm">{business.phones[0] ?? '—'}</TableCell>
             <TableCell class="text-sm">
               {#if business.website}
                 <a
@@ -1135,12 +1135,12 @@ create table businesses (
   id uuid primary key default gen_random_uuid(),
   name text not null,
   email text,
-  phone text,
+  phones        text[]      default '{}',
   address text,
   website text,
   description text,
   category text not null,
-  subcategory text,
+  subcategories text[]      default '{}',
   services text[] default '{}',
   image text,
   created_at timestamptz default now(),
@@ -1340,12 +1340,12 @@ export const businessSchema = z.object({
   id: z.string().uuid(),
   name: z.string().min(1, 'Name is required'),
   email: z.string().email().nullable().optional(),
-  phone: z.string().nullable().optional(),
+  phones: z.array(z.string()).default([]),
   address: z.string().nullable().optional(),
   website: z.string().url().nullable().optional(),
   description: z.string().nullable().optional(),
   category: z.string().min(1),
-  subcategory: z.string().nullable().optional(),
+  subcategories: z.array(z.string()).default([]),
   services: z.array(z.string()).default([]),
 });
 ```
@@ -1396,12 +1396,12 @@ Create `src/lib/components/EditBusinessDialog.svelte`:
         id: business.id!,
         name: business.name,
         email: business.email,
-        phone: business.phone,
+        phones: business.phones,
         address: business.address,
         website: business.website,
         description: business.description,
         category: business.category,
-        subcategory: business.subcategory,
+        subcategories: business.subcategories,
         services: business.services,
       };
     }
@@ -1426,8 +1426,9 @@ Create `src/lib/components/EditBusinessDialog.svelte`:
         </div>
 
         <div class="flex flex-col gap-1.5">
-          <Label for="phone">Phone</Label>
-          <Input id="phone" name="phone" bind:value={$form.phone} />
+          <Label for="phones">Phone numbers</Label>
+          <Input id="phones" name="phones" bind:value={$form.phones} placeholder="218-555-0101, 218-555-0202" />
+          <p class="text-xs text-muted-foreground">Comma-separated</p>
         </div>
 
         <div class="flex flex-col gap-1.5">
@@ -1503,7 +1504,7 @@ Update `src/lib/components/DirectoryTable.svelte` — add the dialog import, an 
       const matchesSearch =
         !q ||
         b.name.toLowerCase().includes(q) ||
-        (b.subcategory ?? '').toLowerCase().includes(q) ||
+        b.subcategories.some((s) => s.toLowerCase().includes(q)) ||
         (b.description ?? '').toLowerCase().includes(q) ||
         b.services.some((s) => s.toLowerCase().includes(q));
 
@@ -1550,12 +1551,12 @@ Update `src/lib/components/DirectoryTable.svelte` — add the dialog import, an 
           <TableRow>
             <TableCell class="font-medium">
               <div>{business.name}</div>
-              {#if business.subcategory}
-                <div class="text-xs text-muted-foreground">{business.subcategory}</div>
+              {#if business.subcategories.length > 0}
+                <div class="text-xs text-muted-foreground">{business.subcategories.join(', ')}</div>
               {/if}
             </TableCell>
             <TableCell class="text-sm">{business.category}</TableCell>
-            <TableCell class="text-sm">{business.phone ?? '—'}</TableCell>
+            <TableCell class="text-sm">{business.phones[0] ?? '—'}</TableCell>
             <TableCell class="text-sm">
               {#if business.website}
                 <a
