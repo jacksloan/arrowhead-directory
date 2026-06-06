@@ -30,6 +30,13 @@
 			>
 				About
 			</a>
+			<a
+				href="/how-to"
+				onclick={() => (open = false)}
+				class="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent"
+			>
+				How-To
+			</a>
 		</nav>
 	</SheetContent>
 </Sheet>
