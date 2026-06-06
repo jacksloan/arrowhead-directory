@@ -29,11 +29,13 @@
 	let {
 		filtered,
 		user,
-		onedit
+		onedit,
+		isAdmin = false
 	}: {
 		filtered: Business[];
 		user: { email: string | null } | null;
 		onedit: (b: Business) => void;
+		isAdmin: boolean;
 	} = $props();
 
 	let sorting = $state<SortingState>([{ id: 'name', desc: false }]);
@@ -92,7 +94,7 @@
 	<BusinessProfileDialog
 		business={selectedBusiness}
 		bind:open={profileOpen}
-		onedit={user?.email && selectedBusiness.email && user.email === selectedBusiness.email ? onedit : undefined}
+		onedit={(isAdmin || (user?.email && selectedBusiness.email && user.email === selectedBusiness.email)) ? onedit : undefined}
 	/>
 {/if}
 
@@ -151,7 +153,7 @@
 						<TableCell class="overflow-hidden">
 							<div class="flex items-center gap-2">
 								<p class="truncate text-sm font-medium leading-snug underline-offset-2 group-hover:underline">{business.name}</p>
-								{#if isOwner}
+								{#if isOwner || isAdmin}
 									<button
 										class="shrink-0 rounded-sm bg-muted px-1.5 py-0.5 text-[10px] text-muted-foreground hover:bg-muted/80"
 										onclick={(e) => { e.stopPropagation(); onedit(business); }}

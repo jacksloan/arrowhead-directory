@@ -17,11 +17,13 @@
 	let {
 		businesses,
 		user,
-		formData
+		formData,
+		isAdmin = false
 	}: {
 		businesses: Business[];
 		user: { email: string | null } | null;
 		formData: any;
+		isAdmin: boolean;
 	} = $props();
 
 	let editingBusiness = $state<Business | null>(null);
@@ -102,9 +104,9 @@
 	</div>
 
 	{#if view === 'compact'}
-		<DirectoryCardView {filtered} {user} {searching} compact={true} onedit={openEdit} />
+		<DirectoryCardView {filtered} {user} {searching} compact={true} onedit={openEdit} {isAdmin} />
 	{:else}
-		<DirectoryTableView {filtered} {user} onedit={openEdit} />
+		<DirectoryTableView {filtered} {user} onedit={openEdit} {isAdmin} />
 	{/if}
 </div>
 

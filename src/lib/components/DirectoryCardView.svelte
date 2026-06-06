@@ -13,13 +13,15 @@
 		user,
 		searching,
 		compact,
-		onedit
+		onedit,
+		isAdmin = false
 	}: {
 		filtered: Business[];
 		user: { email: string | null } | null;
 		searching: boolean;
 		compact: boolean;
 		onedit: (b: Business) => void;
+		isAdmin: boolean;
 	} = $props();
 
 	const grouped = $derived.by(() => {
@@ -67,7 +69,7 @@
 	<BusinessProfileDialog
 		business={selectedBusiness}
 		bind:open={profileOpen}
-		onedit={user?.email && selectedBusiness.email && user.email === selectedBusiness.email ? onedit : undefined}
+		onedit={(isAdmin || (user?.email && selectedBusiness.email && user.email === selectedBusiness.email)) ? onedit : undefined}
 	/>
 {/if}
 
@@ -115,8 +117,10 @@
 												</div>
 											{/if}
 										</div>
-										{#if isOwner}
-											<span class="shrink-0 rounded-sm bg-muted px-1.5 py-0.5 text-[10px] text-muted-foreground">Owner</span>
+										{#if isOwner || isAdmin}
+											<span class="shrink-0 rounded-sm bg-muted px-1.5 py-0.5 text-[10px] text-muted-foreground">
+												{isAdmin && !isOwner ? 'Admin' : 'Owner'}
+											</span>
 										{/if}
 									</div>
 
