@@ -60,28 +60,54 @@ export async function downloadDirectoryPdf(businesses: Business[], title = 'Arro
 
       doc.setFontSize(8);
       doc.setFont('helvetica', 'normal');
-      doc.setTextColor(80);
 
-      const lines: string[] = [];
-      if (b.phones.length > 0) lines.push(b.phones[0]);
-      if (b.email) lines.push(b.email);
-      if (b.website) {
-        try {
-          lines.push(new URL(b.website).hostname.replace(/^www\./, ''));
-        } catch {
-          lines.push(b.website);
+      // Subcategories + services
+      const tags = [...(b.subcategories ?? []), ...(b.services ?? [])];
+      if (tags.length > 0) {
+        doc.setTextColor(100);
+        const tagLine = tags.join(' · ');
+        const wrapped = doc.splitTextToSize(tagLine, CONTENT_W - 8);
+        for (const line of wrapped) {
+          checkBreak(5);
+          doc.text(line, MARGIN + 8, y);
+          y += 4;
         }
       }
-      if (b.address) lines.push(b.address);
 
-      for (const line of lines) {
+      // Description
+      if (b.description) {
+        doc.setTextColor(60);
+        const wrapped = doc.splitTextToSize(b.description, CONTENT_W - 8);
+        for (const line of wrapped) {
+          checkBreak(5);
+          doc.text(line, MARGIN + 8, y);
+          y += 4;
+        }
+        y += 1;
+      }
+
+      // Contact details
+      doc.setTextColor(80);
+      const contacts: string[] = [];
+      if (b.phones.length > 0) contacts.push(b.phones[0]);
+      if (b.email) contacts.push(b.email);
+      if (b.website) {
+        try {
+          contacts.push(new URL(b.website).hostname.replace(/^www\./, ''));
+        } catch {
+          contacts.push(b.website);
+        }
+      }
+      if (b.address) contacts.push(b.address);
+
+      for (const line of contacts) {
         checkBreak(5);
         doc.text(line, MARGIN + 8, y);
         y += 4;
       }
 
       doc.setTextColor(0);
-      y += 3;
+      y += 4;
     }
 
     y += 5;
