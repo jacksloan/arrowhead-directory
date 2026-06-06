@@ -64,9 +64,9 @@ URL_RE = re.compile(
 def parse_business_text(text: str) -> dict:
     """
     Parse a single business entry block (may be multi-line) into a structured dict.
-    Lines are separated by newlines; extracts phone, email, website via regex.
+    Lines are separated by newlines; extracts phones, email, website via regex.
     """
-    phone_match = PHONE_RE.search(text)
+    phone_matches = list(PHONE_RE.finditer(text))
     email_match = EMAIL_RE.search(text)
 
     # Find URL but exclude URLs that are part of email addresses
@@ -83,7 +83,7 @@ def parse_business_text(text: str) -> dict:
 
     # Remove matched fields to isolate name/description
     remainder = text
-    for m in filter(None, [phone_match, email_match, url_match]):
+    for m in filter(None, phone_matches + [email_match, url_match]):
         remainder = remainder.replace(m.group(), "")
 
     # Clean separators and split name from description
@@ -92,10 +92,12 @@ def parse_business_text(text: str) -> dict:
     name = parts[0] if parts else text.strip()
     description = " ".join(parts[1:]) if len(parts) > 1 else None
 
+    phones = [p for p in (normalize_phone(m.group()) for m in phone_matches) if p]
+
     return {
         "name": name,
         "email": email_match.group() if email_match else None,
-        "phone": normalize_phone(phone_match.group() if phone_match else None),
+        "phones": phones,
         "address": None,
         "website": normalize_url(url_match.group() if url_match else None),
         "description": description,
@@ -195,7 +197,7 @@ def _split_mixed_para(para) -> list[tuple[str, str]]:
 def _make_business(text: str, category: str, subcategory: str | None) -> dict:
     b = parse_business_text(text)
     b["category"] = category
-    b["subcategory"] = subcategory or None
+    b["subcategories"] = [subcategory] if subcategory else []
     b["image"] = None
     return b
 
@@ -375,15 +377,25 @@ def parse_docx(docx_path: str) -> list[dict]:
 
     flush_pending()
 
-    # Deduplicate: same name+category+subcategory = same business listed twice by mistake
-    seen = set()
-    deduped = []
+    # Merge same-business rows: group by (name, category), union subcategories and phones
+    from collections import defaultdict
+
+    merged: dict[tuple, dict] = {}
     for b in businesses:
-        key = (b["name"], b["category"], b["subcategory"])
-        if key not in seen:
-            seen.add(key)
-            deduped.append(b)
-    return deduped
+        key = (b["name"], b["category"])
+        if key not in merged:
+            merged[key] = b.copy()
+            merged[key]["subcategories"] = list(b["subcategories"])
+        else:
+            for sub in b["subcategories"]:
+                if sub and sub not in merged[key]["subcategories"]:
+                    merged[key]["subcategories"].append(sub)
+            # Also merge phones
+            for ph in b["phones"]:
+                if ph and ph not in merged[key]["phones"]:
+                    merged[key]["phones"].append(ph)
+
+    return list(merged.values())
 
 
 # ── CLI entry point ───────────────────────────────────────────────────────────
@@ -399,18 +411,19 @@ def main():
     for b in businesses:
         cat = b["category"]
         categories.setdefault(cat, {})
-        sub = b["subcategory"] or "(none)"
-        categories[cat].setdefault(sub, 0)
-        categories[cat][sub] += 1
+        subs = b["subcategories"] or ["(none)"]
+        for sub in subs:
+            categories[cat].setdefault(sub or "(none)", 0)
+            categories[cat][sub or "(none)"] += 1
 
     print(f"\nCategories ({len(categories)}):")
     for cat, subs in sorted(categories.items()):
-        total = sum(subs.values())
+        total = len([b for b in businesses if b["category"] == cat])
         print(f"  {cat}: {total}")
         for sub, count in sorted(subs.items()):
             print(f"    {sub}: {count}")
 
-    missing_phone = [b for b in businesses if not b["phone"]]
+    missing_phone = [b for b in businesses if not b["phones"]]
     missing_email = [b for b in businesses if not b["email"]]
     print(f"\nMissing phone: {len(missing_phone)}")
     print(f"Missing email: {len(missing_email)}")

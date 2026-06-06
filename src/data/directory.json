@@ -2,2269 +2,2864 @@
   {
     "name": "Step up Childcare",
     "email": null,
-    "phone": "218-370-9814",
+    "phones": [
+      "218-370-9814"
+    ],
     "address": null,
     "website": null,
     "description": "Maria Conlan",
     "services": [],
     "category": "PERSON to PERSON",
-    "subcategory": "Childcare",
+    "subcategories": [
+      "Childcare"
+    ],
     "image": null
   },
   {
     "name": "Northwoods Childcare",
     "email": "NorthwoodsChildcareLLC@gmail.com",
-    "phone": "218-576-9911",
+    "phones": [
+      "218-576-9911"
+    ],
     "address": null,
     "website": null,
     "description": "Grand Marais Hunter MacLaurin",
     "services": [],
     "category": "PERSON to PERSON",
-    "subcategory": "Childcare",
+    "subcategories": [
+      "Childcare"
+    ],
     "image": null
   },
   {
     "name": "Superior Images Hair Design",
     "email": null,
-    "phone": "218-387-9367",
+    "phones": [
+      "218-387-9367"
+    ],
     "address": null,
     "website": "https://SuperiorImagesHairDesign.com",
     "description": "412 4th Ave. East, Grand Marais",
     "services": [],
     "category": "PERSON to PERSON",
-    "subcategory": "Hair Salons and Barbers",
+    "subcategories": [
+      "Hair Salons and Barbers"
+    ],
     "image": null
   },
   {
     "name": "Hello Hair",
     "email": "Stacey.HelloHair@gmail.com",
-    "phone": "218-387-1010",
+    "phones": [
+      "218-387-1010",
+      "218-387-9044"
+    ],
     "address": null,
     "website": "https://www.facebook.com/HelloHairStacey/",
-    "description": "Stacey 415 East 3rd Ave., Grand Marais Studio 61 Hair Design 211 West Hwy. 61, Grand Marais 218-387-9044",
+    "description": "Stacey 415 East 3rd Ave., Grand Marais Studio 61 Hair Design 211 West Hwy. 61, Grand Marais",
     "services": [],
     "category": "PERSON to PERSON",
-    "subcategory": "Hair Salons and Barbers",
+    "subcategories": [
+      "Hair Salons and Barbers"
+    ],
     "image": null
   },
   {
     "name": "Totally Worth the Drive Salon LLC",
     "email": "AshleyBerglund44@gmail.com",
-    "phone": "218-370-0242",
+    "phones": [
+      "218-370-0242"
+    ],
     "address": null,
     "website": "https://TotallyWorthTheDriveSalon.square.com",
     "description": "Ashley",
     "services": [],
     "category": "PERSON to PERSON",
-    "subcategory": "Hair Salons and Barbers",
+    "subcategories": [
+      "Hair Salons and Barbers"
+    ],
     "image": null
   },
   {
     "name": "Master Haircutter",
     "email": null,
-    "phone": "541-606-5545",
+    "phones": [
+      "541-606-5545"
+    ],
     "address": null,
     "website": null,
     "description": "(haircuts and beard trims) Rama Bichel 510 West 2nd Street, Grand Marais",
     "services": [],
     "category": "PERSON to PERSON",
-    "subcategory": "Hair Salons and Barbers",
+    "subcategories": [
+      "Hair Salons and Barbers"
+    ],
     "image": null
   },
   {
     "name": "Sage Care",
     "email": null,
-    "phone": "218-264-9766",
+    "phones": [
+      "218-264-9766"
+    ],
     "address": null,
     "website": "https://www.sagecaremn.com/",
     "description": "Ashleigh Kwasniewicz We are a home management company providing services such as housekeeping, meal preparation, and transportation for Cook County's retired and special needs residents. Our purpose is to help others maintain a high quality of life by assisting with the tedious chores of daily living that may have become too strenuous or otherwise inconvenient for our clients to complete by themselves. Services can be provided as a one-time amenity or regular visits can be arranged based on the client's wants and needs.",
     "services": [],
     "category": "PERSON to PERSON",
-    "subcategory": "Household & Senior Special Services",
+    "subcategories": [
+      "Household & Senior Special Services"
+    ],
     "image": null
   },
   {
     "name": "Fred Anderson",
     "email": "AndersonComputersVCS@outlook.com",
-    "phone": null,
+    "phones": [],
     "address": null,
     "website": null,
     "description": "Guitar all ages November March",
     "services": [],
     "category": "PERSON to PERSON",
-    "subcategory": "Lessons and Instruction",
+    "subcategories": [
+      "Lessons and Instruction"
+    ],
     "image": null
   },
   {
     "name": "Hanson Holistics",
     "email": "PhilipHanson75@gmail.com",
-    "phone": "612-810-9333",
+    "phones": [
+      "612-810-9333"
+    ],
     "address": null,
     "website": "https://hansonholistics.com",
     "description": "91 1st Ave. West #5, Grand Marais Phillip Hanson",
     "services": [],
     "category": "PERSON to PERSON",
-    "subcategory": "Massage",
+    "subcategories": [
+      "Massage"
+    ],
     "image": null
   },
   {
     "name": "Two Birds Healing Arts",
     "email": "bridgebetweentwoworlds@gmail.com",
-    "phone": "218-370-0150",
+    "phones": [
+      "218-370-0150"
+    ],
     "address": null,
     "website": "https://twobirdart.com",
     "description": "211 W. Hwy 61 Grand Marais Ancient Traditions Healing 101 W. Hwy 61 Grand Marais https://www.ancienttraditionshealing.com/",
     "services": [],
     "category": "PERSON to PERSON",
-    "subcategory": "Massage",
+    "subcategories": [
+      "Massage"
+    ],
     "image": null
   },
   {
     "name": "LutZen Massage Studios",
     "email": "info@lutzenmassage.com",
-    "phone": "218-387-7337",
+    "phones": [
+      "218-387-7337"
+    ],
     "address": null,
     "website": "https://lutzenmassage.com",
     "description": "14 Broadway Grand Marais 360 Ski Hill Road Lutsen",
     "services": [],
     "category": "PERSON to PERSON",
-    "subcategory": "Massage",
+    "subcategories": [
+      "Massage"
+    ],
     "image": null
   },
   {
     "name": "Essential Touch Massage Therapy",
     "email": null,
-    "phone": "218-387-9058",
+    "phones": [
+      "218-387-9058"
+    ],
     "address": null,
     "website": "https://essentialtouchmt.com",
     "description": "215 1st Ave. East Grand Marais",
     "services": [],
     "category": "PERSON to PERSON",
-    "subcategory": "Massage",
+    "subcategories": [
+      "Massage"
+    ],
     "image": null
   },
   {
     "name": "Healing Waters",
     "email": "healingwatersmassage333@gmail.com",
-    "phone": "612-388-4932",
+    "phones": [
+      "612-388-4932"
+    ],
     "address": null,
     "website": "https://healingwatersmassagetherapy.com",
     "description": "101 West Hwy 61 Grand Marais",
     "services": [],
     "category": "PERSON to PERSON",
-    "subcategory": "Massage",
+    "subcategories": [
+      "Massage"
+    ],
     "image": null
   },
   {
     "name": "Earth Body Healing",
     "email": "info@earthbodyhealing.net",
-    "phone": "218-556-1874",
+    "phones": [
+      "218-556-1874"
+    ],
     "address": null,
     "website": "https://earthbodyhealing.net",
     "description": "9 1st Ave West Grand Marais https://www./",
     "services": [],
     "category": "PERSON to PERSON",
-    "subcategory": "Massage",
+    "subcategories": [
+      "Massage"
+    ],
     "image": null
   },
   {
     "name": "Sisu + Loyly",
     "email": "info@sisoandloyly.com",
-    "phone": null,
+    "phones": [],
     "address": null,
     "website": "https://sisuandloyly.com",
     "description": "110 2nd Ave. East Grand Marais",
     "services": [],
     "category": "PERSON to PERSON",
-    "subcategory": "Massage",
+    "subcategories": [
+      "Massage"
+    ],
     "image": null
   },
   {
     "name": "Cedarwood Spa",
     "email": null,
-    "phone": "651-368-2522",
+    "phones": [
+      "651-368-2522"
+    ],
     "address": null,
     "website": null,
     "description": "Pike Lake Road Grand Marais",
     "services": [],
     "category": "PERSON to PERSON",
-    "subcategory": "Massage",
+    "subcategories": [
+      "Massage"
+    ],
     "image": null
   },
   {
     "name": "Up North Therapy",
     "email": null,
-    "phone": "218-220-9699",
+    "phones": [
+      "218-220-9699"
+    ],
     "address": null,
     "website": null,
     "description": "Silver Bay, Grand Marais, Duluth, Two Harbors Mental health service · Counselor · Child Development Ashley Belanger MA LPCC QPC Asley @upnorththerapy.net (300 West 3rd St, Grand Marais)",
     "services": [],
     "category": "PERSON to PERSON",
-    "subcategory": "Therapy",
+    "subcategories": [
+      "Therapy"
+    ],
     "image": null
   },
   {
     "name": "Harry Aspen",
     "email": null,
-    "phone": "218-370-9456",
+    "phones": [
+      "218-370-9456"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "MISCELLANEOUS SERVICES",
-    "subcategory": "Auto Detailing",
+    "subcategories": [
+      "Auto Detailing"
+    ],
     "image": null
   },
   {
     "name": "Pigeon Bookkeeping Services LLC",
     "email": null,
-    "phone": "612-895-1203",
+    "phones": [
+      "612-895-1203"
+    ],
     "address": null,
     "website": "https://PigeonBookkeeping.com",
     "description": "(monthly bookkeeping/reconciliation, payroll services, cleanups/catchups, A/R A/P) Daidrae Pigeon",
     "services": [],
     "category": "MISCELLANEOUS SERVICES",
-    "subcategory": "Bookkeeping",
+    "subcategories": [
+      "Bookkeeping"
+    ],
     "image": null
   },
   {
     "name": "North Shore Catering",
     "email": "Thom8517@gmail.com",
-    "phone": "651-468-9625",
+    "phones": [
+      "651-468-9625"
+    ],
     "address": null,
     "website": null,
     "description": "Christopher Thompson",
     "services": [],
     "category": "MISCELLANEOUS SERVICES",
-    "subcategory": "Catering",
+    "subcategories": [
+      "Catering"
+    ],
     "image": null
   },
   {
     "name": "North Shore MN Events Rentals",
     "email": "kelly@northshoremneventrentals.com",
-    "phone": null,
+    "phones": [],
     "address": null,
     "website": "https://www.NorthShoreMNEventRentals.com",
     "description": "(tables, chairs, setup etc.) (delivery within one hour of Grand Marais) Kelly",
     "services": [],
     "category": "MISCELLANEOUS SERVICES",
-    "subcategory": "Events",
+    "subcategories": [
+      "Events"
+    ],
     "image": null
   },
   {
     "name": "JS Firewood",
     "email": null,
-    "phone": "218-370-0450",
+    "phones": [
+      "218-370-0450"
+    ],
     "address": null,
     "website": null,
     "description": "Cords delivered Firewood processing Firewood bundles",
     "services": [],
     "category": "MISCELLANEOUS SERVICES",
-    "subcategory": "Firewood",
+    "subcategories": [
+      "Firewood"
+    ],
     "image": null
   },
   {
     "name": "Bill Dahl",
     "email": null,
-    "phone": null,
+    "phones": [],
     "address": null,
     "website": null,
     "description": "587-5266 475-5266",
     "services": [],
     "category": "MISCELLANEOUS SERVICES",
-    "subcategory": "Firewood",
+    "subcategories": [
+      "Firewood"
+    ],
     "image": null
   },
   {
     "name": "North Shore Timber",
     "email": null,
-    "phone": "218-370-9929",
+    "phones": [
+      "218-370-9929"
+    ],
     "address": null,
     "website": null,
     "description": "Dave Howe",
     "services": [],
     "category": "MISCELLANEOUS SERVICES",
-    "subcategory": "Firewood",
+    "subcategories": [
+      "Firewood"
+    ],
     "image": null
   },
   {
     "name": "Chris Skildum",
     "email": "Cskildum@gmail.com",
-    "phone": "218-370-8516",
+    "phones": [
+      "218-370-8516"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "MISCELLANEOUS SERVICES",
-    "subcategory": "Firewood",
+    "subcategories": [
+      "Firewood"
+    ],
     "image": null
   },
   {
     "name": "TrimLight of Duluth",
     "email": null,
-    "phone": "218-221-2895",
+    "phones": [
+      "218-221-2895",
+      "907-347-1848"
+    ],
     "address": null,
     "website": "https://TrimlightDuluthTJ.com",
-    "description": "Accent/Security/Xmas Lighting etc. Matt Raymond Tim Erickson  907-347-1848",
+    "description": "Accent/Security/Xmas Lighting etc. Matt Raymond Tim Erickson",
     "services": [],
     "category": "MISCELLANEOUS SERVICES",
-    "subcategory": "House Lighting",
+    "subcategories": [
+      "House Lighting"
+    ],
     "image": null
   },
   {
     "name": "Golden Touch Pet Sitting (Schroeder, Tofte, Lutsen, Grand Marais)",
     "email": "GoldenHomeCaresVC@gmail.com",
-    "phone": "218-235-1414",
+    "phones": [
+      "218-235-1414",
+      "651-308-8910"
+    ],
     "address": null,
     "website": "https://SpaFurPaws.net",
-    "description": "Kari Golden Spa Fur Paws Grooming at your home or drop-off (by appointment) Samantha Brethiem 651-308-8910",
+    "description": "Kari Golden Spa Fur Paws Grooming at your home or drop-off (by appointment) Samantha Brethiem",
     "services": [],
     "category": "MISCELLANEOUS SERVICES",
-    "subcategory": "Pet Services - House Sitting etc.",
+    "subcategories": [
+      "Pet Services - House Sitting etc."
+    ],
     "image": null
   },
   {
     "name": "Superior Pet Clips - Grand Marais",
     "email": "whatsup@boreal.org",
-    "phone": "218-387-1484",
+    "phones": [
+      "218-387-1484"
+    ],
     "address": null,
     "website": null,
     "description": "Sherry Watson",
     "services": [],
     "category": "MISCELLANEOUS SERVICES",
-    "subcategory": "Pet Services - House Sitting etc.",
+    "subcategories": [
+      "Pet Services - House Sitting etc."
+    ],
     "image": null
   },
   {
     "name": "Rocky Knoll Kennel",
     "email": "rockyknollboarding@gmail.com",
-    "phone": "218-387-3568",
+    "phones": [
+      "218-387-3568"
+    ],
     "address": null,
     "website": null,
     "description": "Josiah Avery",
     "services": [],
     "category": "MISCELLANEOUS SERVICES",
-    "subcategory": "Pet Services - House Sitting etc.",
+    "subcategories": [
+      "Pet Services - House Sitting etc."
+    ],
     "image": null
   },
   {
     "name": "Wes Higgins (junk cars removed/long dist. hauling/jump starts/off-road recovery",
     "email": null,
-    "phone": "218-370-1111",
+    "phones": [
+      "218-370-1111"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "MISCELLANEOUS SERVICES",
-    "subcategory": "Scrap Metal Salvage",
+    "subcategories": [
+      "Scrap Metal Salvage"
+    ],
     "image": null
   },
   {
     "name": "Kathy Jo Thompson",
     "email": null,
-    "phone": "218-387-1619",
+    "phones": [
+      "218-387-1619"
+    ],
     "address": null,
     "website": null,
     "description": "Grand Marais All types of alterations (weddings to hemming jeans and all between)",
     "services": [],
     "category": "MISCELLANEOUS SERVICES",
-    "subcategory": "Sewing - Repairs",
+    "subcategories": [
+      "Sewing - Repairs"
+    ],
     "image": null
   },
   {
     "name": "47 Degrees North",
     "email": null,
-    "phone": "218-663-7669",
+    "phones": [
+      "218-663-7669"
+    ],
     "address": null,
     "website": "https://www.47degreesnorthmn.com/",
     "description": "Lutsen",
     "services": [],
     "category": "MISCELLANEOUS SERVICES",
-    "subcategory": "Sewing - Repairs",
+    "subcategories": [
+      "Sewing - Repairs"
+    ],
     "image": null
   },
   {
     "name": "Zipper Repairs",
     "email": "RepairsByNils@gmail.com",
-    "phone": "218-481-7270",
+    "phones": [
+      "218-481-7270"
+    ],
     "address": null,
     "website": null,
     "description": "Duluth Gear Exchange Nils Andersen",
     "services": [],
     "category": "MISCELLANEOUS SERVICES",
-    "subcategory": "Sewing - Repairs",
+    "subcategories": [
+      "Sewing - Repairs"
+    ],
     "image": null
   },
   {
     "name": "Custom Canvas Sewing",
     "email": "ChristopherSivertson@yahoo.com",
-    "phone": "218-626-5584",
+    "phones": [
+      "218-626-5584"
+    ],
     "address": null,
     "website": null,
     "description": "Chris Sivertson (call/text preferred)",
     "services": [],
     "category": "MISCELLANEOUS SERVICES",
-    "subcategory": "Sewing - Repairs",
+    "subcategories": [
+      "Sewing - Repairs"
+    ],
     "image": null
   },
   {
     "name": "Jakes Small Engine Repair",
     "email": null,
-    "phone": "218-370-9289",
+    "phones": [
+      "218-370-9289"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "MISCELLANEOUS SERVICES",
-    "subcategory": "Small Engine Repair",
+    "subcategories": [
+      "Small Engine Repair"
+    ],
     "image": null
   },
   {
     "name": "Larry Marxen - Grand Marais",
     "email": null,
-    "phone": "218-370-9475",
+    "phones": [
+      "218-370-9475"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "MISCELLANEOUS SERVICES",
-    "subcategory": "Small Engine Repair",
+    "subcategories": [
+      "Small Engine Repair"
+    ],
     "image": null
   },
   {
     "name": "Cook County Towing",
     "email": "CookCountyTowing@gmail.com",
-    "phone": "218-370-2352",
+    "phones": [
+      "218-370-2352"
+    ],
     "address": null,
     "website": null,
     "description": "Kevin DeRosier",
     "services": [],
     "category": "MISCELLANEOUS SERVICES",
-    "subcategory": "Towing",
+    "subcategories": [
+      "Towing"
+    ],
     "image": null
   },
   {
     "name": "North Coast Towing",
     "email": null,
-    "phone": "218-387-4297",
+    "phones": [
+      "218-387-4297"
+    ],
     "address": null,
     "website": null,
     "description": "Clark Bloomquist",
     "services": [],
     "category": "MISCELLANEOUS SERVICES",
-    "subcategory": "Towing",
+    "subcategories": [
+      "Towing"
+    ],
     "image": null
   },
   {
     "name": "SHT & BRT Transport",
     "email": null,
-    "phone": "218-387-4526",
+    "phones": [
+      "218-387-4526"
+    ],
     "address": null,
     "website": null,
     "description": "Superior by Nature",
     "services": [],
     "category": "MISCELLANEOUS SERVICES",
-    "subcategory": "Transportation Services",
+    "subcategories": [
+      "Transportation Services"
+    ],
     "image": null
   },
   {
     "name": "Arrowhead Transit",
     "email": null,
-    "phone": "800-862-0175",
+    "phones": [
+      "800-862-0175"
+    ],
     "address": null,
     "website": "https://ArrowheadTransit.com",
     "description": "Virginia, MN 1-",
     "services": [],
     "category": "MISCELLANEOUS SERVICES",
-    "subcategory": "Transportation Services",
+    "subcategories": [
+      "Transportation Services"
+    ],
     "image": null
   },
   {
     "name": "Isak Hansen’s Home Center",
     "email": "isak@boreal.org",
-    "phone": "218-663-7201",
+    "phones": [
+      "218-663-7201"
+    ],
     "address": null,
     "website": "https://www.isakhansen.com/",
     "description": "Lutsen",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Appliance Repair",
+    "subcategories": [
+      "Appliance Repair"
+    ],
     "image": null
   },
   {
     "name": "Lighthouse Appliance Solutions",
     "email": "help@lighthouseappliancesolutions.com",
-    "phone": "218-269-4288",
+    "phones": [
+      "218-269-4288"
+    ],
     "address": null,
     "website": "https://www.facebook.com/profile.php?id=61557217865277",
     "description": "Silver Bay (servicing north Shore and Gunflint Trail)",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Appliance Repair",
+    "subcategories": [
+      "Appliance Repair"
+    ],
     "image": null
   },
   {
     "name": "Arrowhead Services LLC - Two Harbors",
     "email": null,
-    "phone": "844-572-7769",
+    "phones": [
+      "844-572-7769"
+    ],
     "address": null,
     "website": "https://www.arrowheadservices.net",
     "description": "Sales/Service/Installation",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Appliance Repair",
+    "subcategories": [
+      "Appliance Repair"
+    ],
     "image": null
   },
   {
     "name": "Off Peak Heating - Randy Hodel Inc.",
     "email": null,
-    "phone": "218-370-8035",
+    "phones": [
+      "218-370-8035"
+    ],
     "address": null,
     "website": null,
     "description": "(older Stieble & Steffes heaters - Gas refrigerators and Empire heaters)",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Appliance Repair",
+    "subcategories": [
+      "Appliance Repair"
+    ],
     "image": null
   },
   {
     "name": "Sivertson Marine",
     "email": null,
-    "phone": "218-626-5584",
+    "phones": [
+      "218-626-5584",
+      "218-370-2260"
+    ],
     "address": null,
     "website": null,
-    "description": "Boat repair Chris Sivertson Connor Ingram Dock and Boat Lift removal/installation 218-370-2260 (or PM on fb)",
+    "description": "Boat repair Chris Sivertson Connor Ingram Dock and Boat Lift removal/installation (or PM on fb)",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Boats and Docks",
+    "subcategories": [
+      "Boats and Docks"
+    ],
     "image": null
   },
   {
     "name": "Jordan Ness",
     "email": "bigrockcomn@gmail.com",
-    "phone": "218-213-7870",
+    "phones": [
+      "218-213-7870"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Chimney & Fireplace building/repair",
+    "subcategories": [
+      "Chimney & Fireplace building/repair",
+      "Fences & Decks"
+    ],
     "image": null
   },
   {
     "name": "Hammer Chimney Sweep - Grand Marais",
     "email": null,
-    "phone": "218-877-7539",
+    "phones": [
+      "218-877-7539"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Chimney Sweeps",
+    "subcategories": [
+      "Chimney Sweeps"
+    ],
     "image": null
   },
   {
     "name": "Superior Sweep - Grand Marais",
     "email": null,
-    "phone": "218-370-9497",
+    "phones": [
+      "218-370-9497"
+    ],
     "address": null,
     "website": null,
     "description": "(Chimney, Stove & Fireplace cleaning/inspection/repair & installation)",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Chimney Sweeps",
+    "subcategories": [
+      "Chimney Sweeps"
+    ],
     "image": null
   },
   {
     "name": "Mason Benson",
     "email": null,
-    "phone": "660-624-4221",
+    "phones": [
+      "660-624-4221"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Duct Cleaning",
+    "subcategories": [
+      "Duct Cleaning"
+    ],
     "image": null
   },
   {
     "name": "Clover Valley Electric",
     "email": null,
-    "phone": "218-606-8595",
+    "phones": [
+      "218-606-8595"
+    ],
     "address": null,
     "website": "https://CloverValleyElectric.com",
     "description": "John & Shannon Christensen",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Electricians",
+    "subcategories": [
+      "Electricians"
+    ],
     "image": null
   },
   {
     "name": "Cedar Sun Electric LLC",
     "email": "CedarSunElectric@gmail.com",
-    "phone": "218-216-6978",
+    "phones": [
+      "218-216-6978"
+    ],
     "address": null,
     "website": null,
     "description": "(Electric and Solar Services) Wendi Aurora",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Electricians",
+    "subcategories": [
+      "Electricians"
+    ],
     "image": null
   },
   {
     "name": "Schroeder Electric",
     "email": "Schroeder.elec@gmail.com",
-    "phone": "218-606-3888",
+    "phones": [
+      "218-606-3888"
+    ],
     "address": null,
     "website": "https://www.schroederelectricmn.com/",
     "description": "Grand Marais",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Electricians",
+    "subcategories": [
+      "Electricians"
+    ],
     "image": null
   },
   {
     "name": "Boreal Electric",
     "email": "borealelectricmn@gmail.com",
-    "phone": "218-349-1373",
+    "phones": [
+      "218-349-1373"
+    ],
     "address": null,
     "website": null,
     "description": "Sam Hedstrom",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Electricians",
+    "subcategories": [
+      "Electricians"
+    ],
     "image": null
   },
   {
     "name": "Nordic Electric of Grand Marais Inc.",
     "email": "office@nordicmn.com",
-    "phone": "218-387-1606",
+    "phones": [
+      "218-387-1606"
+    ],
     "address": null,
     "website": "https://nordicmn.com",
     "description": null,
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Electricians",
+    "subcategories": [
+      "Electricians"
+    ],
     "image": null
   },
   {
     "name": "Granite Electric - Grand Marais",
     "email": null,
-    "phone": "218-370-2532",
+    "phones": [
+      "218-370-2532"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Electricians",
+    "subcategories": [
+      "Electricians"
+    ],
     "image": null
   },
   {
     "name": "Peak Electric - Lutsen",
     "email": null,
-    "phone": "218-370-0452",
+    "phones": [
+      "218-370-0452"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Electricians",
+    "subcategories": [
+      "Electricians"
+    ],
     "image": null
   },
   {
     "name": "North Shore Electric",
     "email": null,
-    "phone": "218-370-9825",
+    "phones": [
+      "218-370-9825"
+    ],
     "address": null,
     "website": null,
     "description": "Hovland",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Electricians",
+    "subcategories": [
+      "Electricians"
+    ],
     "image": null
   },
   {
     "name": "Hunt Electric - Grand Marais",
     "email": null,
-    "phone": "651-646-2911",
+    "phones": [
+      "651-646-2911"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Electricians",
+    "subcategories": [
+      "Electricians"
+    ],
     "image": null
   },
   {
     "name": "Yeti Electric - Josh Furr - Grand Marais",
     "email": "yetielectric.mn@gmail.com",
-    "phone": "941-777-8811",
+    "phones": [
+      "941-777-8811",
+      "941-961-0999"
+    ],
     "address": null,
     "website": "https://yetielectric.mn",
-    "description": "941-961-0999",
+    "description": null,
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Electricians",
+    "subcategories": [
+      "Electricians"
+    ],
     "image": null
   },
   {
     "name": "Northern Electric",
     "email": null,
-    "phone": "218-591-1186",
+    "phones": [
+      "218-591-1186"
+    ],
     "address": null,
     "website": null,
     "description": "Jed",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Electricians",
-    "image": null
-  },
-  {
-    "name": "Jordan Ness",
-    "email": "bigrockcomn@gmail.com",
-    "phone": "218-213-7870",
-    "address": null,
-    "website": null,
-    "description": "(also post frame buildings and fireplaces/chimneys)",
-    "services": [],
-    "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Fences & Decks",
+    "subcategories": [
+      "Electricians"
+    ],
     "image": null
   },
   {
     "name": "Jacob Wilson Flooring (tile/vinyl/hardwood/carpet & custom showers)",
     "email": null,
-    "phone": "218-370-0816",
+    "phones": [
+      "218-370-0816"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Flooring",
+    "subcategories": [
+      "Flooring"
+    ],
     "image": null
   },
   {
     "name": "Wild Rice Woodcrafters LLC (rustic wood flooring/barn wood fireplace mantles)",
     "email": null,
-    "phone": "651-707-2086",
+    "phones": [
+      "651-707-2086"
+    ],
     "address": null,
     "website": null,
     "description": "(Grantsburg WI)",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Flooring",
+    "subcategories": [
+      "Flooring"
+    ],
     "image": null
   },
   {
     "name": "Mike Nadeau",
     "email": null,
-    "phone": "218-235-1606",
+    "phones": [
+      "218-235-1606"
+    ],
     "address": null,
     "website": null,
     "description": "(tile, vinyl, wood, in floor heat, finishing work)",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Flooring",
+    "subcategories": [
+      "Flooring"
+    ],
     "image": null
   },
   {
     "name": "Seamless Rain Gutters",
     "email": "jstarr955@gmail.com",
-    "phone": "218-370-9496",
+    "phones": [
+      "218-370-9496"
+    ],
     "address": null,
     "website": null,
     "description": "Jerry Starr",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Gutters",
+    "subcategories": [
+      "Gutters"
+    ],
     "image": null
   },
   {
     "name": "Bystrom Construction LLC",
     "email": "JustonBystrom111@gmail.com",
-    "phone": "218-576-9983",
+    "phones": [
+      "218-576-9983"
+    ],
     "address": null,
     "website": null,
     "description": "Juston Bystrom",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Gutters",
+    "subcategories": [
+      "Gutters",
+      "Landscaping",
+      "Lawn & Snow (plowing, mowing/shoveling/roof snow removal etc.)",
+      "Property Services",
+      "Tree Trimming and Removal"
+    ],
     "image": null
   },
   {
     "name": "Nathan Hingos",
     "email": null,
-    "phone": "218-370-9519",
+    "phones": [
+      "218-370-9519"
+    ],
     "address": null,
     "website": null,
     "description": "(call or text) -home repairs, small carpentry projects, painting, garage and shed clean outs, trailer loads to the dump, tree and shrub removal, yard work, gutter cleaning, odd jobs",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Handypersons",
+    "subcategories": [
+      "Handypersons"
+    ],
     "image": null
   },
   {
     "name": "Unimoose Ent. LLC  (welding/generalcarpentry/flooring/maintenence/tile/paint/lawns",
     "email": "rpstone13@gmail.com",
-    "phone": "218-443-0438",
+    "phones": [
+      "218-443-0438"
+    ],
     "address": null,
     "website": "https://unimoose.squarespace.com/",
     "description": "/trees removal/etc. Matt Stone",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Handypersons",
+    "subcategories": [
+      "Handypersons"
+    ],
     "image": null
   },
   {
     "name": "KG Handyman Services",
     "email": null,
-    "phone": "906-869-0846",
+    "phones": [
+      "906-869-0846"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Handypersons",
+    "subcategories": [
+      "Handypersons"
+    ],
     "image": null
   },
   {
     "name": "Cascade Creek Company - Grand Marais - Household repairs/projects/Interior Design",
     "email": "cascadecreekcompanyllc@gmail.com",
-    "phone": "218-387-3333",
+    "phones": [
+      "218-387-3333"
+    ],
     "address": null,
     "website": "https://cascadecreekcompany.com",
     "description": "Dan & Laurie Roberts",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Handypersons",
+    "subcategories": [
+      "Handypersons"
+    ],
     "image": null
   },
   {
     "name": "Eric Engler Handyman Services",
     "email": null,
-    "phone": "402-239-0281",
+    "phones": [
+      "402-239-0281"
+    ],
     "address": null,
     "website": null,
     "description": "(\"roofing leaks to tree removal\")",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Handypersons",
+    "subcategories": [
+      "Handypersons"
+    ],
     "image": null
   },
   {
     "name": "Curt Everson",
     "email": null,
-    "phone": "218-370-1020",
+    "phones": [
+      "218-370-1020",
+      "218-491-5767"
+    ],
     "address": null,
     "website": null,
-    "description": "Homewewrx LLC Homewerx llc. -siding -flooring -soffit -fascia -decks -windows & doors and much more! Tracey Roberts 218-491-5767",
+    "description": "Homewewrx LLC Homewerx llc. -siding -flooring -soffit -fascia -decks -windows & doors and much more! Tracey Roberts",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Handypersons",
+    "subcategories": [
+      "Handypersons",
+      "Lawn & Snow (plowing, mowing/shoveling/roof snow removal etc.)",
+      "Property Services"
+    ],
     "image": null
   },
   {
     "name": "Gederah's VIP Cleaning Service",
     "email": null,
-    "phone": "218-370-0466",
+    "phones": [
+      "218-370-0466"
+    ],
     "address": null,
     "website": null,
     "description": "Gederah Waver",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "House Cleaning",
+    "subcategories": [
+      "House Cleaning"
+    ],
     "image": null
   },
   {
     "name": "Golden Touch House Cleaning & Organization",
     "email": "GoldenHomeCaresVC@gmail.com",
-    "phone": "218-235-1414",
+    "phones": [
+      "218-235-1414"
+    ],
     "address": null,
     "website": null,
     "description": "“& much more!” (Schroeder, Tofte, Lutsen, Grand Marais) Kari Golden",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "House Cleaning",
+    "subcategories": [
+      "House Cleaning"
+    ],
     "image": null
   },
   {
     "name": "Magnetic Rock LLC",
     "email": "LeakyBanjos@proton.me",
-    "phone": "218-264-9994",
+    "phones": [
+      "218-264-9994"
+    ],
     "address": null,
     "website": null,
     "description": "Kyle Sobanja (serving: rentals/businesses/homes)",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "House Cleaning",
+    "subcategories": [
+      "House Cleaning"
+    ],
     "image": null
   },
   {
     "name": "Krevechenko Services LLC",
     "email": null,
-    "phone": "612-703-7492",
+    "phones": [
+      "612-703-7492"
+    ],
     "address": null,
     "website": null,
     "description": "House and Window cleaning Dennis Krevechenko",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "House Cleaning",
+    "subcategories": [
+      "House Cleaning"
+    ],
     "image": null
   },
   {
     "name": "Cook County Cleaning",
     "email": null,
-    "phone": "218-994-2979",
+    "phones": [
+      "218-994-2979"
+    ],
     "address": null,
     "website": null,
     "description": "Lisa Gergets",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "House Cleaning",
+    "subcategories": [
+      "House Cleaning"
+    ],
     "image": null
   },
   {
     "name": "Tortuga Cleaning",
     "email": "support@tortugacleaning.com",
-    "phone": "218-220-7343",
+    "phones": [
+      "218-220-7343"
+    ],
     "address": null,
     "website": "https://TortugaCleaning.com",
     "description": "(Instant online quotes and bookings) Krista Galbraith",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "House Cleaning",
+    "subcategories": [
+      "House Cleaning"
+    ],
     "image": null
   },
   {
     "name": "Beary Clean Inc.",
     "email": null,
-    "phone": "218-370-1418",
+    "phones": [
+      "218-370-1418"
+    ],
     "address": null,
     "website": null,
     "description": "(mostly VRBO cleaning) Linda G. Sorenson",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "House Cleaning",
+    "subcategories": [
+      "House Cleaning"
+    ],
     "image": null
   },
   {
     "name": "Superior Resources, LLC",
     "email": "SuperiorResources218@gmail.com",
-    "phone": "218-370-8590",
+    "phones": [
+      "218-370-8590"
+    ],
     "address": null,
     "website": null,
     "description": "Commercial Cleaning Services Ramiro Acero",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "House Cleaning",
+    "subcategories": [
+      "House Cleaning"
+    ],
     "image": null
   },
   {
     "name": "Landscape Gardner",
     "email": null,
-    "phone": "607-423-9107",
+    "phones": [
+      "607-423-9107"
+    ],
     "address": null,
     "website": null,
     "description": "Ken Costello - Gunflint Trail",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Landscaping",
+    "subcategories": [
+      "Landscaping"
+    ],
     "image": null
   },
   {
     "name": "Cody DeWandler",
     "email": null,
-    "phone": "701-388-2864",
+    "phones": [
+      "701-388-2864"
+    ],
     "address": null,
     "website": null,
     "description": "Light landscaping and chainsaw work",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Landscaping",
+    "subcategories": [
+      "Landscaping"
+    ],
     "image": null
   },
   {
     "name": "Erlandson Stone & Pavers",
     "email": null,
-    "phone": "248-770-9066",
+    "phones": [
+      "248-770-9066"
+    ],
     "address": null,
     "website": null,
     "description": "Grand Marais Paul Erlandson",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Landscaping",
+    "subcategories": [
+      "Landscaping"
+    ],
     "image": null
   },
   {
     "name": "Sheehan Landscaping - Grand Marais",
     "email": null,
-    "phone": "218-370-1332",
+    "phones": [
+      "218-370-1332"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Landscaping",
+    "subcategories": [
+      "Landscaping"
+    ],
     "image": null
   },
   {
     "name": "Northshore Dirtwork - Boulder Walls, water control/drainage",
     "email": "MattWeik@gmail.com",
-    "phone": "218-839-1248",
+    "phones": [
+      "218-839-1248"
+    ],
     "address": null,
     "website": null,
     "description": "Matt Weik",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Landscaping",
+    "subcategories": [
+      "Landscaping"
+    ],
     "image": null
   },
   {
     "name": "A & M Construction",
     "email": null,
-    "phone": "218-370-9980",
+    "phones": [
+      "218-370-9980"
+    ],
     "address": null,
     "website": null,
     "description": "Grand Marais Jason Zimmer (retaining walls/dozer & excavator work/roads & driveways etc., rock crushing, sand & class 5 & pit run & dirt sale/delivery, septic design/installation)",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Landscaping",
-    "image": null
-  },
-  {
-    "name": "Bystrom Construction LLC",
-    "email": "JustonBystrom111@gmail.com",
-    "phone": "218-576-9983",
-    "address": null,
-    "website": null,
-    "description": "Juston Bystrom",
-    "services": [],
-    "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Landscaping",
+    "subcategories": [
+      "Landscaping"
+    ],
     "image": null
   },
   {
     "name": "IronSpine LLC",
     "email": null,
-    "phone": "218-370-2246",
+    "phones": [
+      "218-370-2246"
+    ],
     "address": null,
     "website": null,
     "description": "Plowing and Snow Removal (specializing in small driveways, walkways, hard to reach areas) Odd Jobs Tyler Wick",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Lawn & Snow (plowing, mowing/shoveling/roof snow removal etc.)",
-    "image": null
-  },
-  {
-    "name": "Curt Everson",
-    "email": null,
-    "phone": "218-370-1020",
-    "address": null,
-    "website": null,
-    "description": null,
-    "services": [],
-    "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Lawn & Snow (plowing, mowing/shoveling/roof snow removal etc.)",
+    "subcategories": [
+      "Lawn & Snow (plowing, mowing/shoveling/roof snow removal etc.)"
+    ],
     "image": null
   },
   {
     "name": "Sheehan Snow Removal",
     "email": null,
-    "phone": "218-370-1332",
+    "phones": [
+      "218-370-1332"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Lawn & Snow (plowing, mowing/shoveling/roof snow removal etc.)",
+    "subcategories": [
+      "Lawn & Snow (plowing, mowing/shoveling/roof snow removal etc.)"
+    ],
     "image": null
   },
   {
     "name": "Zimmer Plowing LLC",
     "email": null,
-    "phone": "218-370-2525",
+    "phones": [
+      "218-370-2525"
+    ],
     "address": null,
     "website": null,
     "description": "Cayden Zimmer",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Lawn & Snow (plowing, mowing/shoveling/roof snow removal etc.)",
+    "subcategories": [
+      "Lawn & Snow (plowing, mowing/shoveling/roof snow removal etc.)"
+    ],
     "image": null
   },
   {
     "name": "Bystrom Construction LLC (Plowing)",
     "email": "JustonBystrom111@gmail.com",
-    "phone": "218-576-9983",
+    "phones": [
+      "218-576-9983"
+    ],
     "address": null,
     "website": null,
     "description": "Juston Bystrom",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Lawn & Snow (plowing, mowing/shoveling/roof snow removal etc.)",
+    "subcategories": [
+      "Lawn & Snow (plowing, mowing/shoveling/roof snow removal etc.)"
+    ],
     "image": null
   },
   {
     "name": "All Season’s Services",
     "email": null,
-    "phone": "218-262-9073",
+    "phones": [
+      "218-262-9073"
+    ],
     "address": null,
     "website": null,
     "description": "Seidel Snow Removal DJ Seidel (call or text)",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Lawn & Snow (plowing, mowing/shoveling/roof snow removal etc.)",
+    "subcategories": [
+      "Lawn & Snow (plowing, mowing/shoveling/roof snow removal etc.)"
+    ],
     "image": null
   },
   {
     "name": "S & S Labor",
     "email": null,
-    "phone": "218-370-8198",
+    "phones": [
+      "218-370-8198"
+    ],
     "address": null,
     "website": null,
     "description": "Saffron Straub (Lawn Care - Shoveling - Roof snow removal )",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Lawn & Snow (plowing, mowing/shoveling/roof snow removal etc.)",
+    "subcategories": [
+      "Lawn & Snow (plowing, mowing/shoveling/roof snow removal etc.)"
+    ],
     "image": null
   },
   {
     "name": "Ice Dam Solutions LLC",
     "email": null,
-    "phone": "218-368-8905",
+    "phones": [
+      "218-368-8905"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Lawn & Snow (plowing, mowing/shoveling/roof snow removal etc.)",
+    "subcategories": [
+      "Lawn & Snow (plowing, mowing/shoveling/roof snow removal etc.)"
+    ],
     "image": null
   },
   {
     "name": "Johnathan Huskey Snow removal",
     "email": null,
-    "phone": "218-440-4941",
+    "phones": [
+      "218-440-4941"
+    ],
     "address": null,
     "website": null,
     "description": "shoveling walks/roofs",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Lawn & Snow (plowing, mowing/shoveling/roof snow removal etc.)",
+    "subcategories": [
+      "Lawn & Snow (plowing, mowing/shoveling/roof snow removal etc.)"
+    ],
     "image": null
   },
   {
     "name": "Backlund Lawn & Home Services - Snow removal, gutters, painting, general labor, etc.",
     "email": null,
-    "phone": "218-370-0839",
+    "phones": [
+      "218-370-0839"
+    ],
     "address": null,
     "website": null,
     "description": "Seth Backlund",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Lawn & Snow (plowing, mowing/shoveling/roof snow removal etc.)",
+    "subcategories": [
+      "Lawn & Snow (plowing, mowing/shoveling/roof snow removal etc.)"
+    ],
     "image": null
   },
   {
     "name": "Snow Removal",
     "email": null,
-    "phone": "218-370-1020",
+    "phones": [
+      "218-370-1020"
+    ],
     "address": null,
     "website": null,
     "description": "(Skid-steer) Curt Everson",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Lawn & Snow (plowing, mowing/shoveling/roof snow removal etc.)",
+    "subcategories": [
+      "Lawn & Snow (plowing, mowing/shoveling/roof snow removal etc.)"
+    ],
     "image": null
   },
   {
     "name": "Jordan Porter Lawncare (Grand Marais - Grand Portage)",
     "email": null,
-    "phone": "218-370-9977",
+    "phones": [
+      "218-370-9977"
+    ],
     "address": null,
     "website": null,
     "description": "Text him at",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Lawn & Snow (plowing, mowing/shoveling/roof snow removal etc.)",
+    "subcategories": [
+      "Lawn & Snow (plowing, mowing/shoveling/roof snow removal etc.)"
+    ],
     "image": null
   },
   {
     "name": "Masen's Lawn Service",
     "email": null,
-    "phone": "701-256-0765",
+    "phones": [
+      "701-256-0765"
+    ],
     "address": null,
     "website": null,
     "description": "(Silver Bay to Grand Marais)",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Lawn & Snow (plowing, mowing/shoveling/roof snow removal etc.)",
-    "image": null
-  },
-  {
-    "name": "Bystrom Construction LLC",
-    "email": "JustonBystrom111@gmail.com",
-    "phone": "218-576-9983",
-    "address": null,
-    "website": null,
-    "description": "Juston Bystrom",
-    "services": [],
-    "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Lawn & Snow (plowing, mowing/shoveling/roof snow removal etc.)",
+    "subcategories": [
+      "Lawn & Snow (plowing, mowing/shoveling/roof snow removal etc.)"
+    ],
     "image": null
   },
   {
     "name": "Ryan's Lawn Service - Hovland, Grand Marais, Cascade, Lutsen and everywhere in-between. Mowing, Weed Whipping, Shrub and Small Tree removal, Landscaping, Trail Clearing, Leaf Raking, Debris Removal and Odd Jobs. Reasonable Rates.",
     "email": "keeganryan404@gmail.com",
-    "phone": "218-241-5732",
+    "phones": [
+      "218-241-5732"
+    ],
     "address": null,
     "website": null,
     "description": "Text or Call",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Lawn & Snow (plowing, mowing/shoveling/roof snow removal etc.)",
+    "subcategories": [
+      "Lawn & Snow (plowing, mowing/shoveling/roof snow removal etc.)"
+    ],
     "image": null
   },
   {
     "name": "Arrowhead Locksmiths",
     "email": null,
-    "phone": "218-370-2496",
+    "phones": [
+      "218-370-2496"
+    ],
     "address": null,
     "website": null,
     "description": "Schroeder",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Locksmiths",
+    "subcategories": [
+      "Locksmiths"
+    ],
     "image": null
   },
   {
     "name": "Service Master of Thunder Bay",
     "email": null,
-    "phone": "855-705-4755",
+    "phones": [
+      "855-705-4755"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Moisture and Mold",
+    "subcategories": [
+      "Moisture and Mold"
+    ],
     "image": null
   },
   {
     "name": "Dryco Restoration of Duluth",
     "email": null,
-    "phone": "218-712-1713",
+    "phones": [
+      "218-712-1713"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Moisture and Mold",
+    "subcategories": [
+      "Moisture and Mold"
+    ],
     "image": null
   },
   {
     "name": "Loyear Disaster Restoration Services - Twin Ports",
     "email": null,
-    "phone": "218-724-5800",
+    "phones": [
+      "218-724-5800"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Moisture and Mold",
+    "subcategories": [
+      "Moisture and Mold"
+    ],
     "image": null
   },
   {
     "name": "Servpro of Twin Ports",
     "email": null,
-    "phone": "218-727-2575",
+    "phones": [
+      "218-727-2575"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Moisture and Mold",
+    "subcategories": [
+      "Moisture and Mold"
+    ],
     "image": null
   },
   {
     "name": "Paul Davis Restoration of Duluth",
     "email": null,
-    "phone": "218-727-8588",
+    "phones": [
+      "218-727-8588"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Moisture and Mold",
+    "subcategories": [
+      "Moisture and Mold"
+    ],
     "image": null
   },
   {
     "name": "The Painters Nies",
     "email": null,
-    "phone": "218-370-9888",
+    "phones": [
+      "218-370-9888"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Painting",
+    "subcategories": [
+      "Painting"
+    ],
     "image": null
   },
   {
     "name": "Pinnacle Painting - Gunflint Trail",
     "email": null,
-    "phone": "218-388-9913",
+    "phones": [
+      "218-388-9913"
+    ],
     "address": null,
     "website": "https://sites.google.com/view/pinnaclepainting",
     "description": "Steve Perusse",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Painting",
+    "subcategories": [
+      "Painting"
+    ],
     "image": null
   },
   {
     "name": "Fine Finish Paint & Coatings LLC",
     "email": null,
-    "phone": "218-370-1340",
+    "phones": [
+      "218-370-1340",
+      "218-370-1708"
+    ],
     "address": null,
     "website": null,
-    "description": "(Ryan) 218-370-1708 (Luke)",
+    "description": "(Ryan) (Luke)",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Painting",
+    "subcategories": [
+      "Painting"
+    ],
     "image": null
   },
   {
     "name": "Professional Painters",
     "email": "JustonBystrom111@gmail.com",
-    "phone": "218-220-9787",
+    "phones": [
+      "218-220-9787",
+      "218-576-9983"
+    ],
     "address": null,
     "website": null,
-    "description": "Richard Andrus Bystrom Construction LLC Juston Bystrom 218-576-9983",
+    "description": "Richard Andrus Bystrom Construction LLC Juston Bystrom",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Painting",
+    "subcategories": [
+      "Painting"
+    ],
     "image": null
   },
   {
     "name": "Byron Aldrich - Grand Marais",
     "email": null,
-    "phone": "612-940-3350",
+    "phones": [
+      "612-940-3350"
+    ],
     "address": null,
     "website": null,
     "description": "Painting - Tile Repairs",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Painting",
+    "subcategories": [
+      "Painting"
+    ],
     "image": null
   },
   {
     "name": "Wuebben Painting",
     "email": "Vance@wuebbenpainting.com",
-    "phone": "218-260-0937",
+    "phones": [
+      "218-260-0937"
+    ],
     "address": null,
     "website": "https://wuebbenpainting.com/",
     "description": "Duluth (expanding service up the shore)",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Painting",
+    "subcategories": [
+      "Painting"
+    ],
     "image": null
   },
   {
     "name": "North Shore Superior Pest Management - Grand Marais",
     "email": null,
-    "phone": "218-370-2323",
+    "phones": [
+      "218-370-2323"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Pest Removal and Prevention",
+    "subcategories": [
+      "Pest Removal and Prevention"
+    ],
     "image": null
   },
   {
     "name": "Gunflint Trail Property Services",
     "email": null,
-    "phone": "218-264-9328",
+    "phones": [
+      "218-264-9328"
+    ],
     "address": null,
     "website": null,
     "description": "Mike Kwasniewicz",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Pest Removal and Prevention",
+    "subcategories": [
+      "Pest Removal and Prevention"
+    ],
     "image": null
   },
   {
     "name": "Wildlife Control",
     "email": "JimW@yahoo.com",
-    "phone": "218-387-2515",
+    "phones": [
+      "218-387-2515"
+    ],
     "address": null,
     "website": null,
     "description": "(specialized beavers/skunks) licensed/insured Jimmy Wallner",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Pest Removal and Prevention",
+    "subcategories": [
+      "Pest Removal and Prevention"
+    ],
     "image": null
   },
   {
     "name": "AMAX Plumbing & Heating - Grand Marais",
     "email": "amaxgrandmarais@gmail.com",
-    "phone": "218-877-7013",
+    "phones": [
+      "218-877-7013"
+    ],
     "address": null,
     "website": "https://amaxduluth.com",
     "description": null,
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Plumbing/Heating and HVAC",
+    "subcategories": [
+      "Plumbing/Heating and HVAC"
+    ],
     "image": null
   },
   {
     "name": "North Shore Plumbing Heating & AC",
     "email": null,
-    "phone": "218-370-9669",
+    "phones": [
+      "218-370-9669"
+    ],
     "address": null,
     "website": "https://NorthShorePlumbingHeatingAC.com",
     "description": "Lutsen 5339 West Hwy 61",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Plumbing/Heating and HVAC",
+    "subcategories": [
+      "Plumbing/Heating and HVAC"
+    ],
     "image": null
   },
   {
     "name": "County Plumbing & Heating",
     "email": null,
-    "phone": "218-663-7873",
+    "phones": [
+      "218-663-7873",
+      "218-370-0149"
+    ],
     "address": null,
     "website": null,
-    "description": "Lutsen 218-370-0149",
+    "description": "Lutsen",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Plumbing/Heating and HVAC",
+    "subcategories": [
+      "Plumbing/Heating and HVAC"
+    ],
     "image": null
   },
   {
     "name": "Northern Plumbing",
     "email": "northernplunbing25@gmail.com",
-    "phone": "320-232-5123",
+    "phones": [
+      "320-232-5123"
+    ],
     "address": null,
     "website": null,
     "description": "Tyler Skwira - Foreston, MN",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Plumbing/Heating and HVAC",
+    "subcategories": [
+      "Plumbing/Heating and HVAC"
+    ],
     "image": null
   },
   {
     "name": "Nosker Plumbing & Heating",
     "email": null,
-    "phone": "218-370-8911",
+    "phones": [
+      "218-370-8911"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Plumbing/Heating and HVAC",
+    "subcategories": [
+      "Plumbing/Heating and HVAC"
+    ],
     "image": null
   },
   {
     "name": "Issak Hansen Custom Homebuilders & Hardware - Lutsen",
     "email": null,
-    "phone": "218-663-7201",
+    "phones": [
+      "218-663-7201"
+    ],
     "address": null,
     "website": null,
     "description": "Besides Homebuilding they do send people out on smaller jobs/repairs when they are able.",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Plumbing/Heating and HVAC",
+    "subcategories": [
+      "Plumbing/Heating and HVAC"
+    ],
     "image": null
   },
   {
     "name": "Matt Farley Plumbing - Lutsen",
     "email": null,
-    "phone": "218-663-7028",
+    "phones": [
+      "218-663-7028"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Plumbing/Heating and HVAC",
+    "subcategories": [
+      "Plumbing/Heating and HVAC"
+    ],
     "image": null
   },
   {
     "name": "Mike Kwasniewicz",
     "email": "GFTPS@Mail.com",
-    "phone": "218-264-9328",
+    "phones": [
+      "218-264-9328"
+    ],
     "address": null,
     "website": "https://www.gunflinttrailpropertyservices.com",
     "description": "Gunflint Trail Property Services (cabin painting/staining, water system startup, winterization, deck & dock building, chimney sweeping, roofing, minor plumbing.)",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Property Services",
+    "subcategories": [
+      "Property Services"
+    ],
     "image": null
   },
   {
     "name": "Lutsen Cabin & Land Care LLC",
     "email": null,
-    "phone": "218-370-1779",
+    "phones": [
+      "218-370-1779"
+    ],
     "address": null,
     "website": null,
     "description": "Steve Duclos Lutsen",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Property Services",
-    "image": null
-  },
-  {
-    "name": "Curt Everson",
-    "email": null,
-    "phone": "218-370-1020",
-    "address": null,
-    "website": null,
-    "description": null,
-    "services": [],
-    "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Property Services",
-    "image": null
-  },
-  {
-    "name": "Bystrom Construction LLC",
-    "email": "JustonBystrom111@gmail.com",
-    "phone": "218-576-9983",
-    "address": null,
-    "website": null,
-    "description": "Juston Bystrom",
-    "services": [],
-    "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Property Services",
+    "subcategories": [
+      "Property Services"
+    ],
     "image": null
   },
   {
     "name": "Dan Carlson",
     "email": null,
-    "phone": "218-591-1325",
+    "phones": [
+      "218-591-1325"
+    ],
     "address": null,
     "website": null,
     "description": "Home and Property Maintenance",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Property Services",
+    "subcategories": [
+      "Property Services"
+    ],
     "image": null
   },
   {
     "name": "(lists one provider in Grand Marais)",
     "email": null,
-    "phone": null,
+    "phones": [],
     "address": null,
     "website": "https://Radon.web.health.state.mn.us",
     "description": null,
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Radon Testing/Mitigation",
+    "subcategories": [
+      "Radon Testing/Mitigation"
+    ],
     "image": null
   },
   {
     "name": "Don Buskovick",
     "email": "donbuskovick@icloud.com",
-    "phone": "507-456-0226",
+    "phones": [
+      "507-456-0226"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Screen & Window Repair",
+    "subcategories": [
+      "Screen & Window Repair"
+    ],
     "image": null
   },
   {
     "name": "Charley Trovall North Shore Land Surveying, LLC",
     "email": null,
-    "phone": "218-387-1726",
+    "phones": [
+      "218-387-1726"
+    ],
     "address": null,
     "website": null,
     "description": "Brett Land - Grand Marais",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Surveying",
+    "subcategories": [
+      "Surveying"
+    ],
     "image": null
   },
   {
     "name": "McMillan Tree Service",
     "email": "mcmillantree@boreal.org",
-    "phone": "218-370-0118",
+    "phones": [
+      "218-370-0118"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Tree Trimming and Removal",
+    "subcategories": [
+      "Tree Trimming and Removal"
+    ],
     "image": null
   },
   {
     "name": "Arrowhead Tree and Landscape",
     "email": "Arrowhead.tree.landscape@gmail.com",
-    "phone": "218-370-1470",
+    "phones": [
+      "218-370-1470"
+    ],
     "address": null,
     "website": null,
     "description": "Michael Burton",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Tree Trimming and Removal",
-    "image": null
-  },
-  {
-    "name": "Bystrom Construction LLC",
-    "email": "JustonBystrom111@gmail.com",
-    "phone": "218-576-9983",
-    "address": null,
-    "website": null,
-    "description": "Juston Bystrom",
-    "services": [],
-    "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Tree Trimming and Removal",
+    "subcategories": [
+      "Tree Trimming and Removal"
+    ],
     "image": null
   },
   {
     "name": "Rude Metal Works - Grand Marais",
     "email": null,
-    "phone": "218-370-8286",
+    "phones": [
+      "218-370-8286"
+    ],
     "address": null,
     "website": null,
     "description": "(General & Custom Metal Fabrication)",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Welding & Metal Fabrication",
+    "subcategories": [
+      "Welding & Metal Fabrication"
+    ],
     "image": null
   },
   {
     "name": "Unimoose Enterprises LLC  (Welding & Fabrication)",
     "email": "rpstone13@gmail.com",
-    "phone": "218-443-0438",
+    "phones": [
+      "218-443-0438"
+    ],
     "address": null,
     "website": "https://unimoose.squarespace.com/",
     "description": "Matt Stone",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Welding & Metal Fabrication",
+    "subcategories": [
+      "Welding & Metal Fabrication"
+    ],
     "image": null
   },
   {
     "name": "Greg's Welding Repair and Mechanical Services",
     "email": null,
-    "phone": "218-387-2492",
+    "phones": [
+      "218-387-2492",
+      "218-370-0834"
+    ],
     "address": null,
     "website": null,
-    "description": "Greg - Grand Marais or 218-370-0834 (cell)",
+    "description": "Greg - Grand Marais or  (cell)",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Welding & Metal Fabrication",
+    "subcategories": [
+      "Welding & Metal Fabrication"
+    ],
     "image": null
   },
   {
     "name": "Mobile Repair and Welding",
     "email": "fosterupnorth@yahoo.com",
-    "phone": "218-387-2009",
+    "phones": [
+      "218-387-2009",
+      "218-209-7608"
+    ],
     "address": null,
     "website": null,
-    "description": "James Foster - Grand Marais or 218-209-7608 (cell",
+    "description": "James Foster - Grand Marais or  (cell",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Welding & Metal Fabrication",
+    "subcategories": [
+      "Welding & Metal Fabrication"
+    ],
     "image": null
   },
   {
     "name": "Curt Kleist, PWS (Professional Wetland Scientist)",
     "email": null,
-    "phone": "218-290-8618",
+    "phones": [
+      "218-290-8618"
+    ],
     "address": null,
     "website": "https://www.ckwetlands.com",
     "description": "CK Wetland Services, Inc.",
     "services": [],
     "category": "HOUSEHOLD MAINTENANCE & REPAIR SERVICES",
-    "subcategory": "Wetland Services",
+    "subcategories": [
+      "Wetland Services"
+    ],
     "image": null
   },
   {
     "name": "Trent Zender",
     "email": "TrentZender@outlook.com",
-    "phone": "612-850-2916",
+    "phones": [
+      "612-850-2916"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "Concrete and Masonry",
+    "subcategories": [
+      "Concrete and Masonry"
+    ],
     "image": null
   },
   {
     "name": "CE Masonry",
     "email": null,
-    "phone": "218-370-0010",
+    "phones": [
+      "218-370-0010"
+    ],
     "address": null,
     "website": null,
     "description": "Curt Everson brick, block, stone, foundations, fireplaces, concrete and flashing (no job too big or too small)",
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "Concrete and Masonry",
+    "subcategories": [
+      "Concrete and Masonry"
+    ],
     "image": null
   },
   {
     "name": "Daryl Carpenter",
     "email": null,
-    "phone": "218-343-7996",
+    "phones": [
+      "218-343-7996"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "Concrete and Masonry",
+    "subcategories": [
+      "Concrete and Masonry"
+    ],
     "image": null
   },
   {
     "name": "Monty's Concrete Solutions",
     "email": "seonmontgomery97@gmail.com",
-    "phone": "828-606-3694",
+    "phones": [
+      "828-606-3694"
+    ],
     "address": null,
     "website": "https://montysconcretesolutions.com",
     "description": null,
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "Concrete and Masonry",
+    "subcategories": [
+      "Concrete and Masonry"
+    ],
     "image": null
   },
   {
     "name": "John Skadburg",
     "email": null,
-    "phone": "218-370-9165",
+    "phones": [
+      "218-370-9165"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "Concrete and Masonry",
+    "subcategories": [
+      "Concrete and Masonry"
+    ],
     "image": null
   },
   {
     "name": "Erlandson Stone & Pavers",
     "email": null,
-    "phone": "248-770-9066",
+    "phones": [
+      "248-770-9066"
+    ],
     "address": null,
     "website": null,
     "description": "Grand Marais Paul Erlandson",
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "Concrete and Masonry",
+    "subcategories": [
+      "Concrete and Masonry"
+    ],
     "image": null
   },
   {
     "name": "Nace Hagemann",
     "email": null,
-    "phone": "218-370-1613",
+    "phones": [
+      "218-370-1613",
+      "218-387-1074",
+      "218-491-5767"
+    ],
     "address": null,
     "website": null,
-    "description": "Chad Smith 218-387-1074",
+    "description": "Chad Smith",
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "Drywall Installation and Taping",
+    "subcategories": [
+      "Drywall Installation and Taping",
+      "General Construction and Remodeling"
+    ],
     "image": null
   },
   {
     "name": "Bystrom Construction LLC",
     "email": "JustonBystrom111@gmail.com",
-    "phone": "218-576-9983",
+    "phones": [
+      "218-576-9983"
+    ],
     "address": null,
     "website": null,
     "description": "Juston Bystrom",
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "Drywall Installation and Taping",
+    "subcategories": [
+      "Drywall Installation and Taping",
+      "General Construction and Remodeling",
+      "Roofing Installation & Repairs"
+    ],
     "image": null
   },
   {
     "name": "Jed Smith Excavating & Septic LLC - Grand Marais",
     "email": null,
-    "phone": "218-370-8185",
+    "phones": [
+      "218-370-8185",
+      "218-387-2933"
+    ],
     "address": null,
     "website": "https://jedsmithexcavating.com",
-    "description": "- cell 218-387-2933",
+    "description": "- cell",
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "Excavation and Septic Systems",
+    "subcategories": [
+      "Excavation and Septic Systems"
+    ],
     "image": null
   },
   {
     "name": "Joe Hall Excavating",
     "email": null,
-    "phone": "218-370-1212",
+    "phones": [
+      "218-370-1212"
+    ],
     "address": null,
     "website": null,
     "description": "Lutsen (sewer system installs, gravel hauling, road building, garage pads, land clearing ++)",
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "Excavation and Septic Systems",
+    "subcategories": [
+      "Excavation and Septic Systems"
+    ],
     "image": null
   },
   {
     "name": "G & G Septic",
     "email": null,
-    "phone": "218-387-1572",
+    "phones": [
+      "218-387-1572"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "Excavation and Septic Systems",
+    "subcategories": [
+      "Excavation and Septic Systems"
+    ],
     "image": null
   },
   {
     "name": "Gunflint Trail Excavating",
     "email": null,
-    "phone": "218-388-4449",
+    "phones": [
+      "218-388-4449"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "Excavation and Septic Systems",
+    "subcategories": [
+      "Excavation and Septic Systems"
+    ],
     "image": null
   },
   {
     "name": "LaBoda Grading",
     "email": null,
-    "phone": "218-475-2517",
+    "phones": [
+      "218-475-2517"
+    ],
     "address": null,
     "website": null,
     "description": "Hovland",
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "Excavation and Septic Systems",
+    "subcategories": [
+      "Excavation and Septic Systems"
+    ],
     "image": null
   },
   {
     "name": "Terra Firma Septic - Finland",
     "email": null,
-    "phone": "218-253-7669",
+    "phones": [
+      "218-253-7669"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "Excavation and Septic Systems",
+    "subcategories": [
+      "Excavation and Septic Systems"
+    ],
     "image": null
   },
   {
     "name": "Northshore Dirtwork",
     "email": "MattWeik@gmail.com",
-    "phone": "218-839-1248",
+    "phones": [
+      "218-839-1248"
+    ],
     "address": null,
     "website": null,
     "description": "Matt Weik Septics, Excavating, Bouder Walls, Driveway repair, Water control/drainage, Building Site prep.",
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "Excavation and Septic Systems",
+    "subcategories": [
+      "Excavation and Septic Systems"
+    ],
     "image": null
   },
   {
     "name": "A & M Const.",
     "email": null,
-    "phone": "218-387-9980",
+    "phones": [
+      "218-387-9980"
+    ],
     "address": null,
     "website": null,
     "description": "Jason Zimmer (septic design & installation, excavator & dozer/retaining walls, rock crushing, sand & class 5 & pit run & dirt sale/delivery)",
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "Excavation and Septic Systems",
+    "subcategories": [
+      "Excavation and Septic Systems"
+    ],
     "image": null
   },
   {
     "name": "Duclos Construction",
     "email": null,
-    "phone": "218-370-1779",
+    "phones": [
+      "218-370-1779"
+    ],
     "address": null,
     "website": null,
     "description": "(Windows/Siding/ReModels/New Construction Steve Duclos",
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "General Construction and Remodeling",
+    "subcategories": [
+      "General Construction and Remodeling"
+    ],
     "image": null
   },
   {
     "name": "Leah Peters Construction Services",
     "email": null,
-    "phone": "218-349-8739",
+    "phones": [
+      "218-349-8739",
+      "218-833-7970"
+    ],
     "address": null,
     "website": null,
-    "description": "remodels, roofing, siding, sheetrock, ice-dam removal - “If you can think it, we can do it.” Leah Peters or 218-833-7970",
+    "description": "remodels, roofing, siding, sheetrock, ice-dam removal - “If you can think it, we can do it.” Leah Peters or",
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "General Construction and Remodeling",
-    "image": null
-  },
-  {
-    "name": "Bystrom Construction LLC",
-    "email": "JustonBystrom111@gmail.com",
-    "phone": "218-576-9983",
-    "address": null,
-    "website": null,
-    "description": "Juston Bystrom",
-    "services": [],
-    "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "General Construction and Remodeling",
+    "subcategories": [
+      "General Construction and Remodeling"
+    ],
     "image": null
   },
   {
     "name": "Casey Foster",
     "email": null,
-    "phone": "218-370-2357",
+    "phones": [
+      "218-370-2357"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "General Construction and Remodeling",
-    "image": null
-  },
-  {
-    "name": "Nace Hagemann",
-    "email": null,
-    "phone": "218-370-1613",
-    "address": null,
-    "website": null,
-    "description": "Homewewrx LLC . -siding -flooring -soffit -fascia -decks -windows & doors and much more! Tracey Roberts 218-491-5767",
-    "services": [],
-    "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "General Construction and Remodeling",
+    "subcategories": [
+      "General Construction and Remodeling"
+    ],
     "image": null
   },
   {
     "name": "A & M Construction",
     "email": null,
-    "phone": "218-370-9980",
+    "phones": [
+      "218-370-9980"
+    ],
     "address": null,
     "website": null,
     "description": "Grand Marais Jason Zimmer Site clearing/roads & driveways/dozer/excavator work/retaining walls/demolition/etc.",
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "General Construction and Remodeling",
+    "subcategories": [
+      "General Construction and Remodeling"
+    ],
     "image": null
   },
   {
     "name": "JSK Build & Insulate LLC",
     "email": null,
-    "phone": "218-370-0450",
+    "phones": [
+      "218-370-0450"
+    ],
     "address": null,
     "website": null,
     "description": "Custom Built Homes & Remodel Spray Foam insulation Blown in cellulose insulation Specializing in energy efficient home building",
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "General Construction and Remodeling",
+    "subcategories": [
+      "General Construction and Remodeling"
+    ],
     "image": null
   },
   {
     "name": "KGM Contractors",
     "email": "heath@kgmcontractors.com",
-    "phone": "218-666-6023",
+    "phones": [
+      "218-666-6023",
+      "218-780-9267"
+    ],
     "address": null,
     "website": null,
-    "description": "Heath Line - Angora, MN or 218-780-9267 (cell)",
+    "description": "Heath Line - Angora, MN or  (cell)",
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "General Construction and Remodeling",
+    "subcategories": [
+      "General Construction and Remodeling"
+    ],
     "image": null
   },
   {
     "name": "McDonnell Construction",
     "email": "Jmcdonnell_llc@hotmail.com",
-    "phone": "218-370-5898",
+    "phones": [
+      "218-370-5898"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "General Construction and Remodeling",
+    "subcategories": [
+      "General Construction and Remodeling"
+    ],
     "image": null
   },
   {
     "name": "Jake Kelehan",
     "email": null,
-    "phone": "218-264-9491",
+    "phones": [
+      "218-264-9491"
+    ],
     "address": null,
     "website": null,
     "description": "Light Carpentry/Door & Window Installation",
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "General Construction and Remodeling",
+    "subcategories": [
+      "General Construction and Remodeling",
+      "Windows and Doors"
+    ],
     "image": null
   },
   {
     "name": "Issak Hansen Custom Builders",
     "email": null,
-    "phone": "218-663-7201",
+    "phones": [
+      "218-663-7201"
+    ],
     "address": null,
     "website": null,
     "description": "Lutsen",
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "General Construction and Remodeling",
+    "subcategories": [
+      "General Construction and Remodeling"
+    ],
     "image": null
   },
   {
     "name": "Skildum & Co. LLC",
     "email": null,
-    "phone": "218-370-8516",
+    "phones": [
+      "218-370-8516"
+    ],
     "address": null,
     "website": "https://www.facebook.com/profile.php?id=100054634771240",
     "description": null,
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "General Construction and Remodeling",
+    "subcategories": [
+      "General Construction and Remodeling"
+    ],
     "image": null
   },
   {
     "name": "Smith Construction - Grand Marais",
     "email": null,
-    "phone": "218-387-1074",
+    "phones": [
+      "218-387-1074"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "General Construction and Remodeling",
+    "subcategories": [
+      "General Construction and Remodeling"
+    ],
     "image": null
   },
   {
     "name": "Artikos Custom Builders",
     "email": null,
-    "phone": "218-475-0122",
+    "phones": [
+      "218-475-0122"
+    ],
     "address": null,
     "website": "https://Arktikosbuilders.com",
     "description": "Hovland (Custom Home Builders)",
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "General Construction and Remodeling",
+    "subcategories": [
+      "General Construction and Remodeling"
+    ],
     "image": null
   },
   {
     "name": "Works Construction - Grand Marais",
     "email": "nathan@worksconstruction.org",
-    "phone": null,
+    "phones": [],
     "address": null,
     "website": "https://worksconstructioninfo.com",
     "description": "370-9626",
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "General Construction and Remodeling",
+    "subcategories": [
+      "General Construction and Remodeling"
+    ],
     "image": null
   },
   {
     "name": "McDonnel Construction",
     "email": null,
-    "phone": "218-370-5898",
+    "phones": [
+      "218-370-5898"
+    ],
     "address": null,
     "website": "https://www.facebook.com/profile.php?id=100054239720290",
     "description": null,
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "General Construction and Remodeling",
+    "subcategories": [
+      "General Construction and Remodeling"
+    ],
     "image": null
   },
   {
     "name": "SJ Bautch Construction - Grand Marais",
     "email": null,
-    "phone": "218-387-9005",
+    "phones": [
+      "218-387-9005"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "General Construction and Remodeling",
+    "subcategories": [
+      "General Construction and Remodeling"
+    ],
     "image": null
   },
   {
     "name": "SDW Construction - Grand Marais",
     "email": null,
-    "phone": "218-387-3192",
+    "phones": [
+      "218-387-3192",
+      "218-370-1229"
+    ],
     "address": null,
     "website": null,
-    "description": "Seth Williams 218-370-1229",
+    "description": "Seth Williams",
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "General Construction and Remodeling",
+    "subcategories": [
+      "General Construction and Remodeling"
+    ],
     "image": null
   },
   {
     "name": "Taiga Design & Build LLC - Grand Marais",
     "email": null,
-    "phone": "218-370-0944",
+    "phones": [
+      "218-370-0944"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "General Construction and Remodeling",
+    "subcategories": [
+      "General Construction and Remodeling"
+    ],
     "image": null
   },
   {
     "name": "KJP Construction LLC - Grand Marais",
     "email": null,
-    "phone": "218-370-8736",
+    "phones": [
+      "218-370-8736"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "General Construction and Remodeling",
+    "subcategories": [
+      "General Construction and Remodeling"
+    ],
     "image": null
   },
   {
     "name": "Beran's Log Cabins - Grand Marais",
     "email": null,
-    "phone": "715-558-9213",
+    "phones": [
+      "715-558-9213"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "General Construction and Remodeling",
+    "subcategories": [
+      "General Construction and Remodeling"
+    ],
     "image": null
   },
   {
     "name": "Jared Smith",
     "email": null,
-    "phone": "218-370-0450",
+    "phones": [
+      "218-370-0450"
+    ],
     "address": null,
     "website": null,
     "description": "(Spray foam and blown cellulose insulation)",
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "Insulation",
+    "subcategories": [
+      "Insulation"
+    ],
     "image": null
   },
   {
     "name": "JSK Contracting LLC",
     "email": null,
-    "phone": "218-264-9629",
+    "phones": [
+      "218-264-9629"
+    ],
     "address": null,
     "website": null,
     "description": "Eric Koch",
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "Insulation",
+    "subcategories": [
+      "Insulation"
+    ],
     "image": null
   },
   {
     "name": "Ryan Koch",
     "email": "JSKcontractingLLC@gmail.com",
-    "phone": "218-264-9693",
+    "phones": [
+      "218-264-9693"
+    ],
     "address": null,
     "website": null,
     "description": "Spray Foam insulation and Air sealing.",
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "Insulation",
+    "subcategories": [
+      "Insulation"
+    ],
     "image": null
   },
   {
     "name": "Mike LaFreniere - Grand Marais",
     "email": null,
-    "phone": "218-370-8906",
+    "phones": [
+      "218-370-8906",
+      "218-370-2227"
+    ],
     "address": null,
     "website": null,
-    "description": "-  218-370-2227",
+    "description": "-",
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "Roofing Installation & Repairs",
+    "subcategories": [
+      "Roofing Installation & Repairs"
+    ],
     "image": null
   },
   {
     "name": "Unimoose Ent. LLC",
     "email": "rpstone13@gmai.com",
-    "phone": "218-443-0438",
+    "phones": [
+      "218-443-0438"
+    ],
     "address": null,
     "website": "https://unimoose.squarespace.com/",
     "description": "Matt Stone RHINO Roofing (out of Duluth) 218-724-ROOF rhinoroofer.com",
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "Roofing Installation & Repairs",
-    "image": null
-  },
-  {
-    "name": "Bystrom Construction LLC",
-    "email": "JustonBystrom111@gmail.com",
-    "phone": "218-576-9983",
-    "address": null,
-    "website": null,
-    "description": "Juston Bystrom",
-    "services": [],
-    "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "Roofing Installation & Repairs",
+    "subcategories": [
+      "Roofing Installation & Repairs"
+    ],
     "image": null
   },
   {
     "name": "Peter Henrikson Timber Framing - Grand Marais",
     "email": null,
-    "phone": "218-370-8415",
+    "phones": [
+      "218-370-8415"
+    ],
     "address": null,
     "website": "https://peterhenrikson.com",
     "description": null,
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "Timber Framing",
+    "subcategories": [
+      "Timber Framing"
+    ],
     "image": null
   },
   {
     "name": "Mike Loeffler",
     "email": null,
-    "phone": null,
+    "phones": [],
     "address": null,
     "website": "https://www.woodspirithandcraft.com/mike-loeffler",
     "description": "(Timber-Framing & Furniture)",
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "Timber Framing",
+    "subcategories": [
+      "Timber Framing"
+    ],
     "image": null
   },
   {
     "name": "McKeever Well-Drilling - Schroeder",
     "email": null,
-    "phone": "218-663-7574",
+    "phones": [
+      "218-663-7574"
+    ],
     "address": null,
     "website": null,
     "description": null,
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "Well Drilling",
+    "subcategories": [
+      "Well Drilling"
+    ],
     "image": null
   },
   {
     "name": "Heritage Window and Door/Renewal by Andersen - Superior WI",
     "email": null,
-    "phone": "715-394-7390",
+    "phones": [
+      "715-394-7390"
+    ],
     "address": null,
     "website": "https://heritagewindow.com",
     "description": "northlandrba.com",
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "Windows and Doors",
-    "image": null
-  },
-  {
-    "name": "Jake Kelehan",
-    "email": null,
-    "phone": "218-264-9491",
-    "address": null,
-    "website": null,
-    "description": "Light Carpentry/Door & Window Installation",
-    "services": [],
-    "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "Windows and Doors",
+    "subcategories": [
+      "Windows and Doors"
+    ],
     "image": null
   },
   {
     "name": "Les Grumdahl Siding & Windows LLC",
     "email": null,
-    "phone": "218-728-3060",
+    "phones": [
+      "218-728-3060"
+    ],
     "address": null,
     "website": null,
     "description": "Duluth (Ryan Grumdahl Sales)",
     "services": [],
     "category": "BUILDING AND CONSTRUCTION",
-    "subcategory": "Windows and Doors",
+    "subcategories": [
+      "Windows and Doors"
+    ],
     "image": null
   }
 ]

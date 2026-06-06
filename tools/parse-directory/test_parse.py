@@ -6,15 +6,20 @@ def test_parse_business_text_full():
     text = "Ace Plumbing | 218-555-0101 | ace@example.com | aceplumbing.com | Drain cleaning and water heaters"
     result = parse_business_text(text)
     assert result["name"] == "Ace Plumbing"
-    assert result["phone"] == "218-555-0101"
+    assert result["phones"] == ["218-555-0101"]   # changed: list
     assert result["email"] == "ace@example.com"
     assert result["website"] == "https://aceplumbing.com"
 
 def test_parse_business_text_name_only():
     result = parse_business_text("Betty's Childcare")
     assert result["name"] == "Betty's Childcare"
-    assert result["phone"] is None
+    assert result["phones"] == []    # changed: empty list
     assert result["email"] is None
+
+def test_parse_business_text_two_phones():
+    text = "Bob's Tree Service | (218) 555-0101 | 218.555.0202 | Trees removed"
+    result = parse_business_text(text)
+    assert result["phones"] == ["218-555-0101", "218-555-0202"]
 
 def test_normalize_phone():
     assert normalize_phone("(218) 555-0101") == "218-555-0101"
