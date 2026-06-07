@@ -128,7 +128,7 @@
             {#snippet child({ props })}
               <button
                 {...props}
-                class="rounded-md p-1.5 text-muted-foreground hover:bg-muted hover:text-foreground"
+                class="rounded-md -mt-2 -mr-2 p-2 text-muted-foreground hover:bg-muted hover:text-foreground"
                 aria-label="More options"
               >
                 <Settings class="h-4 w-4" />
@@ -137,11 +137,11 @@
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuItem
-              class="text-destructive focus:text-destructive"
+              class="text-destructive focus:text-destructive flex items-center gap-2 px-2 text-nowrap"
               onclick={() => (deleteConfirmOpen = true)}
             >
-              <Trash2 class="mr-2 h-4 w-4" />
-              Delete listing
+              <Trash2 class="h-4 w-4" />
+              Delete Listing
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

@@ -55,7 +55,7 @@
 				<DialogTitle class="flex-1 text-base leading-snug">{business.name}</DialogTitle>
 				{#if onedit}
 					<button
-						class="shrink-0 rounded-md p-1.5 text-muted-foreground hover:bg-muted hover:text-foreground"
+						class="-mt-2 p-2 shrink-0 rounded-md text-muted-foreground hover:bg-muted hover:text-foreground"
 						aria-label="Edit listing"
 						onclick={() => { open = false; onedit!(business); }}
 					>
