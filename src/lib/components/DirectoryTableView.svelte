@@ -171,7 +171,7 @@
 						class="group cursor-pointer"
 						onclick={() => openProfile(business)}
 					>
-						<!-- Name + subcategory pills -->
+						<!-- Name + service pills -->
 						<TableCell class="overflow-hidden">
 							<div class="flex items-center gap-2">
 								<p class="truncate text-sm font-medium leading-snug underline-offset-2 group-hover:underline">{business.name}</p>
@@ -182,13 +182,13 @@
 									>Edit</button>
 								{/if}
 							</div>
-							{#if business.subcategories.length > 0}
+							{#if business.services.length > 0}
 								<div class="mt-0.5 flex flex-nowrap gap-1 overflow-hidden">
-									{#each business.subcategories.slice(0, 2) as sub (sub)}
-										<span class="shrink-0 rounded-sm bg-muted px-1.5 py-0.5 text-[10px] leading-tight text-muted-foreground">{sub}</span>
+									{#each business.services.slice(0, 2) as svc (svc.id)}
+										<span class="shrink-0 rounded-sm bg-muted px-1.5 py-0.5 text-[10px] leading-tight text-muted-foreground">{svc.name}</span>
 									{/each}
-									{#if business.subcategories.length > 2}
-										<span class="shrink-0 rounded-sm bg-muted px-1.5 py-0.5 text-[10px] leading-tight text-muted-foreground">+{business.subcategories.length - 2} more</span>
+									{#if business.services.length > 2}
+										<span class="shrink-0 rounded-sm bg-muted px-1.5 py-0.5 text-[10px] leading-tight text-muted-foreground">+{business.services.length - 2} more</span>
 									{/if}
 								</div>
 							{/if}

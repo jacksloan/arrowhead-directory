@@ -28,13 +28,16 @@
 	const grouped = $derived.by(() => {
 		const map = new SvelteMap<string, Business[]>();
 		for (const b of filtered) {
-			if (!map.has(b.category)) map.set(b.category, []);
-			map.get(b.category)!.push(b);
+			const key = b.categories[0]?.name ?? 'Uncategorized';
+			if (!map.has(key)) map.set(key, []);
+			map.get(key)!.push(b);
 		}
 		return map;
 	});
 
-	const activeCategories = $derived(new SvelteSet(filtered.map((b) => b.category)));
+	const activeCategories = $derived(
+		new SvelteSet(filtered.map((b) => b.categories[0]?.name ?? 'Uncategorized'))
+	);
 
 	let expanded = new SvelteSet<string>();
 
@@ -127,14 +130,14 @@
 									class="flex w-full flex-col gap-2 rounded-xl border bg-card p-4 text-left shadow-sm transition-colors hover:bg-muted/30 focus-visible:outline-2 focus-visible:outline-primary"
 									onclick={() => openProfile(business)}
 								>
-									<!-- Name + subcategories -->
+									<!-- Name + services -->
 									<div class="flex w-full items-start justify-between gap-2">
 										<div class="min-w-0">
 											<p class="text-sm font-semibold leading-snug">{business.name}</p>
-											{#if business.subcategories.length > 0}
+											{#if business.services.length > 0}
 												<div class="mt-1 flex flex-wrap gap-1">
-													{#each business.subcategories as sub (sub)}
-														<span class="rounded-sm bg-muted px-1.5 py-0.5 text-[10px] leading-tight text-muted-foreground">{sub}</span>
+													{#each business.services as svc (svc.id)}
+														<span class="rounded-sm bg-muted px-1.5 py-0.5 text-[10px] leading-tight text-muted-foreground">{svc.name}</span>
 													{/each}
 												</div>
 											{/if}
