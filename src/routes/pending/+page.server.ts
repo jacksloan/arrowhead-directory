@@ -11,12 +11,19 @@ export const load: PageServerLoad = async ({ locals }) => {
 
 	const { data: businesses, error: dbError } = await locals.supabase
 		.from('businesses')
-		.select('*')
+		.select('*, business_categories ( categories (*) ), business_services ( services (*) )')
 		.eq('status', 'pending')
 		.order('created_at');
 
 	if (dbError) throw new Error(dbError.message);
-	return { businesses: businesses ?? [] };
+
+	const mapped = (businesses ?? []).map((b: any) => ({
+		...b,
+		categories: (b.business_categories ?? []).map((bc: any) => bc.categories),
+		services: (b.business_services ?? []).map((bs: any) => bs.services)
+	}));
+
+	return { businesses: mapped };
 };
 
 export const actions: Actions = {
