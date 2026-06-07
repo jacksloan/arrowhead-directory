@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import { invalidateAll } from '$app/navigation';
 	import Phone from '@lucide/svelte/icons/phone';
 	import Mail from '@lucide/svelte/icons/mail';
 	import Link from '@lucide/svelte/icons/link';
@@ -17,7 +18,7 @@
 		SelectItem,
 		SelectTrigger
 	} from '$lib/components/ui/select/index.js';
-	import type { Business, BusinessStatus, LookupSuggestion } from '$lib/types';
+	import type { Business, BusinessStatus } from '$lib/types';
 
 	let { data } = $props();
 
@@ -28,10 +29,8 @@
 	let chosenStatus = $state<BusinessStatus>('approved');
 	let submitting = $state(false);
 	let errorMsg = $state<string | null>(null);
-	let removedSuggestionIds = $state(new Set<string>());
-	const suggestions = $derived(
-		data.suggestions.filter((s: LookupSuggestion) => !removedSuggestionIds.has(s.id))
-	);
+	let submittingSuggestionId = $state<string | null>(null);
+	const suggestions = $derived(data.suggestions);
 
 	function openDialog(b: Business) {
 		selected = b;
@@ -162,29 +161,37 @@
 								method="POST"
 								action="/pending?/approveSuggestion"
 								use:enhance={() => {
+									submittingSuggestionId = suggestion.id;
 									return async ({ result }) => {
-										if (result.type === 'success' && (result.data as any)?.id) {
-											removedSuggestionIds.add((result.data as any).id);
+										if (result.type === 'success') {
+											await invalidateAll();
 										}
+										submittingSuggestionId = null;
 									};
 								}}
 							>
 								<input type="hidden" name="id" value={suggestion.id} />
-								<Button type="submit" size="sm">Approve</Button>
+								<Button type="submit" size="sm" disabled={submittingSuggestionId === suggestion.id}>
+									{submittingSuggestionId === suggestion.id ? 'Working…' : 'Approve'}
+								</Button>
 							</form>
 							<form
 								method="POST"
 								action="/pending?/rejectSuggestion"
 								use:enhance={() => {
+									submittingSuggestionId = suggestion.id;
 									return async ({ result }) => {
-										if (result.type === 'success' && (result.data as any)?.id) {
-											removedSuggestionIds.add((result.data as any).id);
+										if (result.type === 'success') {
+											await invalidateAll();
 										}
+										submittingSuggestionId = null;
 									};
 								}}
 							>
 								<input type="hidden" name="id" value={suggestion.id} />
-								<Button type="submit" size="sm" variant="outline">Reject</Button>
+								<Button type="submit" size="sm" variant="outline" disabled={submittingSuggestionId === suggestion.id}>
+									{submittingSuggestionId === suggestion.id ? 'Working…' : 'Reject'}
+								</Button>
 							</form>
 						</div>
 					</div>
