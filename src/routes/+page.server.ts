@@ -172,5 +172,30 @@ export const actions: Actions = {
 
 		if (dbError) return fail(500, { message: dbError.message });
 		return { success: true };
+	},
+
+	suggestLookup: async ({ request, locals }) => {
+		const { user } = await locals.safeGetSession();
+		if (!user) return fail(401, { message: 'Not authenticated' });
+
+		const formData = await request.formData();
+		const type = formData.get('type') as string;
+		const name = (formData.get('name') as string)?.trim();
+		const business_id = (formData.get('business_id') as string) || null;
+
+		if (!['category', 'service'].includes(type)) {
+			return fail(400, { message: 'Invalid suggestion type.' });
+		}
+		if (!name) return fail(400, { message: 'Name is required.' });
+
+		const { error: dbError } = await locals.supabase.from('lookup_suggestions').insert({
+			type,
+			name,
+			suggested_by: user.email!,
+			business_id,
+		});
+
+		if (dbError) return fail(500, { message: dbError.message });
+		return { success: true };
 	}
 };
