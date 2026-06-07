@@ -38,6 +38,7 @@
   import Check from '@lucide/svelte/icons/check';
   import { Popover, PopoverContent, PopoverTrigger } from '$lib/components/ui/popover/index.js';
   import { lookupStore, ensureLookupLoaded } from '$lib/stores/lookup.svelte';
+  import SuggestLookupDialog from './SuggestLookupDialog.svelte';
   import type { Business } from '$lib/types';
 
   let {
@@ -113,6 +114,8 @@
   let deleteConfirmOpen = $state(false);
   let deleting = $state(false);
   let deleteError = $state<string | null>(null);
+  let suggestCategoryOpen = $state(false);
+  let suggestServiceOpen = $state(false);
 </script>
 
 <Dialog bind:open>
@@ -173,7 +176,16 @@
         </div>
 
         <div class="col-span-2 flex flex-col gap-1.5">
-          <Label>Categories</Label>
+          <div class="flex items-center justify-between">
+            <Label>Categories</Label>
+            <button
+              type="button"
+              class="text-xs text-muted-foreground hover:text-foreground"
+              onclick={() => (suggestCategoryOpen = true)}
+            >
+              Suggest a category
+            </button>
+          </div>
           <input type="hidden" name="categories" value={$form.categories} />
           <Popover>
             <PopoverTrigger>
@@ -213,7 +225,16 @@
         </div>
 
         <div class="col-span-2 flex flex-col gap-1.5">
-          <Label>Services</Label>
+          <div class="flex items-center justify-between">
+            <Label>Services</Label>
+            <button
+              type="button"
+              class="text-xs text-muted-foreground hover:text-foreground"
+              onclick={() => (suggestServiceOpen = true)}
+            >
+              Suggest a service
+            </button>
+          </div>
           <input type="hidden" name="services" value={$form.services} />
           <Popover>
             <PopoverTrigger>
@@ -316,3 +337,15 @@
     </AlertDialogFooter>
   </AlertDialogContent>
 </AlertDialog>
+
+<SuggestLookupDialog
+  type="category"
+  businessId={business.id!}
+  bind:open={suggestCategoryOpen}
+/>
+
+<SuggestLookupDialog
+  type="service"
+  businessId={business.id!}
+  bind:open={suggestServiceOpen}
+/>
