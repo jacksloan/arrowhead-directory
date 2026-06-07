@@ -1,8 +1,8 @@
 # Arrowhead Business Directory
 
-A community business directory for the Arrowhead neighborhood.
+A community business directory for the Arrowhead region.
 
-**Live site:** https://arrowhead-directory.vercel.app
+**Live site:** https://arrowhead.directory
 
 ---
 
@@ -116,3 +116,44 @@ src/
 | Database + Auth | Supabase (Postgres, magic-link auth) |
 | Hosting | Vercel |
 | Forms | sveltekit-superforms + zod |
+
+---
+
+## Contributing
+
+Contributions are welcome! Before you write any code, please **open an issue** to describe what you'd like to change or add. This keeps effort from going to waste — if something isn't planned or doesn't fit the direction of the project, it's much better to find that out before you spend time building it.
+
+Once your idea has been discussed and given the thumbs up, fork the repo, make your changes, and open a pull request.
+
+### Commit format
+
+We use [Conventional Commits](https://www.conventionalcommits.org/). Every commit message should follow this pattern:
+
+```
+<type>(<optional scope>): <short description>
+
+<optional body>
+```
+
+**Types:**
+
+| Type | When to use |
+|---|---|
+| `feat` | A new feature |
+| `fix` | A bug fix |
+| `docs` | Documentation only |
+| `style` | Formatting, whitespace — no logic change |
+| `refactor` | Code change that isn't a fix or feature |
+| `chore` | Dependency updates, tooling, config |
+| `revert` | Reverting a previous commit |
+
+**Examples:**
+
+```
+feat: add business search by phone number
+fix: prevent duplicate votes on feature requests
+docs: update getting started guide
+chore: upgrade jspdf to 5.0
+```
+
+Keep the description lowercase, imperative ("add", not "added" or "adds"), and under 72 characters. If more context is needed, add it in the commit body.
