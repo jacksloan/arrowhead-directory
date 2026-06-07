@@ -51,7 +51,7 @@
 <Dialog bind:open>
 	<DialogContent class="max-h-[90vh] w-[95vw] max-w-2xl overflow-y-auto">
 		<DialogHeader>
-			<div class="flex items-start gap-2 pr-6">
+			<div class="flex items-center gap-2 pr-6">
 				<DialogTitle class="flex-1 text-base leading-snug">{business.name}</DialogTitle>
 				{#if onedit}
 					<button

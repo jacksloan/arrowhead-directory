@@ -81,7 +81,7 @@
 <Dialog bind:open>
   <DialogContent class="sm:max-w-lg">
     <DialogHeader>
-      <div class="flex items-center gap-2 pr-6">
+      <div class="flex items-center gap-2 pr-10">
         <DialogTitle class="flex-1">Edit listing</DialogTitle>
         <DropdownMenu>
           <DropdownMenuTrigger>
