@@ -1,5 +1,12 @@
 export type BusinessStatus = 'approved' | 'pending' | 'rejected' | 'deleted';
 
+export type PhoneType = 'mobile' | 'home' | 'work' | 'fax';
+
+export interface Phone {
+  number: string;
+  type: PhoneType | null;
+}
+
 export interface Category {
   id: string;
   shortname: string;
@@ -16,7 +23,7 @@ export interface Business {
   id?: string;
   name: string;
   email: string | null;
-  phones: string[];
+  phones: Phone[];
   address: string | null;
   website: string | null;
   description: string | null;
