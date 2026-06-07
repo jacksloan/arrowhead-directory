@@ -6,15 +6,15 @@
   let removedIds = $state(new Set<string>());
   const suggestions = $derived(data.suggestions.filter((s: any) => !removedIds.has(s.id)));
 
-  const DIFF_FIELDS: { key: string; label: string; array?: boolean; html?: boolean }[] = [
+  const DIFF_FIELDS: { key: string; label: string; array?: boolean; html?: boolean; businessKey?: string }[] = [
     { key: 'name', label: 'Name' },
     { key: 'email', label: 'Email' },
     { key: 'phones', label: 'Phones', array: true },
     { key: 'website', label: 'Website' },
     { key: 'address', label: 'Address' },
     { key: 'category', label: 'Category' },
-    { key: 'subcategories', label: 'Subcategories', array: true },
-    { key: 'services', label: 'Services', array: true },
+    { key: 'subcategories', label: 'Categories', array: true, businessKey: 'categories_display' },
+    { key: 'services', label: 'Services', array: true, businessKey: 'services_display' },
     { key: 'description', label: 'Description', html: true },
   ];
 
@@ -40,6 +40,26 @@
       return stripHtml(suggestion[key]) !== stripHtml(business[key]);
     }
     return display(suggestion[key], isArray) !== display(business[key], isArray);
+  }
+
+  function businessDisplayRaw(business: any, field: typeof DIFF_FIELDS[number]): any {
+    if (field.businessKey === 'categories_display') {
+      return (business?.categories ?? []).map((c: any) => c.name);
+    }
+    if (field.businessKey === 'services_display') {
+      return (business?.services ?? []).map((s: any) => s.name);
+    }
+    return business?.[field.key];
+  }
+
+  function businessDisplay(business: any, field: typeof DIFF_FIELDS[number]): string {
+    if (field.businessKey === 'categories_display') {
+      return display((business?.categories ?? []).map((c: any) => c.name), true);
+    }
+    if (field.businessKey === 'services_display') {
+      return display((business?.services ?? []).map((s: any) => s.name), true);
+    }
+    return display(business?.[field.key], field.array);
   }
 
   let submitting = $state<string | null>(null);
@@ -135,16 +155,19 @@
               </thead>
               <tbody>
                 {#each DIFF_FIELDS as field (field.key)}
-                  {@const changed = business && hasChanged(suggestion, business, field.key, field.array, field.html)}
+                  {@const businessRaw = businessDisplayRaw(business, field)}
+                  {@const changed = business && (field.html
+                    ? stripHtml(suggestion[field.key]) !== stripHtml(businessRaw)
+                    : display(suggestion[field.key], field.array) !== display(businessRaw, field.array))}
                   <tr class="border-b last:border-0 {changed ? 'bg-yellow-50 dark:bg-yellow-900/10' : ''}">
                     <td class="px-4 py-2 font-medium text-muted-foreground">{field.label}</td>
                     <td class="px-4 py-2 text-muted-foreground">
                       {#if field.html}
                         <div class="[&_ol]:list-decimal [&_ol]:pl-4 [&_ul]:list-disc [&_ul]:pl-4">
-                          {@html business ? display(business[field.key], field.array) : '—'}
+                          {@html business ? businessDisplay(business, field) : '—'}
                         </div>
                       {:else}
-                        {business ? display(business[field.key], field.array) : '—'}
+                        {business ? businessDisplay(business, field) : '—'}
                       {/if}
                     </td>
                     <td class="px-4 py-2 {changed ? 'font-medium text-foreground' : 'text-muted-foreground'}">
