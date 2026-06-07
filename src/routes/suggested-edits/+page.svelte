@@ -1,10 +1,10 @@
 <script lang="ts">
   import { enhance } from '$app/forms';
+  import { invalidateAll } from '$app/navigation';
 
   let { data } = $props();
 
-  let removedIds = $state(new Set<string>());
-  const suggestions = $derived(data.suggestions.filter((s: any) => !removedIds.has(s.id)));
+  const suggestions = $derived(data.suggestions);
 
   const DIFF_FIELDS: { key: string; label: string; array?: boolean; html?: boolean; businessKey?: string }[] = [
     { key: 'name', label: 'Name' },
@@ -99,21 +99,21 @@
                 use:enhance={() => {
                   submitting = suggestion.id;
                   return async ({ result }) => {
-                    submitting = null;
                     if (result.type === 'success') {
-                      removedIds.add(suggestion.id);
+                      await invalidateAll();
                     } else if (result.type === 'failure') {
                       errors[suggestion.id] = (result.data as any)?.message ?? 'Error';
                     }
+                    submitting = null;
                   };
                 }}
               >
                 <input type="hidden" name="id" value={suggestion.id} />
                 <button
                   type="submit"
-                  class="rounded-md border border-border px-3 py-1.5 text-xs text-muted-foreground hover:bg-muted"
+                  class="rounded-md border border-border px-3 py-1.5 text-xs text-muted-foreground hover:bg-muted disabled:opacity-50"
                   disabled={submitting === suggestion.id}
-                >Reject</button>
+                >{submitting === suggestion.id ? 'Working…' : 'Reject'}</button>
               </form>
               <form
                 method="POST"
@@ -121,21 +121,21 @@
                 use:enhance={() => {
                   submitting = suggestion.id;
                   return async ({ result }) => {
-                    submitting = null;
                     if (result.type === 'success') {
-                      removedIds.add(suggestion.id);
+                      await invalidateAll();
                     } else if (result.type === 'failure') {
                       errors[suggestion.id] = (result.data as any)?.message ?? 'Error';
                     }
+                    submitting = null;
                   };
                 }}
               >
                 <input type="hidden" name="id" value={suggestion.id} />
                 <button
                   type="submit"
-                  class="rounded-md bg-primary px-3 py-1.5 text-xs text-primary-foreground hover:bg-primary/90"
+                  class="rounded-md bg-primary px-3 py-1.5 text-xs text-primary-foreground hover:bg-primary/90 disabled:opacity-50"
                   disabled={submitting === suggestion.id}
-                >Approve</button>
+                >{submitting === suggestion.id ? 'Working…' : 'Approve'}</button>
               </form>
             </div>
           </div>
