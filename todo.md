@@ -10,6 +10,10 @@
 - [x] Lookup suggestions approve/reject should show a loading status and refresh when the user clicks
 - [x] Reload feature requests list when the user clicks approve/reject and show some loading indicator
 - [ ] Directory toolbar redesign (split layout + Add Business button, mobile-friendly) — see docs/directory-toolbar-redesign.md
+- [ ] Update FAQ, link is only valid for 1 hour
+- [ ] Simplify "suggest an edit" to be simple JSON metadata with only changed fields so it doesn't clobber the existing data
+- [ ] Edit business and suggest business dialog should use a shared form component
+- [ ] Emails are not currently in the edit/suggest dialogs, need those added in a disabled state (admin can change an email)
 
 ## Deferred
 

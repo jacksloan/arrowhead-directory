@@ -176,7 +176,6 @@
             <Input
               name="phone_1"
               bind:value={$form.phone_1}
-              placeholder="218-555-0101"
               class="flex-1"
             />
             <Select type="single" name="phone_1_type" bind:value={$form.phone_1_type}>
@@ -194,7 +193,6 @@
             <Input
               name="phone_2"
               bind:value={$form.phone_2}
-              placeholder="218-555-0202"
               class="flex-1"
             />
             <Select type="single" name="phone_2_type" bind:value={$form.phone_2_type}>
