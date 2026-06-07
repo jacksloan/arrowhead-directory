@@ -57,6 +57,22 @@
 		</a>
 	</div>
 
+	<div class="mb-8 rounded-lg border p-6">
+		<h2 class="mb-2 text-lg font-semibold">Open source</h2>
+		<p class="mb-4 text-sm text-muted-foreground">
+			This site is free and open source. If you're a developer and want to help improve it, contributions
+			are welcome — take a look at the code on GitHub.
+		</p>
+		<a
+			href="https://github.com/jacksloan/arrowhead-directory"
+			target="_blank"
+			rel="noopener noreferrer"
+			class="inline-flex items-center gap-2 text-sm text-primary underline-offset-4 hover:underline"
+		>
+			View on GitHub →
+		</a>
+	</div>
+
 	<!--  <div class="rounded-lg border p-6">-->
 	<!--    <h2 class="mb-2 text-lg font-semibold">Jack Sloan — Developer</h2>-->
 	<!--    <p class="mb-4 text-sm text-muted-foreground">-->
