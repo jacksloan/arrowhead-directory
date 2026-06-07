@@ -90,7 +90,7 @@ export async function downloadDirectoryPdf(businesses: Business[], title = 'Arro
       // Contact details
       doc.setTextColor(80);
       const contacts: string[] = [];
-      if (b.phones.length > 0) contacts.push(b.phones[0]);
+      if (b.phones.length > 0) contacts.push(b.phones[0].number);
       if (b.email) contacts.push(b.email);
       if (b.website) {
         try {

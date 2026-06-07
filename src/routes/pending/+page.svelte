@@ -112,7 +112,7 @@
 						{#if business.phones.length > 0}
 							<div class="flex items-center gap-1.5 text-xs text-muted-foreground">
 								<Phone class="h-3 w-3 shrink-0" />
-								<span class="truncate">{business.phones[0]}</span>
+								<span class="truncate">{business.phones[0].number}</span>
 							</div>
 						{/if}
 						{#if business.email}

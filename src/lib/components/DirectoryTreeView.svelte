@@ -116,9 +116,9 @@
 							<!-- Phone -->
 							{#if business.phones[0]}
 								<a
-									href="tel:{business.phones[0].replace(/\D/g, '')}"
+									href="tel:{business.phones[0].number.replace(/\D/g, '')}"
 									class="text-muted-foreground hover:text-foreground"
-									title={business.phones[0]}
+									title={business.phones[0].number}
 								><Phone class="h-3.5 w-3.5" /></a>
 							{:else}
 								<span class="opacity-25"><Phone class="h-3.5 w-3.5" /></span>

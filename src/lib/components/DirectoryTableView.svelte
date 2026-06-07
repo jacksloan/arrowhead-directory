@@ -195,12 +195,12 @@
 							<div class="flex flex-col gap-1">
 								{#if business.phones[0]}
 									<a
-										href="tel:{business.phones[0].replace(/\D/g, '')}"
+										href="tel:{business.phones[0].number.replace(/\D/g, '')}"
 										class="flex items-center gap-1.5 text-xs text-muted-foreground underline-offset-2 hover:text-foreground hover:underline"
 										onclick={(e) => e.stopPropagation()}
 									>
 										<Phone class="h-3 w-3 shrink-0" />
-										<span class="truncate">{business.phones[0]}</span>
+										<span class="truncate">{business.phones[0].number}</span>
 									</a>
 								{/if}
 								{#if browser && business.email}
