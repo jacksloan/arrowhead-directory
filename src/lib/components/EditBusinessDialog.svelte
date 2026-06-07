@@ -67,9 +67,8 @@
       $form.address = business.address ?? null;
       $form.website = business.website ?? null;
       $form.description = business.description ?? null;
-      $form.category = business.category;
-      $form.subcategories = business.subcategories.join(', ');
-      $form.services = business.services.join(', ');
+      $form.categories = business.categories.map((c) => c.name).join(', ');
+      $form.services = business.services.map((s) => s.name).join(', ');
     }
   });
 
@@ -110,7 +109,6 @@
 
     <form method="POST" action="/?/updateBusiness" use:enhance class="flex flex-col gap-4">
       <input type="hidden" name="id" bind:value={$form.id} />
-      <input type="hidden" name="category" bind:value={$form.category} />
 
       <div class="grid grid-cols-2 gap-4">
         <div class="col-span-2 flex flex-col gap-1.5">
@@ -134,6 +132,19 @@
         <div class="col-span-2 flex flex-col gap-1.5">
           <Label for="eb-address">Address</Label>
           <Input id="eb-address" name="address" bind:value={$form.address} />
+        </div>
+
+        <div class="col-span-2 flex flex-col gap-1.5">
+          <Label for="eb-categories">Categories</Label>
+          <Input id="eb-categories" name="categories" bind:value={$form.categories} placeholder="Plumbing, Electrical" />
+          <p class="text-xs text-muted-foreground">Comma-separated</p>
+          {#if $errors.categories}<p class="text-xs text-destructive">{$errors.categories}</p>{/if}
+        </div>
+
+        <div class="col-span-2 flex flex-col gap-1.5">
+          <Label for="eb-services">Services</Label>
+          <Input id="eb-services" name="services" bind:value={$form.services} placeholder="Drain cleaning, Water heater repair" />
+          <p class="text-xs text-muted-foreground">Comma-separated</p>
         </div>
 
         <div class="col-span-2 flex flex-col gap-1.5">

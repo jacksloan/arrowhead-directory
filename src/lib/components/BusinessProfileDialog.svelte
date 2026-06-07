@@ -66,13 +66,12 @@
 		</DialogHeader>
 
 		<div class="flex flex-col gap-4">
-			<!-- Category + subcategories -->
+			<!-- Categories -->
 			<div class="flex flex-wrap gap-1.5">
-				<span class="rounded-md bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
-					{business.category}
-				</span>
-				{#each business.subcategories as sub (sub)}
-					<span class="rounded-md bg-muted px-2 py-0.5 text-xs text-muted-foreground">{sub}</span>
+				{#each business.categories as cat (cat.id)}
+					<span class="rounded-md bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
+						{cat.name}
+					</span>
 				{/each}
 			</div>
 
@@ -164,8 +163,8 @@
 				<div class="flex flex-col gap-1.5">
 					<p class="text-xs font-medium uppercase tracking-wide text-muted-foreground">Services</p>
 					<div class="flex flex-wrap gap-1">
-						{#each business.services as service (service)}
-							<span class="rounded-sm bg-muted/60 px-2 py-0.5 text-xs text-foreground/70">{service}</span>
+						{#each business.services as svc (svc.id)}
+							<span class="rounded-sm bg-muted/60 px-2 py-0.5 text-xs text-foreground/70">{svc.name}</span>
 						{/each}
 					</div>
 				</div>
