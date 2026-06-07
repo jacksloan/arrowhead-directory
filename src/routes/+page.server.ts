@@ -7,18 +7,75 @@ import { getIsAdmin } from '$lib/server/admin';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const { user } = await locals.safeGetSession();
+
 	const { data: businesses, error } = await locals.supabase
 		.from('businesses')
-		.select('*')
+		.select(`
+			*,
+			business_categories ( categories (*) ),
+			business_services ( services (*) )
+		`)
 		.eq('status', 'approved')
-		.order('category')
 		.order('name');
 
 	if (error) throw new Error(error.message);
 
+	const mapped = (businesses ?? []).map((b) => ({
+		...b,
+		categories: (b.business_categories ?? []).map((bc: any) => bc.categories),
+		services: (b.business_services ?? []).map((bs: any) => bs.services)
+	}));
+
 	const form = await superValidate(zod4(businessSchema));
-	return { businesses: businesses ?? [], user, form };
+	const isAdmin = await getIsAdmin(locals.supabase, user?.email);
+	return { businesses: mapped, user, form, isAdmin };
 };
+
+function toShortname(name: string): string {
+	return name.toLowerCase().replace(/\s+/g, '_');
+}
+
+async function upsertAndLinkCategories(supabase: any, businessId: string, categoryNames: string[]) {
+	const ids: string[] = [];
+	for (const name of categoryNames) {
+		const shortname = toShortname(name);
+		const { data, error } = await supabase
+			.from('categories')
+			.upsert({ shortname, name }, { onConflict: 'shortname' })
+			.select('id')
+			.single();
+		if (error) throw new Error(error.message);
+		ids.push(data.id);
+	}
+	await supabase.from('business_categories').delete().eq('business_id', businessId);
+	if (ids.length > 0) {
+		const { error } = await supabase
+			.from('business_categories')
+			.insert(ids.map((category_id) => ({ business_id: businessId, category_id })));
+		if (error) throw new Error(error.message);
+	}
+}
+
+async function upsertAndLinkServices(supabase: any, businessId: string, serviceNames: string[]) {
+	const ids: string[] = [];
+	for (const name of serviceNames) {
+		const shortname = toShortname(name);
+		const { data, error } = await supabase
+			.from('services')
+			.upsert({ shortname, name }, { onConflict: 'shortname' })
+			.select('id')
+			.single();
+		if (error) throw new Error(error.message);
+		ids.push(data.id);
+	}
+	await supabase.from('business_services').delete().eq('business_id', businessId);
+	if (ids.length > 0) {
+		const { error } = await supabase
+			.from('business_services')
+			.insert(ids.map((service_id) => ({ business_id: businessId, service_id })));
+		if (error) throw new Error(error.message);
+	}
+}
 
 export const actions: Actions = {
 	sendMagicLink: async ({ request, locals, url }) => {
@@ -45,7 +102,16 @@ export const actions: Actions = {
 		if (!form.valid) return fail(400, { form });
 
 		const isAdminUser = await getIsAdmin(locals.supabase, user.email);
-		const { id, phones, subcategories, services, ...fields } = form.data;
+		const { id, phones, categories, services, ...fields } = form.data;
+
+		const categoryNames = categories
+			.split(',')
+			.map((s) => s.trim())
+			.filter(Boolean);
+		const serviceNames = services
+			.split(',')
+			.map((s) => s.trim())
+			.filter(Boolean);
 
 		let query = locals.supabase
 			.from('businesses')
@@ -55,24 +121,22 @@ export const actions: Actions = {
 					.split(',')
 					.map((p: string) => p.trim())
 					.filter(Boolean),
-				subcategories: subcategories
-					.split(',')
-					.map((s: string) => s.trim())
-					.filter(Boolean),
-				services: services
-					.split(',')
-					.map((s: string) => s.trim())
-					.filter(Boolean),
 				updated_at: new Date().toISOString()
 			})
 			.eq('id', id);
 
-		if (!isAdminUser) {
-			query = query.eq('email', user.email!);
-		}
+		if (!isAdminUser) query = query.eq('email', user.email!);
 
 		const { error } = await query;
 		if (error) return fail(500, { form, message: error.message });
+
+		try {
+			await upsertAndLinkCategories(locals.supabase, id, categoryNames);
+			await upsertAndLinkServices(locals.supabase, id, serviceNames);
+		} catch (e: any) {
+			return fail(500, { form, message: e.message });
+		}
+
 		return { form };
 	},
 
@@ -91,9 +155,7 @@ export const actions: Actions = {
 			.update({ status: 'deleted', updated_at: new Date().toISOString() })
 			.eq('id', id);
 
-		if (!isAdminUser) {
-			query = query.eq('email', user.email!);
-		}
+		if (!isAdminUser) query = query.eq('email', user.email!);
 
 		const { error } = await query;
 		if (error) return fail(500, { message: error.message });
@@ -112,10 +174,13 @@ export const actions: Actions = {
 			.split(',')
 			.map((p) => p.trim())
 			.filter(Boolean);
+
+		// subcategories column repurposed to store all category names
 		const subcategories = ((formData.get('subcategories') as string) ?? '')
 			.split(',')
 			.map((s) => s.trim())
 			.filter(Boolean);
+
 		const services = ((formData.get('services') as string) ?? '')
 			.split(',')
 			.map((s) => s.trim())
@@ -130,7 +195,7 @@ export const actions: Actions = {
 			address: (formData.get('address') as string) || null,
 			website: (formData.get('website') as string) || null,
 			description: (formData.get('description') as string) || null,
-			category: formData.get('category') as string,
+			category: (formData.get('category') as string) || '',
 			subcategories,
 			services
 		});
