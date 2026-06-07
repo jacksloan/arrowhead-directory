@@ -78,7 +78,7 @@
       address: business.address ?? null,
       website: business.website ?? null,
       description: business.description ?? null,
-      categoryIds: business.categories.map((c) => c.id),
+      categoryIds: business.categories.slice(0, 1).map((c) => c.id),
       serviceIds: business.services.map((s) => s.id),
     };
     untrack(() => {
@@ -97,11 +97,9 @@
     });
   });
 
-  function toggleCategory(id: string, checked: boolean) {
-    const next = new Set(selectedCategoryIds);
-    if (checked) next.add(id); else next.delete(id);
-    selectedCategoryIds = next;
-    $form.categories = [...next].join(',');
+  function selectCategory(id: string) {
+    selectedCategoryIds = new Set([id]);
+    $form.categories = id;
   }
 
   function toggleService(id: string, checked: boolean) {
@@ -192,7 +190,7 @@
               {#snippet child({ props })}
                 <Button variant="outline" {...props} class="h-auto min-h-9 w-full justify-between px-3 font-normal">
                   {#if selectedCategoryIds.size === 0}
-                    <span class="text-muted-foreground">Select categories…</span>
+                    <span class="text-muted-foreground">Select a category…</span>
                   {:else}
                     <div class="flex flex-wrap gap-1">
                       {#each lookupStore.categories.filter(c => selectedCategoryIds.has(c.id)) as cat (cat.id)}
@@ -210,7 +208,7 @@
                   <button
                     type="button"
                     class="flex w-full items-center gap-2 whitespace-nowrap rounded-sm px-2 py-1.5 text-sm hover:bg-accent"
-                    onclick={() => toggleCategory(cat.id, !selectedCategoryIds.has(cat.id))}
+                    onclick={() => selectCategory(cat.id)}
                   >
                     <Check class="h-4 w-4 {selectedCategoryIds.has(cat.id) ? 'opacity-100' : 'opacity-0'}" />
                     {cat.name}
