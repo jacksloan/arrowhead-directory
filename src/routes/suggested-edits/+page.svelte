@@ -6,7 +6,7 @@
   let removedIds = $state(new Set<string>());
   const suggestions = $derived(data.suggestions.filter((s: any) => !removedIds.has(s.id)));
 
-  const DIFF_FIELDS: { key: string; label: string; array?: boolean }[] = [
+  const DIFF_FIELDS: { key: string; label: string; array?: boolean; html?: boolean }[] = [
     { key: 'name', label: 'Name' },
     { key: 'email', label: 'Email' },
     { key: 'phones', label: 'Phones', array: true },
@@ -15,8 +15,13 @@
     { key: 'category', label: 'Category' },
     { key: 'subcategories', label: 'Subcategories', array: true },
     { key: 'services', label: 'Services', array: true },
-    { key: 'description', label: 'Description' },
+    { key: 'description', label: 'Description', html: true },
   ];
+
+  function stripHtml(html: string | null): string {
+    if (!html) return '';
+    return html.replace(/<[^>]*>/g, '').trim();
+  }
 
   function display(val: unknown, array?: boolean): string {
     if (val === null || val === undefined || val === '') return '—';
@@ -24,7 +29,16 @@
     return String(val);
   }
 
-  function hasChanged(suggestion: any, business: any, key: string, isArray: boolean = false): boolean {
+  function hasChanged(
+    suggestion: any,
+    business: any,
+    key: string,
+    isArray: boolean = false,
+    isHtml: boolean = false
+  ): boolean {
+    if (isHtml) {
+      return stripHtml(suggestion[key]) !== stripHtml(business[key]);
+    }
     return display(suggestion[key], isArray) !== display(business[key], isArray);
   }
 
@@ -121,14 +135,26 @@
               </thead>
               <tbody>
                 {#each DIFF_FIELDS as field (field.key)}
-                  {@const changed = business && hasChanged(suggestion, business, field.key, field.array)}
+                  {@const changed = business && hasChanged(suggestion, business, field.key, field.array, field.html)}
                   <tr class="border-b last:border-0 {changed ? 'bg-yellow-50 dark:bg-yellow-900/10' : ''}">
                     <td class="px-4 py-2 font-medium text-muted-foreground">{field.label}</td>
                     <td class="px-4 py-2 text-muted-foreground">
-                      {business ? display(business[field.key], field.array) : '—'}
+                      {#if field.html}
+                        <div class="[&_ol]:list-decimal [&_ol]:pl-4 [&_ul]:list-disc [&_ul]:pl-4">
+                          {@html business ? display(business[field.key], field.array) : '—'}
+                        </div>
+                      {:else}
+                        {business ? display(business[field.key], field.array) : '—'}
+                      {/if}
                     </td>
                     <td class="px-4 py-2 {changed ? 'font-medium text-foreground' : 'text-muted-foreground'}">
-                      {display(suggestion[field.key], field.array)}
+                      {#if field.html}
+                        <div class="[&_ol]:list-decimal [&_ol]:pl-4 [&_ul]:list-disc [&_ul]:pl-4">
+                          {@html display(suggestion[field.key], field.array)}
+                        </div>
+                      {:else}
+                        {display(suggestion[field.key], field.array)}
+                      {/if}
                     </td>
                   </tr>
                 {/each}

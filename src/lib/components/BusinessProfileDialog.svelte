@@ -78,7 +78,9 @@
 
 			<!-- Description -->
 			{#if business.description}
-				<p class="text-sm leading-relaxed text-foreground/80">{business.description}</p>
+				<div class="prose prose-sm max-w-none text-sm leading-relaxed text-foreground/80 [&_ul]:list-disc [&_ul]:pl-4 [&_ol]:list-decimal [&_ol]:pl-4">
+					{@html business.description}
+				</div>
 			{/if}
 
 			<hr class="border-border" />
