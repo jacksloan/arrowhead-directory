@@ -16,7 +16,7 @@
 		{/snippet}
 	</SheetTrigger>
 	<SheetContent side="left" class="w-64">
-		<nav class="mt-8 flex flex-col gap-2">
+		<nav class="mt-8 flex flex-col gap-2 pr-10">
 			<a
 				href="/"
 				onclick={() => (open = false)}
