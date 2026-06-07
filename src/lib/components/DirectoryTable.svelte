@@ -68,7 +68,9 @@
 	let search = $state('');
 	let selectedCategories = $state<string[]>([]);
 
-	const categories = $derived([...new Set(activeBusinesses.map((b) => b.category))].sort());
+	const categories = $derived(
+		[...new Set(activeBusinesses.flatMap((b) => b.categories.map((c) => c.name)))].sort()
+	);
 
 	const filtered = $derived(
 		activeBusinesses
@@ -78,12 +80,13 @@
 				const matchesSearch =
 					!q ||
 					b.name.toLowerCase().includes(q) ||
-					b.subcategories.some((s) => s.toLowerCase().includes(q)) ||
-					(b.description ?? '').toLowerCase().includes(q) ||
-					b.services.some((s) => s.toLowerCase().includes(q));
+					b.categories.some((c) => c.name.toLowerCase().includes(q)) ||
+					b.services.some((s) => s.name.toLowerCase().includes(q)) ||
+					(b.description ?? '').toLowerCase().includes(q);
 
 				const matchesCategory =
-					selectedCategories.length === 0 || selectedCategories.includes(b.category);
+					selectedCategories.length === 0 ||
+					b.categories.some((c) => selectedCategories.includes(c.name));
 
 				return matchesSearch && matchesCategory;
 			})
