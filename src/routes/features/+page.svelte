@@ -1,5 +1,6 @@
 <script lang="ts">
   import { enhance } from '$app/forms';
+  import { invalidateAll } from '$app/navigation';
   import { Button } from '$lib/components/ui/button/index.js';
   import { Input } from '$lib/components/ui/input/index.js';
   import { Label } from '$lib/components/ui/label/index.js';
@@ -232,10 +233,11 @@
                 use:enhance={() => {
                   statusUpdating = req.id;
                   return async ({ result }) => {
-                    statusUpdating = null;
                     if (result.type === 'success') {
                       localStatuses[req.id] = (result.data as any).status;
+                      await invalidateAll();
                     }
+                    statusUpdating = null;
                   };
                 }}
               >
