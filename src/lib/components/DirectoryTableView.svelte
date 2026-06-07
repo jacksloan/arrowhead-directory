@@ -23,6 +23,7 @@
 	import ChevronUp from '@lucide/svelte/icons/chevron-up';
 	import ChevronDown from '@lucide/svelte/icons/chevron-down';
 	import ChevronsUpDown from '@lucide/svelte/icons/chevrons-up-down';
+	import { browser } from '$app/environment';
 	import BusinessProfileDialog from './BusinessProfileDialog.svelte';
 	import SuggestEditDialog from './SuggestEditDialog.svelte';
 	import type { Business } from '$lib/types';
@@ -83,11 +84,6 @@
 			return { sorting };
 		}
 	});
-
-	function emailParts(email: string): [string, string] {
-		const at = email.indexOf('@');
-		return [email.slice(0, at), email.slice(at + 1)];
-	}
 
 	function copyEmail(business: Business) {
 		if (!business.email) return;
@@ -207,8 +203,7 @@
 										<span class="truncate">{business.phones[0]}</span>
 									</a>
 								{/if}
-								{#if business.email}
-									{@const [u, d] = emailParts(business.email)}
+								{#if browser && business.email}
 									<div class="flex items-center gap-1">
 										<button
 											class="flex min-w-0 items-center gap-1.5 text-xs text-muted-foreground underline-offset-2 hover:text-foreground hover:underline"
@@ -216,7 +211,7 @@
 											onclick={(e) => { e.stopPropagation(); window.location.href = `mailto:${business.email}`; }}
 										>
 											<Mail class="h-3 w-3 shrink-0" />
-											<span class="truncate">{u} [at] {d}</span>
+											<span class="truncate">{business.email}</span>
 										</button>
 										<button
 											class="shrink-0 rounded border border-border px-1 py-0.5 text-[10px] text-muted-foreground hover:bg-muted"
