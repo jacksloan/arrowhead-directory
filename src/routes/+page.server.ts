@@ -4,6 +4,7 @@ import { superValidate } from 'sveltekit-superforms';
 import { zod4 } from 'sveltekit-superforms/adapters';
 import { businessSchema } from '$lib/schemas';
 import { getIsAdmin } from '$lib/server/admin';
+import { buildPhones } from '$lib/utils/phones';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const { user } = await locals.safeGetSession();
@@ -18,6 +19,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 
 	const mapped = (businesses ?? []).map((b) => ({
 		...b,
+		phones: buildPhones(b),
 		categories: (b.business_categories ?? []).map((bc: any) => bc.categories),
 		services: (b.business_services ?? []).map((bs: any) => bs.services)
 	}));

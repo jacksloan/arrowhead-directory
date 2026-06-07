@@ -1,6 +1,7 @@
 import type { PageServerLoad, Actions } from './$types';
 import { error, fail } from '@sveltejs/kit';
 import { getIsAdmin } from '$lib/server/admin';
+import { buildPhones } from '$lib/utils/phones';
 
 function toShortname(name: string): string {
 	return name.toLowerCase().replace(/\s+/g, '_');
@@ -72,6 +73,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 		businesses: s.businesses
 			? {
 					...s.businesses,
+					phones: buildPhones(s.businesses),
 					categories: (s.businesses.business_categories ?? []).map((bc: any) => bc.categories),
 					services: (s.businesses.business_services ?? []).map((bs: any) => bs.services)
 				}

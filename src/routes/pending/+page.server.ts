@@ -1,6 +1,7 @@
 import type { PageServerLoad, Actions } from './$types';
 import { error, fail } from '@sveltejs/kit';
 import { getIsAdmin } from '$lib/server/admin';
+import { buildPhones } from '$lib/utils/phones';
 import type { BusinessStatus } from '$lib/types';
 
 const VALID_STATUSES: BusinessStatus[] = ['approved', 'pending', 'rejected'];
@@ -28,6 +29,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 
   const mapped = (businesses ?? []).map((b: any) => ({
     ...b,
+    phones: buildPhones(b),
     categories: (b.business_categories ?? []).map((bc: any) => bc.categories),
     services: (b.business_services ?? []).map((bs: any) => bs.services),
   }));
