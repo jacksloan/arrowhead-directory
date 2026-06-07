@@ -8,16 +8,11 @@ import { getIsAdmin } from '$lib/server/admin';
 export const load: PageServerLoad = async ({ locals }) => {
 	const { user } = await locals.safeGetSession();
 
-	const [{ data: businesses, error }, { data: allCategories }, { data: allServices }] =
-		await Promise.all([
-			locals.supabase
-				.from('businesses')
-				.select(`*, business_categories ( categories (*) ), business_services ( services (*) )`)
-				.eq('status', 'approved')
-				.order('name'),
-			locals.supabase.from('categories').select('*').order('name'),
-			locals.supabase.from('services').select('*').order('name')
-		]);
+	const { data: businesses, error } = await locals.supabase
+		.from('businesses')
+		.select(`*, business_categories ( categories (*) ), business_services ( services (*) )`)
+		.eq('status', 'approved')
+		.order('name');
 
 	if (error) throw new Error(error.message);
 
@@ -29,7 +24,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 
 	const form = await superValidate(zod4(businessSchema));
 	const isAdmin = await getIsAdmin(locals.supabase, user?.email);
-	return { businesses: mapped, user, form, isAdmin, allCategories: allCategories ?? [], allServices: allServices ?? [] };
+	return { businesses: mapped, user, form, isAdmin };
 };
 
 async function linkCategories(supabase: any, businessId: string, categoryIds: string[]) {

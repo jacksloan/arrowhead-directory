@@ -22,22 +22,18 @@
 	import MoreHorizontal from '@lucide/svelte/icons/more-horizontal';
 	import FileDown from '@lucide/svelte/icons/file-down';
 	import { downloadDirectoryPdf } from '$lib/utils/pdf';
-	import type { Business, Category, Service } from '$lib/types';
+	import type { Business } from '$lib/types';
 
 	let {
 		businesses,
 		user,
 		formData,
-		isAdmin = false,
-		allCategories = [],
-		allServices = []
+		isAdmin = false
 	}: {
 		businesses: Business[];
 		user: { email: string | null } | null;
 		formData: any;
 		isAdmin: boolean;
-		allCategories: Category[];
-		allServices: Service[];
 	} = $props();
 
 	let editingBusiness = $state<Business | null>(null);
@@ -152,5 +148,5 @@
 </div>
 
 {#if editingBusiness}
-	<EditBusinessDialog business={editingBusiness} {formData} {allCategories} {allServices} bind:open={dialogOpen} ondelete={handleDelete} />
+	<EditBusinessDialog business={editingBusiness} {formData} bind:open={dialogOpen} ondelete={handleDelete} />
 {/if}

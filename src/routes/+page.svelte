@@ -12,6 +12,4 @@
   user={(data as any).user ?? null}
   formData={data.form}
   isAdmin={(data as any).isAdmin ?? false}
-  allCategories={(data as any).allCategories ?? []}
-  allServices={(data as any).allServices ?? []}
 />

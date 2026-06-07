@@ -34,22 +34,22 @@
   } from '$lib/components/ui/dropdown-menu/index.js';
   import Settings from '@lucide/svelte/icons/settings';
   import Trash2 from '@lucide/svelte/icons/trash-2';
-  import type { Business, Category, Service } from '$lib/types';
+  import ChevronDown from '@lucide/svelte/icons/chevron-down';
+  import Check from '@lucide/svelte/icons/check';
+  import { Popover, PopoverContent, PopoverTrigger } from '$lib/components/ui/popover/index.js';
+  import { lookupStore, ensureLookupLoaded } from '$lib/stores/lookup.svelte';
+  import type { Business } from '$lib/types';
 
   let {
     business,
     formData,
     open = $bindable(false),
     ondelete,
-    allCategories = [],
-    allServices = [],
   }: {
     business: Business;
     formData: any;
     open: boolean;
     ondelete?: (id: string) => void;
-    allCategories: Category[];
-    allServices: Service[];
   } = $props();
 
   // superForm must be initialized from the snapshot value, not a reactive reference.
@@ -67,6 +67,7 @@
 
   $effect(() => {
     if (open) {
+      ensureLookupLoaded();
       $form.id = business.id!;
       $form.name = business.name;
       $form.email = business.email ?? null;
@@ -160,44 +161,80 @@
         <div class="col-span-2 flex flex-col gap-1.5">
           <Label>Categories</Label>
           <input type="hidden" name="categories" value={$form.categories} />
-          <div class="flex flex-wrap gap-x-4 gap-y-2 rounded-md border p-3">
-            {#each allCategories as cat (cat.id)}
-              <label class="flex cursor-pointer items-center gap-1.5 text-sm">
-                <input
-                  type="checkbox"
-                  checked={selectedCategoryIds.has(cat.id)}
-                  onchange={(e) => toggleCategory(cat.id, (e.target as HTMLInputElement).checked)}
-                  class="accent-primary"
-                />
-                {cat.name}
-              </label>
-            {/each}
-            {#if allCategories.length === 0}
-              <p class="text-xs text-muted-foreground">No categories available.</p>
-            {/if}
-          </div>
+          <Popover>
+            <PopoverTrigger>
+              {#snippet child({ props })}
+                <Button variant="outline" {...props} class="h-auto min-h-9 w-full justify-between px-3 font-normal">
+                  {#if selectedCategoryIds.size === 0}
+                    <span class="text-muted-foreground">Select categories…</span>
+                  {:else}
+                    <div class="flex flex-wrap gap-1">
+                      {#each lookupStore.categories.filter(c => selectedCategoryIds.has(c.id)) as cat (cat.id)}
+                        <span class="rounded-sm bg-secondary px-1.5 py-0.5 text-xs">{cat.name}</span>
+                      {/each}
+                    </div>
+                  {/if}
+                  <ChevronDown class="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                </Button>
+              {/snippet}
+            </PopoverTrigger>
+            <PopoverContent class="w-64 p-1" align="start">
+              <div class="max-h-52 overflow-y-auto">
+                {#each lookupStore.categories as cat (cat.id)}
+                  <button
+                    type="button"
+                    class="flex w-full items-center gap-2 rounded-sm px-2 py-1.5 text-sm hover:bg-accent"
+                    onclick={() => toggleCategory(cat.id, !selectedCategoryIds.has(cat.id))}
+                  >
+                    <Check class="h-4 w-4 {selectedCategoryIds.has(cat.id) ? 'opacity-100' : 'opacity-0'}" />
+                    {cat.name}
+                  </button>
+                {:else}
+                  <p class="px-2 py-3 text-center text-xs text-muted-foreground">No categories yet.</p>
+                {/each}
+              </div>
+            </PopoverContent>
+          </Popover>
           {#if $errors.categories}<p class="text-xs text-destructive">{$errors.categories}</p>{/if}
         </div>
 
         <div class="col-span-2 flex flex-col gap-1.5">
           <Label>Services</Label>
           <input type="hidden" name="services" value={$form.services} />
-          <div class="flex flex-wrap gap-x-4 gap-y-2 rounded-md border p-3">
-            {#each allServices as svc (svc.id)}
-              <label class="flex cursor-pointer items-center gap-1.5 text-sm">
-                <input
-                  type="checkbox"
-                  checked={selectedServiceIds.has(svc.id)}
-                  onchange={(e) => toggleService(svc.id, (e.target as HTMLInputElement).checked)}
-                  class="accent-primary"
-                />
-                {svc.name}
-              </label>
-            {/each}
-            {#if allServices.length === 0}
-              <p class="text-xs text-muted-foreground">No services available.</p>
-            {/if}
-          </div>
+          <Popover>
+            <PopoverTrigger>
+              {#snippet child({ props })}
+                <Button variant="outline" {...props} class="h-auto min-h-9 w-full justify-between px-3 font-normal">
+                  {#if selectedServiceIds.size === 0}
+                    <span class="text-muted-foreground">Select services…</span>
+                  {:else}
+                    <div class="flex flex-wrap gap-1">
+                      {#each lookupStore.services.filter(s => selectedServiceIds.has(s.id)) as svc (svc.id)}
+                        <span class="rounded-sm bg-secondary px-1.5 py-0.5 text-xs">{svc.name}</span>
+                      {/each}
+                    </div>
+                  {/if}
+                  <ChevronDown class="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                </Button>
+              {/snippet}
+            </PopoverTrigger>
+            <PopoverContent class="w-64 p-1" align="start">
+              <div class="max-h-52 overflow-y-auto">
+                {#each lookupStore.services as svc (svc.id)}
+                  <button
+                    type="button"
+                    class="flex w-full items-center gap-2 rounded-sm px-2 py-1.5 text-sm hover:bg-accent"
+                    onclick={() => toggleService(svc.id, !selectedServiceIds.has(svc.id))}
+                  >
+                    <Check class="h-4 w-4 {selectedServiceIds.has(svc.id) ? 'opacity-100' : 'opacity-0'}" />
+                    {svc.name}
+                  </button>
+                {:else}
+                  <p class="px-2 py-3 text-center text-xs text-muted-foreground">No services yet.</p>
+                {/each}
+              </div>
+            </PopoverContent>
+          </Popover>
         </div>
 
         <div class="col-span-2 flex flex-col gap-1.5">
