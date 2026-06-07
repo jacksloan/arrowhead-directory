@@ -34,18 +34,22 @@
   } from '$lib/components/ui/dropdown-menu/index.js';
   import Settings from '@lucide/svelte/icons/settings';
   import Trash2 from '@lucide/svelte/icons/trash-2';
-  import type { Business } from '$lib/types';
+  import type { Business, Category, Service } from '$lib/types';
 
   let {
     business,
     formData,
     open = $bindable(false),
     ondelete,
+    allCategories = [],
+    allServices = [],
   }: {
     business: Business;
     formData: any;
     open: boolean;
     ondelete?: (id: string) => void;
+    allCategories: Category[];
+    allServices: Service[];
   } = $props();
 
   // superForm must be initialized from the snapshot value, not a reactive reference.
@@ -58,6 +62,9 @@
     resetForm: false,
   }));
 
+  let selectedCategoryIds = $state<Set<string>>(new Set());
+  let selectedServiceIds = $state<Set<string>>(new Set());
+
   $effect(() => {
     if (open) {
       $form.id = business.id!;
@@ -67,10 +74,26 @@
       $form.address = business.address ?? null;
       $form.website = business.website ?? null;
       $form.description = business.description ?? null;
-      $form.categories = business.categories.map((c) => c.name).join(', ');
-      $form.services = business.services.map((s) => s.name).join(', ');
+      selectedCategoryIds = new Set(business.categories.map((c) => c.id));
+      selectedServiceIds = new Set(business.services.map((s) => s.id));
+      $form.categories = [...selectedCategoryIds].join(',');
+      $form.services = [...selectedServiceIds].join(',');
     }
   });
+
+  function toggleCategory(id: string, checked: boolean) {
+    const next = new Set(selectedCategoryIds);
+    if (checked) next.add(id); else next.delete(id);
+    selectedCategoryIds = next;
+    $form.categories = [...next].join(',');
+  }
+
+  function toggleService(id: string, checked: boolean) {
+    const next = new Set(selectedServiceIds);
+    if (checked) next.add(id); else next.delete(id);
+    selectedServiceIds = next;
+    $form.services = [...next].join(',');
+  }
 
   let deleteConfirmOpen = $state(false);
   let deleting = $state(false);
@@ -135,16 +158,46 @@
         </div>
 
         <div class="col-span-2 flex flex-col gap-1.5">
-          <Label for="eb-categories">Categories</Label>
-          <Input id="eb-categories" name="categories" bind:value={$form.categories} placeholder="Plumbing, Electrical" />
-          <p class="text-xs text-muted-foreground">Comma-separated</p>
+          <Label>Categories</Label>
+          <input type="hidden" name="categories" value={$form.categories} />
+          <div class="flex flex-wrap gap-x-4 gap-y-2 rounded-md border p-3">
+            {#each allCategories as cat (cat.id)}
+              <label class="flex cursor-pointer items-center gap-1.5 text-sm">
+                <input
+                  type="checkbox"
+                  checked={selectedCategoryIds.has(cat.id)}
+                  onchange={(e) => toggleCategory(cat.id, (e.target as HTMLInputElement).checked)}
+                  class="accent-primary"
+                />
+                {cat.name}
+              </label>
+            {/each}
+            {#if allCategories.length === 0}
+              <p class="text-xs text-muted-foreground">No categories available.</p>
+            {/if}
+          </div>
           {#if $errors.categories}<p class="text-xs text-destructive">{$errors.categories}</p>{/if}
         </div>
 
         <div class="col-span-2 flex flex-col gap-1.5">
-          <Label for="eb-services">Services</Label>
-          <Input id="eb-services" name="services" bind:value={$form.services} placeholder="Drain cleaning, Water heater repair" />
-          <p class="text-xs text-muted-foreground">Comma-separated</p>
+          <Label>Services</Label>
+          <input type="hidden" name="services" value={$form.services} />
+          <div class="flex flex-wrap gap-x-4 gap-y-2 rounded-md border p-3">
+            {#each allServices as svc (svc.id)}
+              <label class="flex cursor-pointer items-center gap-1.5 text-sm">
+                <input
+                  type="checkbox"
+                  checked={selectedServiceIds.has(svc.id)}
+                  onchange={(e) => toggleService(svc.id, (e.target as HTMLInputElement).checked)}
+                  class="accent-primary"
+                />
+                {svc.name}
+              </label>
+            {/each}
+            {#if allServices.length === 0}
+              <p class="text-xs text-muted-foreground">No services available.</p>
+            {/if}
+          </div>
         </div>
 
         <div class="col-span-2 flex flex-col gap-1.5">

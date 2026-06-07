@@ -8,15 +8,16 @@ import { getIsAdmin } from '$lib/server/admin';
 export const load: PageServerLoad = async ({ locals }) => {
 	const { user } = await locals.safeGetSession();
 
-	const { data: businesses, error } = await locals.supabase
-		.from('businesses')
-		.select(`
-			*,
-			business_categories ( categories (*) ),
-			business_services ( services (*) )
-		`)
-		.eq('status', 'approved')
-		.order('name');
+	const [{ data: businesses, error }, { data: allCategories }, { data: allServices }] =
+		await Promise.all([
+			locals.supabase
+				.from('businesses')
+				.select(`*, business_categories ( categories (*) ), business_services ( services (*) )`)
+				.eq('status', 'approved')
+				.order('name'),
+			locals.supabase.from('categories').select('*').order('name'),
+			locals.supabase.from('services').select('*').order('name')
+		]);
 
 	if (error) throw new Error(error.message);
 
@@ -28,51 +29,25 @@ export const load: PageServerLoad = async ({ locals }) => {
 
 	const form = await superValidate(zod4(businessSchema));
 	const isAdmin = await getIsAdmin(locals.supabase, user?.email);
-	return { businesses: mapped, user, form, isAdmin };
+	return { businesses: mapped, user, form, isAdmin, allCategories: allCategories ?? [], allServices: allServices ?? [] };
 };
 
-function toShortname(name: string): string {
-	return name.toLowerCase().replace(/\s+/g, '_');
-}
-
-async function upsertAndLinkCategories(supabase: any, businessId: string, categoryNames: string[]) {
-	const ids: string[] = [];
-	for (const name of categoryNames) {
-		const shortname = toShortname(name);
-		const { data, error } = await supabase
-			.from('categories')
-			.upsert({ shortname, name }, { onConflict: 'shortname' })
-			.select('id')
-			.single();
-		if (error) throw new Error(error.message);
-		ids.push(data.id);
-	}
+async function linkCategories(supabase: any, businessId: string, categoryIds: string[]) {
 	await supabase.from('business_categories').delete().eq('business_id', businessId);
-	if (ids.length > 0) {
+	if (categoryIds.length > 0) {
 		const { error } = await supabase
 			.from('business_categories')
-			.insert(ids.map((category_id) => ({ business_id: businessId, category_id })));
+			.insert(categoryIds.map((category_id) => ({ business_id: businessId, category_id })));
 		if (error) throw new Error(error.message);
 	}
 }
 
-async function upsertAndLinkServices(supabase: any, businessId: string, serviceNames: string[]) {
-	const ids: string[] = [];
-	for (const name of serviceNames) {
-		const shortname = toShortname(name);
-		const { data, error } = await supabase
-			.from('services')
-			.upsert({ shortname, name }, { onConflict: 'shortname' })
-			.select('id')
-			.single();
-		if (error) throw new Error(error.message);
-		ids.push(data.id);
-	}
+async function linkServices(supabase: any, businessId: string, serviceIds: string[]) {
 	await supabase.from('business_services').delete().eq('business_id', businessId);
-	if (ids.length > 0) {
+	if (serviceIds.length > 0) {
 		const { error } = await supabase
 			.from('business_services')
-			.insert(ids.map((service_id) => ({ business_id: businessId, service_id })));
+			.insert(serviceIds.map((service_id) => ({ business_id: businessId, service_id })));
 		if (error) throw new Error(error.message);
 	}
 }
@@ -104,11 +79,11 @@ export const actions: Actions = {
 		const isAdminUser = await getIsAdmin(locals.supabase, user.email);
 		const { id, phones, categories, services, ...fields } = form.data;
 
-		const categoryNames = categories
+		const categoryIds = categories
 			.split(',')
 			.map((s) => s.trim())
 			.filter(Boolean);
-		const serviceNames = services
+		const serviceIds = services
 			.split(',')
 			.map((s) => s.trim())
 			.filter(Boolean);
@@ -131,8 +106,8 @@ export const actions: Actions = {
 		if (error) return fail(500, { form, message: error.message });
 
 		try {
-			await upsertAndLinkCategories(locals.supabase, id, categoryNames);
-			await upsertAndLinkServices(locals.supabase, id, serviceNames);
+			await linkCategories(locals.supabase, id, categoryIds);
+			await linkServices(locals.supabase, id, serviceIds);
 		} catch (e: any) {
 			return fail(500, { form, message: e.message });
 		}
