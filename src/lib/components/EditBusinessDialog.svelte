@@ -15,6 +15,14 @@
   import { Button } from '$lib/components/ui/button/index.js';
   import { Input } from '$lib/components/ui/input/index.js';
   import { Label } from '$lib/components/ui/label/index.js';
+  import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+  } from '$lib/components/ui/select/index.js';
+  import { PHONE_TYPES, PHONE_TYPE_LABELS } from '$lib/utils/phones';
+  import type { PhoneType } from '$lib/types';
   import RichTextEditor from './RichTextEditor.svelte';
   import {
     AlertDialog,
@@ -74,7 +82,10 @@
       id: business.id!,
       name: business.name,
       email: business.email ?? null,
-      phones: business.phones.join(', '),
+      phone_1: business.phones[0]?.number ?? '',
+      phone_1_type: business.phones[0]?.type ?? '',
+      phone_2: business.phones[1]?.number ?? '',
+      phone_2_type: business.phones[1]?.type ?? '',
       address: business.address ?? null,
       website: business.website ?? null,
       description: business.description ?? null,
@@ -86,7 +97,10 @@
       $form.id = snap.id;
       $form.name = snap.name;
       $form.email = snap.email;
-      $form.phones = snap.phones;
+      $form.phone_1 = snap.phone_1;
+      $form.phone_1_type = snap.phone_1_type;
+      $form.phone_2 = snap.phone_2;
+      $form.phone_2_type = snap.phone_2_type;
       $form.address = snap.address;
       $form.website = snap.website;
       $form.description = snap.description;
@@ -156,10 +170,44 @@
           {#if $errors.name}<p class="text-xs text-destructive">{$errors.name}</p>{/if}
         </div>
 
-        <div class="flex flex-col gap-1.5">
-          <Label for="eb-phones">Phone numbers</Label>
-          <Input id="eb-phones" name="phones" bind:value={$form.phones} placeholder="218-555-0101, 218-555-0202" />
-          <p class="text-xs text-muted-foreground">Comma-separated</p>
+        <div class="col-span-2 flex flex-col gap-1.5">
+          <Label>Phone numbers</Label>
+          <div class="flex items-center gap-2">
+            <Input
+              name="phone_1"
+              bind:value={$form.phone_1}
+              placeholder="218-555-0101"
+              class="flex-1"
+            />
+            <Select type="single" name="phone_1_type" bind:value={$form.phone_1_type}>
+              <SelectTrigger class="w-28">
+                {$form.phone_1_type ? PHONE_TYPE_LABELS[$form.phone_1_type as PhoneType] : 'Type'}
+              </SelectTrigger>
+              <SelectContent>
+                {#each PHONE_TYPES as t (t)}
+                  <SelectItem value={t}>{PHONE_TYPE_LABELS[t]}</SelectItem>
+                {/each}
+              </SelectContent>
+            </Select>
+          </div>
+          <div class="flex items-center gap-2">
+            <Input
+              name="phone_2"
+              bind:value={$form.phone_2}
+              placeholder="218-555-0202"
+              class="flex-1"
+            />
+            <Select type="single" name="phone_2_type" bind:value={$form.phone_2_type}>
+              <SelectTrigger class="w-28">
+                {$form.phone_2_type ? PHONE_TYPE_LABELS[$form.phone_2_type as PhoneType] : 'Type'}
+              </SelectTrigger>
+              <SelectContent>
+                {#each PHONE_TYPES as t (t)}
+                  <SelectItem value={t}>{PHONE_TYPE_LABELS[t]}</SelectItem>
+                {/each}
+              </SelectContent>
+            </Select>
+          </div>
         </div>
 
         <div class="flex flex-col gap-1.5">

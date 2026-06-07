@@ -74,7 +74,8 @@ export const actions: Actions = {
 		if (!form.valid) return fail(400, { form });
 
 		const isAdminUser = await getIsAdmin(locals.supabase, user.email);
-		const { id, phones, categories, services, ...fields } = form.data;
+		const { id, phone_1, phone_1_type, phone_2, phone_2_type, categories, services, ...fields } =
+			form.data;
 
 		const categoryIds = categories
 			.split(',')
@@ -89,10 +90,10 @@ export const actions: Actions = {
 			.from('businesses')
 			.update({
 				...fields,
-				phones: phones
-					.split(',')
-					.map((p: string) => p.trim())
-					.filter(Boolean),
+				phone_1: phone_1.trim() || null,
+				phone_1_type: phone_1_type || null,
+				phone_2: phone_2.trim() || null,
+				phone_2_type: phone_2_type || null,
 				updated_at: new Date().toISOString()
 			})
 			.eq('id', id);
