@@ -15,6 +15,7 @@
 		DialogTitle
 	} from '$lib/components/ui/dialog/index.js';
 	import type { Business } from '$lib/types';
+	import { PHONE_TYPE_LABELS } from '$lib/utils/phones';
 
 	let {
 		business,
@@ -101,15 +102,18 @@
 				<!-- Phones -->
 				{#if business.phones.length > 0}
 					<div class="flex flex-col gap-1">
-						{#each business.phones as phone, i (phone)}
+						{#each business.phones as phone, i (phone.number + i)}
 							<div class="flex items-center gap-2 text-sm">
 								<span class="w-4 text-center text-muted-foreground">
 									{#if i === 0}<Phone class="inline h-3.5 w-3.5" />{:else}<span class="text-[10px]">alt</span>{/if}
 								</span>
 								<a
-									href="tel:{phone.replace(/\D/g, '')}"
+									href="tel:{phone.number.replace(/\D/g, '')}"
 									class="text-foreground underline-offset-2 hover:underline"
-								>{phone}</a>
+								>{phone.number}</a>
+								{#if phone.type}
+									<span class="ml-1 text-xs text-muted-foreground">({PHONE_TYPE_LABELS[phone.type]})</span>
+								{/if}
 							</div>
 						{/each}
 					</div>
