@@ -15,7 +15,7 @@
   import { Button } from '$lib/components/ui/button/index.js';
   import { Input } from '$lib/components/ui/input/index.js';
   import { Label } from '$lib/components/ui/label/index.js';
-  import { Textarea } from '$lib/components/ui/textarea/index.js';
+  import RichTextEditor from './RichTextEditor.svelte';
   import {
     AlertDialog,
     AlertDialogAction,
@@ -138,7 +138,12 @@
 
         <div class="col-span-2 flex flex-col gap-1.5">
           <Label for="eb-description">Description</Label>
-          <Textarea id="eb-description" name="description" rows={3} bind:value={$form.description} />
+          <RichTextEditor
+            name="description"
+            bind:value={$form.description}
+            placeholder="Describe this business…"
+            class="rounded-md border border-input bg-background"
+          />
         </div>
       </div>
 
