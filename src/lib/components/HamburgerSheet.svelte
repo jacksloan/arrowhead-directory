@@ -2,7 +2,7 @@
 	import { Sheet, SheetContent, SheetTrigger } from '$lib/components/ui/sheet/index.js';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import MenuIcon from '@lucide/svelte/icons/menu';
-	import Code from '@lucide/svelte/icons/code';
+	import GitBranch from '@lucide/svelte/icons/git-branch';
 
 	let { isAdmin = false }: { isAdmin?: boolean } = $props();
 	let open = $state(false);
@@ -53,7 +53,7 @@
 				onclick={() => (open = false)}
 				class="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium hover:bg-accent"
 			>
-				<Code class="h-4 w-4 shrink-0" />
+				<GitBranch class="h-4 w-4 shrink-0" />
 				Open Source
 			</a>
 			<p class="px-3 text-[11px] text-muted-foreground">
