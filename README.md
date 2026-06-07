@@ -1,42 +1,118 @@
-# sv
+# Arrowhead Business Directory
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A community business directory for the Arrowhead neighborhood.
 
-## Creating a project
+**Live site:** https://arrowhead-directory.vercel.app
 
-If you're seeing this, you've probably already done this step. Congrats!
+---
 
-```sh
-# create a new project
-npx sv create my-app
+## Architecture
+
+```
+  Browser
+    │
+    ▼
+┌─────────────────────────┐
+│  Vercel                 │
+│  (SvelteKit + adapter)  │
+│                         │
+│  • Hosts the app        │
+│  • Runs server routes   │
+│  • Preview URLs per PR  │
+│                         │
+│  Deploy: push to main   │
+└────────────┬────────────┘
+             │ Supabase JS client
+             ▼
+┌─────────────────────────┐
+│  Supabase               │
+│  (Postgres + Auth)      │
+│                         │
+│  • businesses table     │
+│  • admins table         │
+│  • suggested_edits      │
+│  • feature_requests     │
+│  • Auth (magic link)    │
+└─────────────────────────┘
 ```
 
-To recreate this project with the same configuration:
+Deploys are automatic — every push to `main` triggers a production deploy on Vercel. Pull requests get a preview URL automatically.
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) 20+
+- [pnpm](https://pnpm.io/) — `npm install -g pnpm`
+
+### 1. Clone and install
 
 ```sh
-# recreate this project
-pnpm dlx sv@0.15.4 create --template minimal --types ts --add prettier eslint tailwindcss="plugins:typography,forms" sveltekit-adapter="adapter:vercel" mdsvex mcp="ide:claude-code+setup:remote" --install pnpm arrowhead-directory
+git clone https://github.com/jacksloan/arrowhead-directory.git
+cd arrowhead-directory
+pnpm install
 ```
 
-## Developing
+### 2. Set up environment variables
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Create a `.env.local` file in the project root:
 
 ```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+PUBLIC_SUPABASE_URL=https://ezmlamaygevdbkogjbvu.supabase.co
+PUBLIC_SUPABASE_ANON_KEY=<get from Supabase dashboard → Settings → API>
 ```
 
-## Building
+Ask a team member for the anon key, or find it in the [Supabase project settings](https://supabase.com/dashboard/project/ezmlamaygevdbkogjbvu/settings/api).
 
-To create a production version of your app:
+### 3. Start the dev server
 
 ```sh
-npm run build
+pnpm dev
 ```
 
-You can preview the production build with `npm run preview`.
+Open [http://localhost:5173](http://localhost:5173).
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+---
+
+## Project Structure
+
+```
+src/
+  lib/
+    components/       # Svelte components (UI + directory-specific)
+    components/ui/    # shadcn-svelte primitives (Button, Input, Dialog, …)
+    server/           # Server-only utilities (admin check, etc.)
+    utils/            # Shared utilities (pdf.ts, …)
+    types.ts          # Shared TypeScript types
+  routes/
+    +page.svelte      # Main directory page
+    admin/            # Admin management (admins only)
+    pending/          # Pending approvals (admins only)
+    suggested-edits/  # Suggested edit review (admins only)
+    features/         # Feature requests (public + voting)
+    about/
+    how-to/
+```
+
+## Key Commands
+
+| Command | Description |
+|---|---|
+| `pnpm dev` | Start dev server at localhost:5173 |
+| `pnpm build` | Production build |
+| `pnpm check` | TypeScript + Svelte type check |
+| `pnpm lint` | ESLint + Prettier check |
+| `pnpm format` | Auto-format with Prettier |
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | SvelteKit (Svelte 5 runes) |
+| Styling | Tailwind CSS v4 |
+| UI components | shadcn-svelte |
+| Database + Auth | Supabase (Postgres, magic-link auth) |
+| Hosting | Vercel |
+| Forms | sveltekit-superforms + zod |
