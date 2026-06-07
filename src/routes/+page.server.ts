@@ -4,6 +4,9 @@ import { superValidate } from 'sveltekit-superforms';
 import { zod4 } from 'sveltekit-superforms/adapters';
 import { businessSchema } from '$lib/schemas';
 import { getIsAdmin } from '$lib/server/admin';
+import { env } from '$env/dynamic/private';
+
+const SITE_URL = env.SITE_URL ?? 'https://arrowhead.directory';
 
 export const load: PageServerLoad = async ({ locals }) => {
   const { user } = await locals.safeGetSession();
@@ -21,12 +24,12 @@ export const load: PageServerLoad = async ({ locals }) => {
 };
 
 export const actions: Actions = {
-  sendMagicLink: async ({ request, locals, url }) => {
+  sendMagicLink: async ({ request, locals }) => {
     const formData = await request.formData();
     const email = formData.get('email') as string;
     const { error } = await locals.supabase.auth.signInWithOtp({
       email,
-      options: { emailRedirectTo: `${url.origin}/login/verify` },
+      options: { emailRedirectTo: `${SITE_URL}/login/verify` },
     });
     if (error) return fail(500, { message: error.message });
     return { message: 'Check your email for a login link.' };
