@@ -210,7 +210,7 @@
           </div>
         </div>
 
-        <div class="flex flex-col gap-1.5">
+        <div class="col-span-2 flex flex-col gap-1.5">
           <Label for="eb-website">Website</Label>
           <Input id="eb-website" name="website" bind:value={$form.website} />
           {#if $errors.website}<p class="text-xs text-destructive">{$errors.website}</p>{/if}
