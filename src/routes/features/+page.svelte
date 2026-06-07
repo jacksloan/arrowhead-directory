@@ -11,6 +11,11 @@
     SelectTrigger,
   } from '$lib/components/ui/select/index.js';
   import ChevronUp from '@lucide/svelte/icons/chevron-up';
+  import {
+    Tooltip,
+    TooltipContent,
+    TooltipTrigger,
+  } from '$lib/components/ui/tooltip/index.js';
 
   let { data } = $props();
 
@@ -166,23 +171,38 @@
               }}
             >
               <input type="hidden" name="request_id" value={req.id} />
-              <button
-                type="submit"
-                disabled={!data.user || votingId === req.id}
-                class="flex flex-col items-center gap-0.5 rounded-md border px-2 py-1.5 transition-colors
-                  {req.userVoted
-                    ? 'border-primary bg-primary/10 text-primary'
-                    : 'border-border text-muted-foreground hover:border-primary hover:text-primary'}
-                  disabled:opacity-40"
-                title={data.user
-                  ? req.userVoted
-                    ? 'Remove vote'
-                    : 'Upvote'
-                  : 'Log in to vote'}
-              >
-                <ChevronUp class="h-4 w-4" />
-                <span class="text-xs font-medium">{req.voteCount}</span>
-              </button>
+              {#if !data.user}
+                <Tooltip>
+                  <TooltipTrigger>
+                    {#snippet child({ props })}
+                      <button
+                        {...props}
+                        type="button"
+                        disabled
+                        class="flex flex-col items-center gap-0.5 rounded-md border border-border px-2 py-1.5 text-muted-foreground opacity-40"
+                      >
+                        <ChevronUp class="h-4 w-4" />
+                        <span class="text-xs font-medium">{req.voteCount}</span>
+                      </button>
+                    {/snippet}
+                  </TooltipTrigger>
+                  <TooltipContent>Log in to vote</TooltipContent>
+                </Tooltip>
+              {:else}
+                <button
+                  type="submit"
+                  disabled={votingId === req.id}
+                  class="flex flex-col items-center gap-0.5 rounded-md border px-2 py-1.5 transition-colors
+                    {req.userVoted
+                      ? 'border-primary bg-primary/10 text-primary'
+                      : 'border-border text-muted-foreground hover:border-primary hover:text-primary'}
+                    disabled:opacity-40"
+                  title={req.userVoted ? 'Remove vote' : 'Upvote'}
+                >
+                  <ChevronUp class="h-4 w-4" />
+                  <span class="text-xs font-medium">{req.voteCount}</span>
+                </button>
+              {/if}
             </form>
           </div>
 
