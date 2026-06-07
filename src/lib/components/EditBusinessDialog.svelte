@@ -66,20 +66,34 @@
   let selectedServiceIds = $state<Set<string>>(new Set());
 
   $effect(() => {
-    if (open) {
+    if (!open) return;
+    // Read all reactive sources before untrack so the effect re-runs
+    // when open or business changes, but not when form state changes.
+    const snap = {
+      id: business.id!,
+      name: business.name,
+      email: business.email ?? null,
+      phones: business.phones.join(', '),
+      address: business.address ?? null,
+      website: business.website ?? null,
+      description: business.description ?? null,
+      categoryIds: business.categories.map((c) => c.id),
+      serviceIds: business.services.map((s) => s.id),
+    };
+    untrack(() => {
       ensureLookupLoaded();
-      $form.id = business.id!;
-      $form.name = business.name;
-      $form.email = business.email ?? null;
-      $form.phones = business.phones.join(', ');
-      $form.address = business.address ?? null;
-      $form.website = business.website ?? null;
-      $form.description = business.description ?? null;
-      selectedCategoryIds = new Set(business.categories.map((c) => c.id));
-      selectedServiceIds = new Set(business.services.map((s) => s.id));
-      $form.categories = [...selectedCategoryIds].join(',');
-      $form.services = [...selectedServiceIds].join(',');
-    }
+      $form.id = snap.id;
+      $form.name = snap.name;
+      $form.email = snap.email;
+      $form.phones = snap.phones;
+      $form.address = snap.address;
+      $form.website = snap.website;
+      $form.description = snap.description;
+      selectedCategoryIds = new Set(snap.categoryIds);
+      selectedServiceIds = new Set(snap.serviceIds);
+      $form.categories = snap.categoryIds.join(',');
+      $form.services = snap.serviceIds.join(',');
+    });
   });
 
   function toggleCategory(id: string, checked: boolean) {
@@ -178,12 +192,12 @@
                 </Button>
               {/snippet}
             </PopoverTrigger>
-            <PopoverContent class="w-64 p-1" align="start">
+            <PopoverContent class="w-auto min-w-32 p-1" align="start">
               <div class="max-h-52 overflow-y-auto">
                 {#each lookupStore.categories as cat (cat.id)}
                   <button
                     type="button"
-                    class="flex w-full items-center gap-2 rounded-sm px-2 py-1.5 text-sm hover:bg-accent"
+                    class="flex w-full items-center gap-2 whitespace-nowrap rounded-sm px-2 py-1.5 text-sm hover:bg-accent"
                     onclick={() => toggleCategory(cat.id, !selectedCategoryIds.has(cat.id))}
                   >
                     <Check class="h-4 w-4 {selectedCategoryIds.has(cat.id) ? 'opacity-100' : 'opacity-0'}" />
@@ -218,12 +232,12 @@
                 </Button>
               {/snippet}
             </PopoverTrigger>
-            <PopoverContent class="w-64 p-1" align="start">
+            <PopoverContent class="w-auto min-w-32 p-1" align="start">
               <div class="max-h-52 overflow-y-auto">
                 {#each lookupStore.services as svc (svc.id)}
                   <button
                     type="button"
-                    class="flex w-full items-center gap-2 rounded-sm px-2 py-1.5 text-sm hover:bg-accent"
+                    class="flex w-full items-center gap-2 whitespace-nowrap rounded-sm px-2 py-1.5 text-sm hover:bg-accent"
                     onclick={() => toggleService(svc.id, !selectedServiceIds.has(svc.id))}
                   >
                     <Check class="h-4 w-4 {selectedServiceIds.has(svc.id) ? 'opacity-100' : 'opacity-0'}" />
