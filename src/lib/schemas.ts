@@ -8,8 +8,7 @@ export const businessSchema = z.object({
   address: z.string().nullable().optional(),
   website: z.string().nullable().optional(),
   description: z.string().nullable().optional(),
-  category: z.string().min(1),
-  subcategories: z.string().default(''),
+  categories: z.string().min(1, 'At least one category is required'),
   services: z.string().default(''),
 });
 
