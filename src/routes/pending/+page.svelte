@@ -17,7 +17,7 @@
 		SelectItem,
 		SelectTrigger
 	} from '$lib/components/ui/select/index.js';
-	import type { Business, BusinessStatus } from '$lib/types';
+	import type { Business, BusinessStatus, LookupSuggestion } from '$lib/types';
 
 	let { data } = $props();
 
@@ -28,6 +28,10 @@
 	let chosenStatus = $state<BusinessStatus>('approved');
 	let submitting = $state(false);
 	let errorMsg = $state<string | null>(null);
+	let removedSuggestionIds = $state(new Set<string>());
+	const suggestions = $derived(
+		data.suggestions.filter((s: LookupSuggestion) => !removedSuggestionIds.has(s.id))
+	);
 
 	function openDialog(b: Business) {
 		selected = b;
@@ -128,6 +132,64 @@
 					</div>
 				</button>
 			{/each}
+		</div>
+	{/if}
+
+	<!-- Lookup suggestions section -->
+	{#if suggestions.length > 0}
+		<div class="mt-12">
+			<div class="mb-4">
+				<h2 class="text-xl font-bold">Lookup Suggestions</h2>
+				<p class="mt-1 text-sm text-muted-foreground">
+					{suggestions.length} suggestion{suggestions.length === 1 ? '' : 's'} awaiting review
+				</p>
+			</div>
+			<div class="flex flex-col gap-2">
+				{#each suggestions as suggestion (suggestion.id)}
+					<div class="flex items-center justify-between gap-4 rounded-lg border bg-card px-4 py-3">
+						<div class="flex items-center gap-3 min-w-0">
+							<span class="shrink-0 rounded-full px-2 py-0.5 text-xs font-medium
+								{suggestion.type === 'category'
+									? 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300'
+									: 'bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300'}">
+								{suggestion.type}
+							</span>
+							<span class="truncate text-sm font-medium">{suggestion.name}</span>
+							<span class="shrink-0 text-xs text-muted-foreground">by {suggestion.suggested_by}</span>
+						</div>
+						<div class="flex shrink-0 items-center gap-2">
+							<form
+								method="POST"
+								action="/pending?/approveSuggestion"
+								use:enhance={() => {
+									return async ({ result }) => {
+										if (result.type === 'success' && (result.data as any)?.id) {
+											removedSuggestionIds.add((result.data as any).id);
+										}
+									};
+								}}
+							>
+								<input type="hidden" name="id" value={suggestion.id} />
+								<Button type="submit" size="sm">Approve</Button>
+							</form>
+							<form
+								method="POST"
+								action="/pending?/rejectSuggestion"
+								use:enhance={() => {
+									return async ({ result }) => {
+										if (result.type === 'success' && (result.data as any)?.id) {
+											removedSuggestionIds.add((result.data as any).id);
+										}
+									};
+								}}
+							>
+								<input type="hidden" name="id" value={suggestion.id} />
+								<Button type="submit" size="sm" variant="outline">Reject</Button>
+							</form>
+						</div>
+					</div>
+				{/each}
+			</div>
 		</div>
 	{/if}
 </div>
