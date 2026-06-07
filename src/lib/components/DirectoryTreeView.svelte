@@ -20,13 +20,14 @@
 		onedit: (b: Business) => void;
 	} = $props();
 
-	// Group: category → subcategory (first subcategory or '' for none) → businesses
+	// Group: category → service (first service or '' for none) → businesses
 	const grouped = $derived.by(() => {
 		const map = new SvelteMap<string, SvelteMap<string, Business[]>>();
 		for (const b of filtered) {
-			if (!map.has(b.category)) map.set(b.category, new SvelteMap());
-			const sub = b.subcategories[0] ?? '';
-			const catMap = map.get(b.category)!;
+			const cat = b.categories[0]?.name ?? 'Uncategorized';
+			if (!map.has(cat)) map.set(cat, new SvelteMap());
+			const sub = b.services[0]?.name ?? '';
+			const catMap = map.get(cat)!;
 			if (!catMap.has(sub)) catMap.set(sub, []);
 			catMap.get(sub)!.push(b);
 		}
@@ -34,7 +35,9 @@
 	});
 
 	// Categories present in filtered results
-	const activeCategories = $derived(new SvelteSet(filtered.map((b) => b.category)));
+	const activeCategories = $derived(
+		new SvelteSet(filtered.map((b) => b.categories[0]?.name ?? 'Uncategorized'))
+	);
 
 	// Expand all when searching; otherwise start collapsed
 	let expanded = new SvelteSet<string>();
