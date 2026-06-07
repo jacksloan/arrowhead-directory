@@ -2,6 +2,7 @@
 	import { Sheet, SheetContent, SheetTrigger } from '$lib/components/ui/sheet/index.js';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import MenuIcon from '@lucide/svelte/icons/menu';
+	import Code from '@lucide/svelte/icons/code';
 
 	let { isAdmin = false }: { isAdmin?: boolean } = $props();
 	let open = $state(false);
@@ -45,6 +46,27 @@
 			>
 				Feature Requests
 			</a>
+			<a
+				href="https://github.com/jacksloan/arrowhead-directory"
+				target="_blank"
+				rel="noopener noreferrer"
+				onclick={() => (open = false)}
+				class="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium hover:bg-accent"
+			>
+				<Code class="h-4 w-4 shrink-0" />
+				Open Source
+			</a>
+			<p class="px-3 text-[11px] text-muted-foreground">
+				Contributions welcome —
+				<a
+					href="https://github.com/jacksloan/arrowhead-directory#contributing"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="underline underline-offset-2 hover:text-foreground"
+				>
+					see the guide
+				</a>
+			</p>
 			{#if isAdmin}
 				<hr class="my-1 border-border" />
 				<a
