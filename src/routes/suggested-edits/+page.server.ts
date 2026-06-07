@@ -104,7 +104,10 @@ export const actions: Actions = {
 			.update({
 				name: suggestion.name,
 				email: suggestion.email,
-				phones: suggestion.phones,
+				phone_1: suggestion.phones?.[0] ?? null,
+				phone_1_type: null,
+				phone_2: suggestion.phones?.[1] ?? null,
+				phone_2_type: null,
 				address: suggestion.address,
 				website: suggestion.website,
 				description: suggestion.description,

@@ -9,7 +9,7 @@
   const DIFF_FIELDS: { key: string; label: string; array?: boolean; html?: boolean; businessKey?: string }[] = [
     { key: 'name', label: 'Name' },
     { key: 'email', label: 'Email' },
-    { key: 'phones', label: 'Phones', array: true },
+    { key: 'phones', label: 'Phones', array: true, businessKey: 'phones_display' },
     { key: 'website', label: 'Website' },
     { key: 'address', label: 'Address' },
     { key: 'category', label: 'Category' },
@@ -49,6 +49,9 @@
     if (field.businessKey === 'services_display') {
       return (business?.services ?? []).map((s: any) => s.name);
     }
+    if (field.businessKey === 'phones_display') {
+      return (business?.phones ?? []).map((p: any) => p.number);
+    }
     return business?.[field.key];
   }
 
@@ -58,6 +61,9 @@
     }
     if (field.businessKey === 'services_display') {
       return display((business?.services ?? []).map((s: any) => s.name), true);
+    }
+    if (field.businessKey === 'phones_display') {
+      return display((business?.phones ?? []).map((p: any) => p.number), true);
     }
     return display(business?.[field.key], field.array);
   }

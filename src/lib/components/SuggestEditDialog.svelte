@@ -38,7 +38,7 @@
       errorMsg = null;
       name = business.name;
       email = business.email ?? '';
-      phones = business.phones.join(', ');
+      phones = business.phones.map((p) => p.number).join(', ');
       address = business.address ?? '';
       website = business.website ?? '';
       description = business.description ?? '';
