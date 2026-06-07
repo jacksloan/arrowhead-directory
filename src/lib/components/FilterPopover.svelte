@@ -4,21 +4,20 @@
 	import { Checkbox } from '$lib/components/ui/checkbox/index.js';
 	import { Label } from '$lib/components/ui/label/index.js';
 	import SlidersHorizontal from '@lucide/svelte/icons/sliders-horizontal';
-	import { Tooltip, TooltipContent, TooltipTrigger } from '$lib/components/ui/tooltip/index.js';
 
 	let {
-		categories,
-		selectedCategories = $bindable([])
+		services,
+		selectedServices = $bindable([])
 	}: {
-		categories: string[];
-		selectedCategories: string[];
+		services: string[];
+		selectedServices: string[];
 	} = $props();
 
-	function toggle(cat: string) {
-		if (selectedCategories.includes(cat)) {
-			selectedCategories = selectedCategories.filter((c) => c !== cat);
+	function toggle(svc: string) {
+		if (selectedServices.includes(svc)) {
+			selectedServices = selectedServices.filter((s) => s !== svc);
 		} else {
-			selectedCategories = [...selectedCategories, cat];
+			selectedServices = [...selectedServices, svc];
 		}
 	}
 </script>
@@ -26,27 +25,31 @@
 <Popover>
 	<PopoverTrigger>
 		{#snippet child({ props })}
-			<Button {...props} variant="outline" size="icon" aria-label="Filter by category">
+			<Button {...props} variant="outline" size="icon" aria-label="Filter by service">
 				<SlidersHorizontal class="h-4 w-4" />
 			</Button>
 		{/snippet}
 	</PopoverTrigger>
 	<PopoverContent class="w-64" align="end">
-		<p class="mb-3 text-sm font-medium">Filter by category</p>
-		<div class="flex max-h-64 flex-col gap-2 overflow-y-auto">
-			{#each categories as cat (cat)}
-				<div class="flex items-center gap-2">
-					<Checkbox
-						id={cat}
-						checked={selectedCategories.includes(cat)}
-						onCheckedChange={() => toggle(cat)}
-					/>
-					<Label for={cat} class="cursor-pointer text-sm">{cat}</Label>
-				</div>
-			{/each}
-		</div>
-		{#if selectedCategories.length > 0}
-			<Button variant="ghost" class="mt-3 w-full text-xs" onclick={() => (selectedCategories = [])}>
+		<p class="mb-3 text-sm font-medium">Filter by service</p>
+		{#if services.length === 0}
+			<p class="text-xs text-muted-foreground">No services to filter by.</p>
+		{:else}
+			<div class="flex max-h-64 flex-col gap-2 overflow-y-auto">
+				{#each services as svc (svc)}
+					<div class="flex items-center gap-2">
+						<Checkbox
+							id={svc}
+							checked={selectedServices.includes(svc)}
+							onCheckedChange={() => toggle(svc)}
+						/>
+						<Label for={svc} class="cursor-pointer text-sm">{svc}</Label>
+					</div>
+				{/each}
+			</div>
+		{/if}
+		{#if selectedServices.length > 0}
+			<Button variant="ghost" class="mt-3 w-full text-xs" onclick={() => (selectedServices = [])}>
 				Clear filters
 			</Button>
 		{/if}

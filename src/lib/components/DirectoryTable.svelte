@@ -66,10 +66,10 @@
 	});
 
 	let search = $state('');
-	let selectedCategories = $state<string[]>([]);
+	let selectedServices = $state<string[]>([]);
 
-	const categories = $derived(
-		[...new Set(activeBusinesses.flatMap((b) => b.categories.map((c) => c.name)))].sort()
+	const services = $derived(
+		[...new Set(activeBusinesses.flatMap((b) => b.services.map((s) => s.name)))].sort()
 	);
 
 	const filtered = $derived(
@@ -84,22 +84,22 @@
 					b.services.some((s) => s.name.toLowerCase().includes(q)) ||
 					(b.description ?? '').toLowerCase().includes(q);
 
-				const matchesCategory =
-					selectedCategories.length === 0 ||
-					b.categories.some((c) => selectedCategories.includes(c.name));
+				const matchesService =
+					selectedServices.length === 0 ||
+					b.services.some((s) => selectedServices.includes(s.name));
 
-				return matchesSearch && matchesCategory;
+				return matchesSearch && matchesService;
 			})
 	);
 
-	const searching = $derived(search.length > 0 || selectedCategories.length > 0);
+	const searching = $derived(search.length > 0 || selectedServices.length > 0);
 </script>
 
 <div class="flex flex-col gap-4">
 	<!-- Toolbar -->
 	<div class="flex items-center gap-2">
 		<Input type="search" placeholder="Search businesses..." bind:value={search} class="max-w-sm" />
-		<FilterPopover {categories} bind:selectedCategories />
+		<FilterPopover {services} bind:selectedServices />
 		<!-- Three-dot menu -->
 		<DropdownMenu>
 			<DropdownMenuTrigger>
