@@ -141,6 +141,22 @@ CREATE TABLE IF NOT EXISTS "public"."feature_requests" (
 ALTER TABLE "public"."feature_requests" OWNER TO "postgres";
 
 
+CREATE TABLE IF NOT EXISTS "public"."lookup_suggestions" (
+    "id" "uuid" DEFAULT "gen_random_uuid"() NOT NULL,
+    "type" "text" NOT NULL,
+    "name" "text" NOT NULL,
+    "suggested_by" "text" NOT NULL,
+    "business_id" "uuid",
+    "status" "text" DEFAULT 'pending'::"text" NOT NULL,
+    "created_at" timestamp with time zone DEFAULT "now"() NOT NULL,
+    CONSTRAINT "lookup_suggestions_status_check" CHECK (("status" = ANY (ARRAY['pending'::"text", 'approved'::"text", 'rejected'::"text"]))),
+    CONSTRAINT "lookup_suggestions_type_check" CHECK (("type" = ANY (ARRAY['category'::"text", 'service'::"text"])))
+);
+
+
+ALTER TABLE "public"."lookup_suggestions" OWNER TO "postgres";
+
+
 CREATE TABLE IF NOT EXISTS "public"."services" (
     "id" "uuid" DEFAULT "gen_random_uuid"() NOT NULL,
     "shortname" "text" NOT NULL,
@@ -219,6 +235,11 @@ ALTER TABLE ONLY "public"."feature_requests"
 
 
 
+ALTER TABLE ONLY "public"."lookup_suggestions"
+    ADD CONSTRAINT "lookup_suggestions_pkey" PRIMARY KEY ("id");
+
+
+
 ALTER TABLE ONLY "public"."services"
     ADD CONSTRAINT "services_name_key" UNIQUE ("name");
 
@@ -264,6 +285,11 @@ ALTER TABLE ONLY "public"."feature_request_votes"
 
 
 
+ALTER TABLE ONLY "public"."lookup_suggestions"
+    ADD CONSTRAINT "lookup_suggestions_business_id_fkey" FOREIGN KEY ("business_id") REFERENCES "public"."businesses"("id") ON DELETE SET NULL;
+
+
+
 ALTER TABLE ONLY "public"."suggested_edits"
     ADD CONSTRAINT "suggested_edits_business_id_fkey" FOREIGN KEY ("business_id") REFERENCES "public"."businesses"("id") ON DELETE CASCADE;
 
@@ -302,6 +328,12 @@ CREATE POLICY "admins can read all suggestions" ON "public"."suggested_edits" FO
 
 
 
+CREATE POLICY "admins can select suggestions" ON "public"."lookup_suggestions" FOR SELECT USING ((EXISTS ( SELECT 1
+   FROM "public"."admins"
+  WHERE ("admins"."email" = ("auth"."jwt"() ->> 'email'::"text")))));
+
+
+
 CREATE POLICY "admins can update categories" ON "public"."categories" FOR UPDATE USING ((EXISTS ( SELECT 1
    FROM "public"."admins"
   WHERE ("admins"."email" = ("auth"."jwt"() ->> 'email'::"text")))));
@@ -315,6 +347,12 @@ CREATE POLICY "admins can update feature_requests" ON "public"."feature_requests
 
 
 CREATE POLICY "admins can update services" ON "public"."services" FOR UPDATE USING ((EXISTS ( SELECT 1
+   FROM "public"."admins"
+  WHERE ("admins"."email" = ("auth"."jwt"() ->> 'email'::"text")))));
+
+
+
+CREATE POLICY "admins can update suggestions" ON "public"."lookup_suggestions" FOR UPDATE USING ((EXISTS ( SELECT 1
    FROM "public"."admins"
   WHERE ("admins"."email" = ("auth"."jwt"() ->> 'email'::"text")))));
 
@@ -335,6 +373,10 @@ CREATE POLICY "authenticated can insert feature_requests" ON "public"."feature_r
 
 
 CREATE POLICY "authenticated can insert services" ON "public"."services" FOR INSERT WITH CHECK (("auth"."role"() = 'authenticated'::"text"));
+
+
+
+CREATE POLICY "authenticated can insert suggestions" ON "public"."lookup_suggestions" FOR INSERT WITH CHECK ((("auth"."role"() = 'authenticated'::"text") AND ("suggested_by" = ("auth"."jwt"() ->> 'email'::"text"))));
 
 
 
@@ -362,6 +404,9 @@ ALTER TABLE "public"."feature_request_votes" ENABLE ROW LEVEL SECURITY;
 
 
 ALTER TABLE "public"."feature_requests" ENABLE ROW LEVEL SECURITY;
+
+
+ALTER TABLE "public"."lookup_suggestions" ENABLE ROW LEVEL SECURITY;
 
 
 CREATE POLICY "owner or admin can delete business_categories" ON "public"."business_categories" FOR DELETE USING (((EXISTS ( SELECT 1
@@ -655,6 +700,12 @@ GRANT ALL ON TABLE "public"."feature_request_votes" TO "service_role";
 GRANT ALL ON TABLE "public"."feature_requests" TO "anon";
 GRANT ALL ON TABLE "public"."feature_requests" TO "authenticated";
 GRANT ALL ON TABLE "public"."feature_requests" TO "service_role";
+
+
+
+GRANT ALL ON TABLE "public"."lookup_suggestions" TO "anon";
+GRANT ALL ON TABLE "public"."lookup_suggestions" TO "authenticated";
+GRANT ALL ON TABLE "public"."lookup_suggestions" TO "service_role";
 
 
 

@@ -6,5 +6,6 @@
 - [ ] In the suggested edits page, it should show feedback when the reject/approve buttons are clicked and reload the suggested edits list
 - [ ] The email obfuscation in the list component should match what's in the card component (should look like a regular email to the user but be obfuscated)
 - [ ] Even though a business can technically belong to multiple categories, only let the user select 1 category in the category dropdown
-- [ ] Filters button should open
+- [ ] Filters button should open services, categories is already handled by the accordion
 - [ ] Lookup suggestions approve/reject should show a loading status and refresh when the user clicks
+- [ ] Dialog field consistency

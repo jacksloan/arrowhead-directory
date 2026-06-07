@@ -75,6 +75,18 @@
 				{/each}
 			</div>
 
+			<!-- Services -->
+			{#if business.services.length > 0}
+				<div class="flex flex-col gap-1.5">
+					<div class="flex flex-wrap gap-1">
+						{#each business.services as svc (svc.id)}
+							<span class="rounded-sm bg-muted/60 px-2 py-0.5 text-xs text-foreground/70">{svc.name}</span>
+						{/each}
+					</div>
+				</div>
+			{/if}
+
+
 			<!-- Description -->
 			{#if business.description}
 				<div class="prose prose-sm max-w-none text-sm leading-relaxed text-foreground/80 [&_ul]:list-disc [&_ul]:pl-4 [&_ol]:list-decimal [&_ol]:pl-4">
@@ -157,18 +169,6 @@
 					</div>
 				{/if}
 			</div>
-
-			<!-- Services -->
-			{#if business.services.length > 0}
-				<div class="flex flex-col gap-1.5">
-					<p class="text-xs font-medium uppercase tracking-wide text-muted-foreground">Services</p>
-					<div class="flex flex-wrap gap-1">
-						{#each business.services as svc (svc.id)}
-							<span class="rounded-sm bg-muted/60 px-2 py-0.5 text-xs text-foreground/70">{svc.name}</span>
-						{/each}
-					</div>
-				</div>
-			{/if}
 
 			<!-- Suggest edit (non-owner, non-admin, logged in) -->
 			{#if onsuggestedit}
