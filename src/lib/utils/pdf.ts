@@ -35,8 +35,9 @@ export async function downloadDirectoryPdf(businesses: Business[], title = 'Arro
 
   const grouped = new Map<string, Business[]>();
   for (const b of businesses) {
-    if (!grouped.has(b.category)) grouped.set(b.category, []);
-    grouped.get(b.category)!.push(b);
+    const key = b.categories[0]?.name ?? 'Uncategorized';
+    if (!grouped.has(key)) grouped.set(key, []);
+    grouped.get(key)!.push(b);
   }
 
   for (const [category, items] of grouped) {
@@ -62,7 +63,7 @@ export async function downloadDirectoryPdf(businesses: Business[], title = 'Arro
       doc.setFont('helvetica', 'normal');
 
       // Subcategories + services
-      const tags = [...(b.subcategories ?? []), ...(b.services ?? [])];
+      const tags = b.services.map((s) => s.name);
       if (tags.length > 0) {
         doc.setTextColor(100);
         const tagLine = tags.join(' · ');

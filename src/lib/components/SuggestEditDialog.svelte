@@ -77,9 +77,9 @@
         class="flex flex-col gap-4"
       >
         <input type="hidden" name="business_id" value={business.id} />
-        <input type="hidden" name="category" value={business.category} />
-        <input type="hidden" name="subcategories" value={business.subcategories.join(', ')} />
-        <input type="hidden" name="services" value={business.services.join(', ')} />
+        <input type="hidden" name="category" value={business.categories[0]?.name ?? ''} />
+        <input type="hidden" name="subcategories" value={business.categories.map((c) => c.name).join(', ')} />
+        <input type="hidden" name="services" value={business.services.map((s) => s.name).join(', ')} />
 
         <p class="text-xs text-muted-foreground">
           Edit the fields you'd like to suggest changes for. An admin will review your submission.
